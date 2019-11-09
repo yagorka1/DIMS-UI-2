@@ -19,6 +19,11 @@
   height: 15px;
   margin-left: 20px;
 }
+.images_header1 {
+  height: 15px;
+  margin-left: 20px;
+  background-image: url('../assets/images/header/menu.png');
+}
 
 .user_photo {
   height: 40px;

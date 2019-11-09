@@ -7,11 +7,27 @@ import notifications from '../assets/images/header/notifications.png';
 import user_photo from '../assets/images/header/user.png';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange() {
+    this.props.showNavbar();
+  }
+
   render() {
     return (
       <header className={style.header}>
         <div className={style.buttons_header}>
-          <img src={menu} className={style.images_header} alt='' />
+          <div
+            role='button'
+            onClick={this.handleChange}
+            onKeyPress={() => {}}
+            tabIndex='0'
+          >
+            <img src={menu} className={style.images_header} alt='Save' />
+          </div>
           <img src={search} className={style.images_header} alt='search' />
         </div>
         <div className={style.buttons_header}>

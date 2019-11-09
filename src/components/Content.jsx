@@ -7,7 +7,7 @@ class Content extends React.Component {
   render() {
     return (
       <div className={style.content}>
-        <Header />
+        <Header showNavbar={this.props.showNavbar} />
         <Main />
       </div>
     );
