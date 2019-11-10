@@ -1,0 +1,87 @@
+.users_container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  color: rgb(0, 0, 0);
+  margin-top: 40px;
+}
+
+.inform_about_users {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.users_title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.users_count {
+  color: rgb(132, 146, 175);
+}
+
+.table_colum {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: rgb(132, 146, 175);
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.table_item {
+  padding-left: 20px;
+}
+
+.table_item:nth-child(1) {
+  width: 25%;
+}
+.table_item:nth-child(2) {
+  width: 15%;
+}
+
+.table_item:nth-child(3) {
+  width: 25%;
+}
+
+.table_item:nth-child(4) {
+  width: 25%;
+}
+
+.table_item:nth-child(5) {
+  width: 10%;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.page_numbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.page_number {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(246, 247, 250);
+}
+
+.page_number:hover {
+  cursor: pointer;
+  background-color: rgb(38, 40, 180);
+  color: rgb(255, 255, 255);
+}

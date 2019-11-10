@@ -1,0 +1,85 @@
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 80px;
+  border-top: 1px solid gray;
+  background-color: rgb(255, 255, 255);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.user:last-child {
+  border-bottom: 1px solid gray;
+}
+
+.user_full_name,
+.user_last_activity,
+.user_mail,
+.user_phone,
+.user_btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-left: 1px solid gray;
+  padding-left: 20px;
+}
+
+.user_full_name {
+  width: 25%;
+}
+.user_last_activity {
+  width: 15%;
+}
+.user_mail {
+  width: 25%;
+}
+.user_phone {
+  width: 25%;
+}
+
+.user_btn {
+  width: 10%;
+  border-right: 1px solid gray;
+  justify-content: center;
+  padding-left: 0px;
+}
+
+.user_photo {
+  width: 45px;
+  height: 45px;
+  margin-right: 20px;
+}
+
+.name_post {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_direction {
+  color: rgb(132, 146, 175);
+}
+
+.user_last_activity {
+  display: flex;
+  flex-direction: row;
+  color: rgb(132, 146, 175);
+}
+
+.clock_image {
+  width: 15px;
+  margin-right: 10px;
+}
+
+.online_status {
+  color: rgb(0, 191, 27);
+}
+
+.menu_image {
+  width: 30px;
+}
+
+.menu_image:hover {
+  cursor: pointer;
+  width: 35px;
+}

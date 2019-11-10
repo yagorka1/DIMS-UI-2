@@ -1,12 +1,12 @@
 import React from 'react';
 import style from '../style/Main.module.css';
 import { Route } from 'react-router-dom';
-import Home from './vvv/Home';
-import Workflow from './vvv/Workflow';
-import Statistics from './vvv/Statistics';
-import Calendar from './vvv/Calendar';
-import Users from './vvv/Users';
-import Settings from './vvv/Settings';
+import Home from './tabs/Home';
+import Workflow from './tabs/Workflow';
+import Statistics from './tabs/Statistics';
+import Calendar from './tabs/Calendar';
+import Users from './tabs/Users';
+import Settings from './tabs/Settings';
 
 class Main extends React.Component {
   render() {
