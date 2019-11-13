@@ -1,13 +1,9 @@
 import React from 'react';
 import style from '../style/Navbar.module.css';
-import statistics from '../assets/images/navbar/statistics.png';
-import workflow from '../assets/images/navbar/workflow.png';
-import calendar from '../assets/images/navbar/calendar.png';
-import users from '../assets/images/navbar/users.png';
-import settings from '../assets/images/navbar/settings.png';
-import home from '../assets/images/navbar/home.png';
+
 import NavbarItem from './NavbarItem';
 import logo from '../assets/images/navbar/logo.png';
+import routes from '../js/routes_names';
 
 class NavBar extends React.Component {
   render() {
@@ -17,12 +13,9 @@ class NavBar extends React.Component {
           <img src={logo} className={style.logoImg} alt='Site logo'></img>
           <h1>Mercury</h1>
         </div>
-        <NavbarItem image={home} title='Home' />
-        <NavbarItem image={workflow} title='Workflow' />
-        <NavbarItem image={statistics} title='Statistics' />
-        <NavbarItem image={calendar} title='Calendar' />
-        <NavbarItem image={users} title='Users' />
-        <NavbarItem image={settings} title='Settings' />
+        {routes.map((route) => (
+          <NavbarItem image={route.image} title={route.title} />
+        ))}
       </nav>
     );
   }
