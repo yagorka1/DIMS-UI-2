@@ -4,23 +4,23 @@ import NavBar from './components/NavBar';
 import Content from './components/Content';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       showNavbar: true,
     };
-
-    this.showNavbar = this.showNavbar.bind(this);
   }
 
-  showNavbar() {
+  showNavbar = () => {
     this.setState({ showNavbar: !this.state.showNavbar });
-  }
+  };
 
   render() {
+    const { showNavbar } = this.state;
+
     return (
       <div className={style.App}>
-        {this.state.showNavbar ? <NavBar /> : <div></div>}
+        {showNavbar && <NavBar />}
         <Content showNavbar={this.showNavbar} />
       </div>
     );
