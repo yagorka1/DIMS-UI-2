@@ -12,6 +12,7 @@ const routes = [
   { title: 'Calendar', image: calendar },
   { title: 'Users', image: users },
   { title: 'Settings', image: settings },
+  { title: 'AddUser', image: settings },
 ];
 
 export default routes;

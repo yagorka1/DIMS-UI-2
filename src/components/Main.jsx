@@ -7,6 +7,7 @@ import Statistics from './tabs/Statistics';
 import Calendar from './tabs/Calendar';
 import Users from './tabs/Users';
 import Settings from './tabs/Settings';
+import AddUser from './tabs/AddUser/AddUser';
 
 class Main extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Main extends React.Component {
         <Route path='/calendar' render={() => <Calendar />} />
         <Route path='/users' render={() => <Users />} />
         <Route path='/settings' render={() => <Settings />} />
+        <Route path='/AddUser' render={() => <AddUser />} />
       </main>
     );
   }
