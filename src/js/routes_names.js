@@ -13,6 +13,7 @@ const routes = [
   { title: 'Users', image: users },
   { title: 'Settings', image: settings },
   { title: 'AddUser', image: settings },
+  { title: 'AddProject', image: settings },
 ];
 
 export default routes;

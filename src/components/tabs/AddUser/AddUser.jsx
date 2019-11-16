@@ -9,6 +9,7 @@ class AddUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      users: [],
       sex: 'Male',
       direction: 'User',
       date: new Date(),
@@ -24,15 +25,51 @@ class AddUser extends React.Component {
       mobilePhone: '',
       skype: '',
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(name, event) {
+  handleInputChange = (name, event) => {
     this.setState({
       [name]: event.target.value,
     });
-  }
+  };
+
+  // createNewPost = (title, task, priority) => {
+  //   return {
+  //     title: title,
+  //     task: task,
+  //     priority: priority,
+  //     date: getDate(),
+  //     chooseColorField: false,
+  //     backgroundColorPost: BLUE_COLOR,
+  //     status: false,
+  //     showEditField: false,
+  //     showChangeTaskField: false,
+  //   };
+  // };
+
+  addNewUser = () => {
+    const newUser = {
+      sex: this.state.sex,
+      direction: this.state.direction,
+      date: this.state.date,
+      startDate: this.state.startDate,
+      name: this.state.name,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      education: this.state.education,
+      age: this.state.age,
+      university: this.state.university,
+      mathScore: this.state.mathScore,
+      address: this.state.address,
+      mobilePhone: this.state.mobilePhone,
+      skype: this.state.skype,
+    };
+    const { users } = this.state;
+    this.setState({
+      users: [...users, newUser],
+    });
+    alert('user has been added');
+  };
 
   dateOfBirth = (date) => this.setState({ date });
   onChangeStartDate = (startDate) => this.setState({ startDate });
@@ -97,7 +134,7 @@ class AddUser extends React.Component {
             onChange={this.onChangeStartDate}
             value={this.state.startDate}
           />
-          <input type='submit' value='Save' />
+          <input type='button' onClick={this.addNewUser} value='Save' />
         </form>
       </div>
     );
