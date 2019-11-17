@@ -125,7 +125,11 @@ class Workflow extends React.Component {
             ToDo <span className={style.count_task}>({toDoTask.length})</span>
           </h1>
           {toDoTask.map((task) => (
-            <Task task={task} key={task.id} />
+            <Task
+              task={task}
+              key={task.id}
+              changePost={this.props.changePost}
+            />
           ))}
         </section>
         <section className={style.inProgress_container}>
@@ -134,7 +138,11 @@ class Workflow extends React.Component {
             <span className={style.count_task}>({inProgressTask.length})</span>
           </h1>
           {inProgressTask.map((task) => (
-            <Task task={task} key={task.id} />
+            <Task
+              task={task}
+              key={task.id}
+              changePost={this.props.changePost}
+            />
           ))}
         </section>
         <section className={style.completed_container}>
@@ -143,7 +151,11 @@ class Workflow extends React.Component {
             <span className={style.count_task}>({completedTask.length})</span>
           </h1>
           {completedTask.map((task) => (
-            <Task task={task} key={task.id} />
+            <Task
+              task={task}
+              key={task.id}
+              changePost={this.props.changePost}
+            />
           ))}
         </section>
       </div>
