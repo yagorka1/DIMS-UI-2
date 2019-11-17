@@ -9,6 +9,9 @@ import Users from './tabs/Users';
 import Settings from './tabs/Settings';
 import AddUser from './tabs/AddUser/AddUser';
 import AddProject from './tabs/AddProject/AddProject';
+import Projects from './tabs/Projects/Projects';
+import { getDate } from '../js/getDate';
+import { BLUE_COLOR } from '../js/color';
 
 class Main extends React.Component {
   constructor(props) {
@@ -17,9 +20,13 @@ class Main extends React.Component {
       tasks: [],
       newTask: '',
       newDescription: '',
+      newDescriptionEdit: '',
       startDate: '',
       deadlineDate: '',
     };
+
+    this.changePost = this.changePost.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   handleInputChange = (name, event) => {
@@ -43,17 +50,24 @@ class Main extends React.Component {
   task = [{}];
 
   addNewProject = () => {
-    console.log(JSON.stringify(this.state.deadlineDate));
     const newTask = {
       taskId: String(
         Math.round(Math.random() * (100000000 + 10000000) - 10000000),
       ),
       title: this.state.newTask,
-      description: this.state.newTask,
+      description: this.state.newDescription,
       startDate: this.state.startDate,
       deadlineDate: this.state.deadlineDate,
       state: 'toDo',
       showEditFields: false,
+
+      priority: 'Medium',
+      // date: getDate(),
+      chooseColorField: false,
+      backgroundColorPost: BLUE_COLOR,
+      status: false,
+      showEditField: false,
+      showChangeTaskField: false,
     };
 
     localStorage.setItem('testObject', JSON.stringify(newTask));
@@ -73,12 +87,73 @@ class Main extends React.Component {
       return { ...task, showEditFields: true };
     }
   }
+  /////////////////////////////////
 
-  changeState(task, newState) {
-    return { ...task, state: newState, showEditFields: false };
+  showEditField(task) {
+    if (task.showEditField) {
+      return { ...task, showEditField: false };
+    } else {
+      this.onChange('newDescriptionEdit', task.description);
+      return { ...task, showEditField: true };
+    }
   }
 
-  changePost = (id, action, color) => {
+  showChangeTaskField(post) {
+    if (post.showChangeTaskField) {
+      return { ...post, showChangeTaskField: false };
+    } else {
+      return { ...post, showChangeTaskField: true };
+    }
+  }
+
+  changeStatus(post) {
+    if (!post.status) {
+      return {
+        ...post,
+        status: true,
+        showEditField: false,
+        chooseColorField: false,
+      };
+    } else {
+      return {
+        ...post,
+        status: false,
+        showEditField: false,
+        chooseColorField: false,
+      };
+    }
+  }
+
+  pushEditTask(post) {
+    return {
+      ...post,
+      description: this.state.newDescriptionEdit,
+      showChangeTaskField: false,
+    };
+  }
+
+  showPalette(post) {
+    if (!post.chooseColorField) {
+      return { ...post, chooseColorField: true };
+    } else {
+      return { ...post, chooseColorField: false };
+    }
+  }
+
+  deletePost(id) {
+    const { tasks } = this.state;
+    this.setState({ tasks: tasks.filter((task) => task.taskId !== id) });
+  }
+
+  changeBackgroundColor(post, color) {
+    return { ...post, backgroundColorPost: color, chooseColorField: false };
+  }
+
+  onChange(name, value) {
+    this.setState({ [name]: value });
+  }
+
+  changePost(id, action, color) {
     if (action === `delete`) {
       this.deletePost(id);
     } else {
@@ -86,8 +161,32 @@ class Main extends React.Component {
         tasks: this.state.tasks.map((task) => {
           if (task.taskId === id) {
             switch (action) {
+              case `showEditField`: {
+                task = this.showEditField(task);
+                break;
+              }
               case `showEditFields`: {
                 task = this.showEditFields(task);
+                break;
+              }
+              case `changeStatus`: {
+                task = this.changeStatus(task);
+                break;
+              }
+              case `edit`: {
+                task = this.showChangeTaskField(task);
+                break;
+              }
+              case `color`: {
+                task = this.showPalette(task);
+                break;
+              }
+              case `changeBackgroundColor`: {
+                task = this.changeBackgroundColor(task, color);
+                break;
+              }
+              case `push`: {
+                task = this.pushEditTask(task);
                 break;
               }
               case `toDo`: {
@@ -102,26 +201,6 @@ class Main extends React.Component {
                 task = this.changeState(task, `completed`);
                 break;
               }
-              // case `changeStatus`: {
-              //   post = this.changeStatus(post);
-              //   break;
-              // }
-              // case `edit`: {
-              //   post = this.showChangeTaskField(post);
-              //   break;
-              // }
-              // case `color`: {
-              //   post = this.showPalette(post);
-              //   break;
-              // }
-              // case `changeBackgroundColor`: {
-              //   post = this.changeBackgroundColor(post, color);
-              //   break;
-              // }
-              // case `push`: {
-              //   post = this.pushEditTask(post);
-              //   break;
-              // }
               default:
                 return task;
             }
@@ -130,7 +209,67 @@ class Main extends React.Component {
         }),
       });
     }
-  };
+  }
+
+  /////////////////////////////////
+
+  changeState(task, newState) {
+    return { ...task, state: newState, showEditFields: false };
+  }
+
+  // changePost = (id, action, color) => {
+  //   if (action === `delete`) {
+  //     this.deletePost(id);
+  //   } else {
+  //     this.setState({
+  //       tasks: this.state.tasks.map((task) => {
+  //         if (task.taskId === id) {
+  //           switch (action) {
+  //             case `showEditFields`: {
+  //               task = this.showEditFields(task);
+  //               break;
+  //             }
+  //             case `toDo`: {
+  //               task = this.changeState(task, `toDo`);
+  //               break;
+  //             }
+  //             case `inProgress`: {
+  //               task = this.changeState(task, `inProgress`);
+  //               break;
+  //             }
+  //             case `completed`: {
+  //               task = this.changeState(task, `completed`);
+  //               break;
+  //             }
+  //             // case `changeStatus`: {
+  //             //   post = this.changeStatus(post);
+  //             //   break;
+  //             // }
+  //             // case `edit`: {
+  //             //   post = this.showChangeTaskField(post);
+  //             //   break;
+  //             // }
+  //             // case `color`: {
+  //             //   post = this.showPalette(post);
+  //             //   break;
+  //             // }
+  //             // case `changeBackgroundColor`: {
+  //             //   post = this.changeBackgroundColor(post, color);
+  //             //   break;
+  //             // }
+  //             // case `push`: {
+  //             //   post = this.pushEditTask(post);
+  //             //   break;
+  //             // }
+  //             default:
+  //               return task;
+  //           }
+  //         }
+  //         return task;
+  //       }),
+  //     });
+  //   }
+  // };
 
   render() {
     return (
@@ -156,6 +295,18 @@ class Main extends React.Component {
               addNewProject={this.addNewProject}
               onChangeStartDate={this.onChangeStartDate}
               onChangeDeadlineDate={this.onChangeDeadlineDate}
+            />
+          )}
+        />
+        <Route
+          path='/Projects'
+          render={() => (
+            <Projects
+              state={this.state}
+              changePost={this.changePost}
+              posts={this.state.tasks}
+              newTask={this.state.newDescriptionEdit}
+              onChange={this.onChange}
             />
           )}
         />

@@ -1,0 +1,188 @@
+.post {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(254, 254, 254);
+  border: 1px solid rgb(209, 206, 206);
+  box-shadow: 0px 0px 5px rgb(209, 206, 206);
+  margin-bottom: 30px;
+  padding-bottom: 7px;
+  padding-right: 7px;
+}
+
+.button {
+  height: 25px;
+  width: 70px;
+  background-color: #5584ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  border-radius: 35px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 8pt;
+  letter-spacing: 0.3pt;
+  margin-bottom: 10px;
+}
+
+.button:hover {
+  background-color: blueviolet;
+  cursor: pointer;
+}
+
+.buttonFunction {
+  width: 40px;
+  height: 30px;
+  margin-top: 10px;
+  background-image: url('../assets/images/main/main/func.svg');
+  padding-top: 5px;
+}
+
+.buttonFunction:hover {
+  cursor: pointer;
+}
+
+.palette {
+  display: flex;
+  flex-direction: row;
+}
+
+.userPhotoBlock {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 8%;
+}
+
+.titleImg {
+  height: 50px;
+  border-radius: 50%;
+}
+
+.postBody {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+}
+
+.informAboutPost {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 8pt;
+  margin-right: 30px;
+}
+
+.messageBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.postTitle {
+  margin-top: -5px;
+  margin-bottom: -10px;
+}
+
+.blockFunction {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 20%;
+  padding-right: 20px;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  margin-left: 2px;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.palette {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100px;
+  margin-left: -30px;
+}
+
+.postButtons {
+  margin-top: 10px;
+}
+
+.paletteItem {
+  width: 15px;
+  height: 15px;
+  margin-bottom: 5px;
+  border: 2px solid rgb(255, 255, 255);
+  margin-left: 10px;
+}
+
+.paletteItem:hover {
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.checked {
+  display: flex;
+  flex-direction: row;
+  color: rgb(13, 172, 13);
+}
+
+.checkedPhoto {
+  width: 12px;
+  margin-left: 5px;
+  margin-right: 2px;
+}
+
+#color1,
+.color1 {
+  background-color: rgb(240, 151, 151);
+}
+#color2,
+.color2 {
+  background-color: rgb(255, 255, 111);
+}
+#color3,
+.color3 {
+  background-color: rgb(106, 231, 106);
+}
+#color4,
+.color4 {
+  background-color: rgb(252, 194, 88);
+}
+#color5,
+.color5 {
+  background-color: rgb(126, 126, 230);
+}
+#color6,
+.color6 {
+  background-color: rgb(187, 145, 226);
+}
+#color7,
+.color7 {
+  background-color: rgb(247, 165, 136);
+}
+#color8,
+.color8 {
+  background-color: rgb(145, 255, 255);
+}
+#color9,
+.color9 {
+  background-color: rgb(221, 160, 221);
+}
