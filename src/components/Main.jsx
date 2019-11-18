@@ -13,12 +13,13 @@ import Projects from './tabs/Projects/Projects';
 import { getDate } from '../js/getDate';
 import { BLUE_COLOR } from '../js/color';
 import Tracks from './tabs/Tracks/Tracks';
+import projects from '../js/projects';
 
 class Main extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      tasks: [],
+      tasks: projects,
       tracks: [],
       newTask: '',
       newDescription: '',
@@ -48,6 +49,7 @@ class Main extends React.Component {
       newDescription: '',
       startDate: '',
       deadlineDate: '',
+      newTrack: '',
     });
   };
 
@@ -55,7 +57,7 @@ class Main extends React.Component {
     const newNote = this.state.newTrack;
     const newTrack = {
       taskId: projectId,
-      // // userId: ,
+      // userId: ,
       trackId: String(
         Math.round(Math.random() * (100000000 + 10000000) - 10000000),
       ),
@@ -63,10 +65,20 @@ class Main extends React.Component {
       trackNode: newNote,
       trackDate: new Date(),
     };
+    console.log(this.state);
 
     const { tracks } = this.state;
     this.setState({
       tracks: [...tracks, newTrack],
+    });
+    this.clearInputFields();
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (task.taskId === projectId) {
+          return { ...task, showTrackField: false };
+        }
+        return task;
+      }),
     });
   };
 
@@ -222,10 +234,10 @@ class Main extends React.Component {
                 task = this.pushEditTask(task);
                 break;
               }
-              // case `pushTrack`: {
-              //   task = this.pushTrack(task);
-              //   break;
-              // }
+              case `pushTrack`: {
+                task = this.addNewTrack(task.taskId, task.title);
+                break;
+              }
               case `toDo`: {
                 task = this.changeState(task, `toDo`);
                 break;

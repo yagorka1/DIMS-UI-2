@@ -1,5 +1,85 @@
 .track {
-  width: 700px;
-  height: 100px;
-  background-color: goldenrod;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 80px;
+  border-top: 1px solid gray;
+  background-color: rgb(255, 255, 255);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.track:last-child {
+  border-bottom: 1px solid gray;
+}
+
+.id_container,
+.task_container,
+.node_container,
+.date_container,
+.buttons_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-left: 1px solid gray;
+  padding-left: 20px;
+}
+
+.id_container {
+  width: 5%;
+}
+.task_container {
+  width: 20%;
+}
+.node_container {
+  width: 20%;
+}
+.date_container {
+  width: 20%;
+}
+
+.buttons_container {
+  width: 35%;
+  border-right: 1px solid gray;
+  justify-content: center;
+  padding-left: 0px;
+}
+
+.user_photo {
+  width: 45px;
+  height: 45px;
+  margin-right: 20px;
+}
+
+.name_post {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_direction {
+  color: rgb(132, 146, 175);
+}
+
+.user_last_activity {
+  display: flex;
+  flex-direction: row;
+  color: rgb(132, 146, 175);
+}
+
+.clock_image {
+  width: 15px;
+  margin-right: 10px;
+}
+
+.online_status {
+  color: rgb(0, 191, 27);
+}
+
+.menu_image {
+  width: 30px;
+}
+
+.menu_image:hover {
+  cursor: pointer;
+  width: 35px;
 }
