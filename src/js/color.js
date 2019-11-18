@@ -7,9 +7,8 @@ const PURPLE_COLOR = 'rgb(187, 145, 226)';
 const PEACH_COLOR = 'rgb(247, 165, 136)';
 const AQUA_COLOR = 'rgb(145, 255, 255)';
 const BLUE_COLOR = 'rgb(123, 152, 247)';
-const BLUE_COLOR1 = 'rgb(123, 152, 247)';
 
-export {
+const colors = [
   PINK_COLOR,
   YELLOW_COLOR,
   GREEN_COLOR,
@@ -19,4 +18,6 @@ export {
   PEACH_COLOR,
   AQUA_COLOR,
   BLUE_COLOR,
-};
+];
+
+export default colors;

@@ -2,7 +2,7 @@ import React from 'react';
 import InputText from '../AddUser/InputText';
 import DatePicker from 'react-date-picker';
 
-class AddProject extends React.Component {
+class AddTask extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,8 +15,8 @@ class AddProject extends React.Component {
   onChangeDeadlineDate = (deadlineDate) =>
     this.props.onChangeDeadlineDate(deadlineDate);
 
-  addNewProject = () => {
-    this.props.addNewProject();
+  addNewTask = () => {
+    this.props.addNewTask();
   };
 
   render() {
@@ -49,11 +49,11 @@ class AddProject extends React.Component {
             onChange={this.onChangeDeadlineDate}
             value={state.deadlineDate}
           />
-          <input type='button' onClick={this.addNewProject} value='Save' />
+          <input type='button' onClick={this.addNewTask} value='Save' />
         </form>
       </div>
     );
   }
 }
 
-export default AddProject;
+export default AddTask;

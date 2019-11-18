@@ -1,4 +1,5 @@
-import { BLUE_COLOR } from './color';
+// import { BLUE_COLOR } from './color';
+const BLUE_COLOR = 'rgb(123, 152, 247)';
 const projects = [
   {
     taskId: String(

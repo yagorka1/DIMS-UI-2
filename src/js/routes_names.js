@@ -13,8 +13,8 @@ const routes = [
   { title: 'Users', image: users },
   { title: 'Settings', image: settings },
   { title: 'AddUser', image: settings },
-  { title: 'AddProject', image: settings },
-  { title: 'Projects', image: settings },
+  { title: 'AddTask', image: settings },
+  { title: 'Tasks', image: settings },
   { title: 'Tracks', image: settings },
 ];
 

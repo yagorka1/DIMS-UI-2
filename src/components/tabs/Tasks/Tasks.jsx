@@ -1,9 +1,9 @@
 import React from 'react';
-import style from '../../../style/Projects.module.css';
+import style from '../../../style/Tasks.module.css';
 import Task from '../Task';
 import Post from './Post';
 
-class Projects extends React.Component {
+class Tasks extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -35,10 +35,10 @@ class Projects extends React.Component {
           <h1 className={style.section_title}>
             ToDo <span className={style.count_task}>({toDoTask.length})</span>
           </h1>
-          {toDoTask.map((post) => (
+          {toDoTask.map((task) => (
             <Post
-              post={post}
-              key={post.id}
+              task={task}
+              key={task.id}
               changePost={this.props.changePost}
               newTask={this.props.newTask}
               newTrack={this.props.newTrack}
@@ -52,10 +52,10 @@ class Projects extends React.Component {
             In Progress{' '}
             <span className={style.count_task}>({inProgressTask.length})</span>
           </h1>
-          {inProgressTask.map((post) => (
+          {inProgressTask.map((task) => (
             <Post
-              post={post}
-              key={post.id}
+              task={task}
+              key={task.id}
               changePost={this.props.changePost}
               newTask={this.props.newTask}
               newTrack={this.props.newTrack}
@@ -69,10 +69,10 @@ class Projects extends React.Component {
             Completed{' '}
             <span className={style.count_task}>({completedTask.length})</span>
           </h1>
-          {completedTask.map((post) => (
+          {completedTask.map((task) => (
             <Post
-              post={post}
-              key={post.id}
+              task={task}
+              key={task.id}
               changePost={this.props.changePost}
               newTask={this.props.newTask}
               newTrack={this.props.newTrack}
@@ -86,4 +86,4 @@ class Projects extends React.Component {
   }
 }
 
-export default Projects;
+export default Tasks;

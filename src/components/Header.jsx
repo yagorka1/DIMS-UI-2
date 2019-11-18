@@ -31,7 +31,7 @@ class Header extends React.Component {
           <img src={search} className={style.images_header} alt='search' />
         </div>
         <div className={style.buttons_header}>
-          <div className={style.button}>+ Add Project</div>
+          <div className={style.button}>+ Add Task</div>
           <img src={messages} className={style.images_header} alt='messages' />
           <img
             src={notifications}

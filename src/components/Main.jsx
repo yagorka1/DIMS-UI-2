@@ -8,12 +8,13 @@ import Calendar from './tabs/Calendar';
 import Users from './tabs/Users';
 import Settings from './tabs/Settings';
 import AddUser from './tabs/AddUser/AddUser';
-import AddProject from './tabs/AddProject/AddProject';
-import Projects from './tabs/Projects/Projects';
-import { getDate } from '../js/getDate';
-import { BLUE_COLOR } from '../js/color';
 import Tracks from './tabs/Tracks/Tracks';
 import projects from '../js/projects';
+
+import AddTask from './tabs/AddTask/AddTask';
+import Tasks from './tabs/Tasks/Tasks';
+// import { BLUE_COLOR } from '../js/color';
+const BLUE_COLOR = 'rgb(123, 152, 247)';
 
 class Main extends React.Component {
   constructor(props) {
@@ -65,7 +66,6 @@ class Main extends React.Component {
       trackNode: newNote,
       trackDate: new Date(),
     };
-    console.log(this.state);
 
     const { tracks } = this.state;
     this.setState({
@@ -82,7 +82,8 @@ class Main extends React.Component {
     });
   };
 
-  addNewProject = () => {
+  addNewTask = () => {
+    alert('dedede');
     const newTask = {
       taskId: String(
         Math.round(Math.random() * (100000000 + 10000000) - 10000000),
@@ -95,7 +96,6 @@ class Main extends React.Component {
       showEditFields: false,
 
       priority: 'Medium',
-      // date: getDate(),
       chooseColorField: false,
       backgroundColorPost: BLUE_COLOR,
       status: false,
@@ -104,7 +104,7 @@ class Main extends React.Component {
       showTrackField: false,
     };
 
-    localStorage.setItem('testObject', JSON.stringify(newTask));
+    console.log(newTask);
 
     const { tasks } = this.state;
     this.setState({
@@ -120,7 +120,6 @@ class Main extends React.Component {
       return { ...task, showEditFields: true };
     }
   }
-  /////////////////////////////////
 
   showEditField(task) {
     if (task.showEditField) {
@@ -131,33 +130,33 @@ class Main extends React.Component {
     }
   }
 
-  showChangeTaskField(post) {
-    if (post.showChangeTaskField) {
-      return { ...post, showChangeTaskField: false };
+  showChangeTaskField(task) {
+    if (task.showChangeTaskField) {
+      return { ...task, showChangeTaskField: false };
     } else {
-      return { ...post, showChangeTaskField: true };
+      return { ...task, showChangeTaskField: true };
     }
   }
 
-  showTrackField(post) {
-    if (post.showTrackField) {
-      return { ...post, showTrackField: false };
+  showTrackField(task) {
+    if (task.showTrackField) {
+      return { ...task, showTrackField: false };
     } else {
-      return { ...post, showTrackField: true };
+      return { ...task, showTrackField: true };
     }
   }
 
-  changeStatus(post) {
-    if (!post.status) {
+  changeStatus(task) {
+    if (!task.status) {
       return {
-        ...post,
+        ...task,
         status: true,
         showEditField: false,
         chooseColorField: false,
       };
     } else {
       return {
-        ...post,
+        ...task,
         status: false,
         showEditField: false,
         chooseColorField: false,
@@ -165,19 +164,19 @@ class Main extends React.Component {
     }
   }
 
-  pushEditTask(post) {
+  pushEditTask(task) {
     return {
-      ...post,
+      ...task,
       description: this.state.newDescriptionEdit,
       showChangeTaskField: false,
     };
   }
 
-  showPalette(post) {
-    if (!post.chooseColorField) {
-      return { ...post, chooseColorField: true };
+  showPalette(task) {
+    if (!task.chooseColorField) {
+      return { ...task, chooseColorField: true };
     } else {
-      return { ...post, chooseColorField: false };
+      return { ...task, chooseColorField: false };
     }
   }
 
@@ -186,8 +185,8 @@ class Main extends React.Component {
     this.setState({ tasks: tasks.filter((task) => task.taskId !== id) });
   }
 
-  changeBackgroundColor(post, color) {
-    return { ...post, backgroundColorPost: color, chooseColorField: false };
+  changeBackgroundColor(task, color) {
+    return { ...task, backgroundColorPost: color, chooseColorField: false };
   }
 
   onChange(name, value) {
@@ -260,65 +259,9 @@ class Main extends React.Component {
     }
   }
 
-  /////////////////////////////////
-
   changeState(task, newState) {
     return { ...task, state: newState, showEditFields: false };
   }
-
-  // changePost = (id, action, color) => {
-  //   if (action === `delete`) {
-  //     this.deletePost(id);
-  //   } else {
-  //     this.setState({
-  //       tasks: this.state.tasks.map((task) => {
-  //         if (task.taskId === id) {
-  //           switch (action) {
-  //             case `showEditFields`: {
-  //               task = this.showEditFields(task);
-  //               break;
-  //             }
-  //             case `toDo`: {
-  //               task = this.changeState(task, `toDo`);
-  //               break;
-  //             }
-  //             case `inProgress`: {
-  //               task = this.changeState(task, `inProgress`);
-  //               break;
-  //             }
-  //             case `completed`: {
-  //               task = this.changeState(task, `completed`);
-  //               break;
-  //             }
-  //             // case `changeStatus`: {
-  //             //   post = this.changeStatus(post);
-  //             //   break;
-  //             // }
-  //             // case `edit`: {
-  //             //   post = this.showChangeTaskField(post);
-  //             //   break;
-  //             // }
-  //             // case `color`: {
-  //             //   post = this.showPalette(post);
-  //             //   break;
-  //             // }
-  //             // case `changeBackgroundColor`: {
-  //             //   post = this.changeBackgroundColor(post, color);
-  //             //   break;
-  //             // }
-  //             // case `push`: {
-  //             //   post = this.pushEditTask(post);
-  //             //   break;
-  //             // }
-  //             default:
-  //               return task;
-  //           }
-  //         }
-  //         return task;
-  //       }),
-  //     });
-  //   }
-  // };
 
   render() {
     return (
@@ -336,21 +279,21 @@ class Main extends React.Component {
         <Route path='/settings' render={() => <Settings />} />
         <Route path='/AddUser' render={() => <AddUser />} />
         <Route
-          path='/AddProject'
+          path='/AddTask'
           render={() => (
-            <AddProject
+            <AddTask
               state={this.state}
               handleInputChange={this.handleInputChange}
-              addNewProject={this.addNewProject}
+              addNewTask={this.addNewTask}
               onChangeStartDate={this.onChangeStartDate}
               onChangeDeadlineDate={this.onChangeDeadlineDate}
             />
           )}
         />
         <Route
-          path='/Projects'
+          path='/Tasks'
           render={() => (
-            <Projects
+            <Tasks
               state={this.state}
               changePost={this.changePost}
               posts={this.state.tasks}
