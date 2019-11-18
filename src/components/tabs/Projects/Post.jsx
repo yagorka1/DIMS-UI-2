@@ -24,10 +24,21 @@ class Post extends React.Component {
     this.setBackgroundColor = this.setBackgroundColor.bind(this);
     this.setBackgroundColor = this.setBackgroundColor.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange1 = this.handleChange1.bind(this);
   }
+
+  pushTrack = (projectId, projectTitle) => {
+    // const projectId = this.props.post.taskId;
+    // const projectTitle = this.props.post.title;
+    this.props.addTrack(projectId, projectTitle);
+  };
 
   handleChange(e) {
     const name = 'newDescriptionEdit';
+    this.props.onChange(name, e.target.value);
+  }
+  handleChange1(e) {
+    const name = 'newTrack';
     this.props.onChange(name, e.target.value);
   }
   showEditButtons(id) {
@@ -170,6 +181,28 @@ class Post extends React.Component {
                         changePost={this.props.changePost}
                         id={post.taskId}
                       />
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                  <Button
+                    title='track'
+                    changePost={this.props.changePost}
+                    id={post.taskId}
+                  />
+                  {post.showTrackField ? (
+                    <div>
+                      <input
+                        value={this.props.newTrack}
+                        onChange={this.handleChange1}
+                      />
+                      <button
+                        title='pushTrack'
+                        onClick={() => this.pushTrack(post.taskId, post.title)}
+                        id={post.taskId}
+                      >
+                        push
+                      </button>
                     </div>
                   ) : (
                     <div></div>

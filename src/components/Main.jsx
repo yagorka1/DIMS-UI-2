@@ -12,15 +12,19 @@ import AddProject from './tabs/AddProject/AddProject';
 import Projects from './tabs/Projects/Projects';
 import { getDate } from '../js/getDate';
 import { BLUE_COLOR } from '../js/color';
+import Tracks from './tabs/Tracks/Tracks';
 
 class Main extends React.Component {
   constructor(props) {
     super();
     this.state = {
       tasks: [],
+      tracks: [],
       newTask: '',
       newDescription: '',
       newDescriptionEdit: '',
+      newTrack: '',
+      newTrackName: '',
       startDate: '',
       deadlineDate: '',
     };
@@ -47,7 +51,24 @@ class Main extends React.Component {
     });
   };
 
-  task = [{}];
+  addNewTrack = (projectId, projectTitle) => {
+    const newNote = this.state.newTrack;
+    const newTrack = {
+      taskId: projectId,
+      // // userId: ,
+      trackId: String(
+        Math.round(Math.random() * (100000000 + 10000000) - 10000000),
+      ),
+      taskName: projectTitle,
+      trackNode: newNote,
+      trackDate: new Date(),
+    };
+
+    const { tracks } = this.state;
+    this.setState({
+      tracks: [...tracks, newTrack],
+    });
+  };
 
   addNewProject = () => {
     const newTask = {
@@ -68,6 +89,7 @@ class Main extends React.Component {
       status: false,
       showEditField: false,
       showChangeTaskField: false,
+      showTrackField: false,
     };
 
     localStorage.setItem('testObject', JSON.stringify(newTask));
@@ -76,7 +98,6 @@ class Main extends React.Component {
     this.setState({
       tasks: [...tasks, newTask],
     });
-    console.log(newTask);
     this.clearInputFields();
   };
 
@@ -103,6 +124,14 @@ class Main extends React.Component {
       return { ...post, showChangeTaskField: false };
     } else {
       return { ...post, showChangeTaskField: true };
+    }
+  }
+
+  showTrackField(post) {
+    if (post.showTrackField) {
+      return { ...post, showTrackField: false };
+    } else {
+      return { ...post, showTrackField: true };
     }
   }
 
@@ -177,6 +206,10 @@ class Main extends React.Component {
                 task = this.showChangeTaskField(task);
                 break;
               }
+              case `track`: {
+                task = this.showTrackField(task);
+                break;
+              }
               case `color`: {
                 task = this.showPalette(task);
                 break;
@@ -189,6 +222,10 @@ class Main extends React.Component {
                 task = this.pushEditTask(task);
                 break;
               }
+              // case `pushTrack`: {
+              //   task = this.pushTrack(task);
+              //   break;
+              // }
               case `toDo`: {
                 task = this.changeState(task, `toDo`);
                 break;
@@ -302,6 +339,20 @@ class Main extends React.Component {
           path='/Projects'
           render={() => (
             <Projects
+              state={this.state}
+              changePost={this.changePost}
+              posts={this.state.tasks}
+              newTask={this.state.newDescriptionEdit}
+              newTrack={this.state.newTrack}
+              addTrack={this.addNewTrack}
+              onChange={this.onChange}
+            />
+          )}
+        />
+        <Route
+          path='/Tracks'
+          render={() => (
+            <Tracks
               state={this.state}
               changePost={this.changePost}
               posts={this.state.tasks}

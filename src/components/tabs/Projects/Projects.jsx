@@ -41,7 +41,9 @@ class Projects extends React.Component {
               key={post.id}
               changePost={this.props.changePost}
               newTask={this.props.newTask}
+              newTrack={this.props.newTrack}
               onChange={this.props.onChange}
+              addTrack={this.props.addTrack}
             />
           ))}
         </section>
@@ -56,7 +58,9 @@ class Projects extends React.Component {
               key={post.id}
               changePost={this.props.changePost}
               newTask={this.props.newTask}
+              newTrack={this.props.newTrack}
               onChange={this.props.onChange}
+              addTrack={this.props.addTrack}
             />
           ))}
         </section>
@@ -71,7 +75,9 @@ class Projects extends React.Component {
               key={post.id}
               changePost={this.props.changePost}
               newTask={this.props.newTask}
+              newTrack={this.props.newTrack}
               onChange={this.props.onChange}
+              addTrack={this.props.addTrack}
             />
           ))}
         </section>

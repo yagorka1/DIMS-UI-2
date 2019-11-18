@@ -20,7 +20,6 @@ class AddProject extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     const state = this.props.state;
 
     return (
