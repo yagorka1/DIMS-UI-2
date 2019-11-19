@@ -33,20 +33,6 @@ class AddUser extends React.Component {
     });
   };
 
-  // createNewPost = (title, task, priority) => {
-  //   return {
-  //     title: title,
-  //     task: task,
-  //     priority: priority,
-  //     date: getDate(),
-  //     chooseColorField: false,
-  //     backgroundColorPost: BLUE_COLOR,
-  //     status: false,
-  //     showEditField: false,
-  //     showChangeTaskField: false,
-  //   };
-  // };
-
   addNewUser = () => {
     const newUser = {
       sex: this.state.sex,

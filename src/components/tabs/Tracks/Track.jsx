@@ -1,11 +1,13 @@
 import React from 'react';
 import style from '../../../style/Track.module.css';
+
 import getDate from '../../../js/getDate';
+import Button from './Button';
 
 class Track extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     const track = this.props.track;
@@ -23,7 +25,18 @@ class Track extends React.Component {
         <div className={style.date_container}>
           <span className={style.user_name}>{getDate(track.trackDate)}</span>
         </div>
-        <div className={style.buttons_container}>empty</div>
+        <div className={style.buttons_container}>
+          <Button
+            title='edit'
+            changeTrack={this.props.changeTrack}
+            id={track.trackId}
+          />
+          <Button
+            title='delete'
+            changeTrack={this.props.changeTrack}
+            id={track.trackId}
+          />
+        </div>
       </div>
     );
   }

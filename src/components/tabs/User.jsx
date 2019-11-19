@@ -6,9 +6,9 @@ import clock_offline from '../../assets/images/main/clock_offline.svg';
 import menu from '../../assets/images/main/menu.svg';
 
 class User extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   getTime(minutes) {
     let str = '';

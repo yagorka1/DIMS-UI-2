@@ -1,5 +1,7 @@
 import React from 'react';
 import style from '../../../style/Post.module.css';
+import style_button from '../../../style/Button.module.css';
+
 import Button from './Button';
 import Palette from './Palette';
 import titleImg from '../../../assets/images/main/main/L1.png';
@@ -82,7 +84,10 @@ class Post extends React.Component {
             </div>
             <div className={style.blockFunction}>
               <div
-                className={style.buttonFunction}
+                role='button'
+                onKeyPress={() => {}}
+                tabIndex='0'
+                className={style_button.buttonFunction}
                 onClick={() => {
                   this.showEditButtons(task.taskId);
                 }}

@@ -13,7 +13,8 @@ import projects from '../js/projects';
 
 import AddTask from './tabs/AddTask/AddTask';
 import Tasks from './tabs/Tasks/Tasks';
-// import { BLUE_COLOR } from '../js/color';
+
+import tracks from '../js/tracks';
 const BLUE_COLOR = 'rgb(123, 152, 247)';
 
 class Main extends React.Component {
@@ -21,7 +22,7 @@ class Main extends React.Component {
     super();
     this.state = {
       tasks: projects,
-      tracks: [],
+      tracks: tracks,
       newTask: '',
       newDescription: '',
       newDescriptionEdit: '',
@@ -32,6 +33,7 @@ class Main extends React.Component {
     };
 
     this.changePost = this.changePost.bind(this);
+    this.changeTrack = this.changeTrack.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -83,7 +85,6 @@ class Main extends React.Component {
   };
 
   addNewTask = () => {
-    alert('dedede');
     const newTask = {
       taskId: String(
         Math.round(Math.random() * (100000000 + 10000000) - 10000000),
@@ -259,6 +260,26 @@ class Main extends React.Component {
     }
   }
 
+  deleteTrack(id) {
+    const { tracks } = this.state;
+    this.setState({ tracks: tracks.filter((track) => track.trackId !== id) });
+  }
+
+  changeTrack(id, action) {
+    switch (action) {
+      case 'delete': {
+        this.deleteTrack(id);
+        break;
+      }
+      case 'edit': {
+        alert('edit');
+        break;
+      }
+      default:
+        console.log(id);
+    }
+  }
+
   changeState(task, newState) {
     return { ...task, state: newState, showEditFields: false };
   }
@@ -309,9 +330,8 @@ class Main extends React.Component {
           render={() => (
             <Tracks
               state={this.state}
-              changePost={this.changePost}
-              posts={this.state.tasks}
-              newTask={this.state.newDescriptionEdit}
+              changeTrack={this.changeTrack}
+              newTask={this.state.newTrack}
               onChange={this.onChange}
             />
           )}

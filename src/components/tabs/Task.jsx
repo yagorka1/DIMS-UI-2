@@ -7,9 +7,9 @@ import menu from '../../assets/images/main/menu.svg';
 import { getTime, getDeadlineStatus } from '../../js/checkTimeOfTask';
 
 class Task extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   handleChange = (action) => {
     this.props.changePost(this.props.task.taskId, action);

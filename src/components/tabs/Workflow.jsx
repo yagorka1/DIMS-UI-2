@@ -3,9 +3,9 @@ import style from '../../style/Workflow.module.css';
 import Task from './Task';
 
 class Workflow extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   getToDoTask(tasks) {
     const newTasks = tasks.filter((task) => task.state === 'toDo');

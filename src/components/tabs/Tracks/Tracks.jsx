@@ -3,9 +3,9 @@ import Track from './Track';
 import style from '../../../style/Tracks.module.css';
 
 class Tracks extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     const tracks = this.props.state.tracks;
@@ -28,7 +28,12 @@ class Tracks extends React.Component {
         </div>
         <div className={style.tracks}>
           {tracks.map((track, index) => (
-            <Track track={track} index={index} key={track.id} />
+            <Track
+              track={track}
+              changeTrack={this.props.changeTrack}
+              index={index}
+              key={track.id}
+            />
           ))}
         </div>
         <div className={style.page_numbers}>

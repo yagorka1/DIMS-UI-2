@@ -1,12 +1,12 @@
 import React from 'react';
 import style from '../../../style/Tasks.module.css';
-import Task from '../Task';
+// import Task from '../Task';
 import Post from './Post';
 
 class Tasks extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   getToDoTask(tasks) {
     const newTasks = tasks.filter((task) => task.state === 'toDo');

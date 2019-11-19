@@ -3,9 +3,9 @@ import InputText from '../AddUser/InputText';
 import DatePicker from 'react-date-picker';
 
 class AddTask extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   handleInputChange = (name, event) => {
     this.props.handleInputChange(name, event);
