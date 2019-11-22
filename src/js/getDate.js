@@ -13,4 +13,8 @@ const getDate = (date) => {
   return `${curr_hours}:${curr_minutes} ${curr_date}-${curr_month}-${curr_year}`;
 };
 
-export default getDate;
+const getDatePost = (date) => {
+  return getDate(date).slice(6, date.length); // get date without time
+};
+
+export { getDate, getDatePost };

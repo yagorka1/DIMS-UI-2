@@ -5,13 +5,11 @@ import Home from './tabs/Home';
 import Workflow from './tabs/Workflow';
 import Statistics from './tabs/Statistics';
 import Calendar from './tabs/Calendar';
-import Users from './tabs/Users';
+import Users from './tabs/Users/Users';
 import Settings from './tabs/Settings';
-import AddUser from './tabs/AddUser/AddUser';
 import Tracks from './tabs/Tracks/Tracks';
 import projects from '../js/projects';
 
-import AddTask from './tabs/AddTask/AddTask';
 import Tasks from './tabs/Tasks/Tasks';
 
 import tracks from '../js/tracks';
@@ -104,8 +102,6 @@ class Main extends React.Component {
       showChangeTaskField: false,
       showTrackField: false,
     };
-
-    console.log(newTask);
 
     const { tasks } = this.state;
     this.setState({
@@ -298,19 +294,7 @@ class Main extends React.Component {
         <Route path='/calendar' render={() => <Calendar />} />
         <Route path='/users' render={() => <Users />} />
         <Route path='/settings' render={() => <Settings />} />
-        <Route path='/AddUser' render={() => <AddUser />} />
-        <Route
-          path='/AddTask'
-          render={() => (
-            <AddTask
-              state={this.state}
-              handleInputChange={this.handleInputChange}
-              addNewTask={this.addNewTask}
-              onChangeStartDate={this.onChangeStartDate}
-              onChangeDeadlineDate={this.onChangeDeadlineDate}
-            />
-          )}
-        />
+
         <Route
           path='/Tasks'
           render={() => (
@@ -322,6 +306,10 @@ class Main extends React.Component {
               newTrack={this.state.newTrack}
               addTrack={this.addNewTrack}
               onChange={this.onChange}
+              handleInputChange={this.handleInputChange}
+              addNewTask={this.addNewTask}
+              onChangeStartDate={this.onChangeStartDate}
+              onChangeDeadlineDate={this.onChangeDeadlineDate}
             />
           )}
         />

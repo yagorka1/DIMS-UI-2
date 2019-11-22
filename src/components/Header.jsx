@@ -28,16 +28,17 @@ class Header extends React.Component {
           >
             <img src={menu} className={style.images_header} alt='Save' />
           </div>
-          <img src={search} className={style.images_header} alt='search' />
+          {/* <img src={search} className={style.images_header} alt='search' /> */}{' '}
+          {/*not yet implemented*/}
         </div>
         <div className={style.buttons_header}>
-          <div className={style.button}>+ Add Task</div>
+          {/* <div className={style.button}>+ Add Task</div>
           <img src={messages} className={style.images_header} alt='messages' />
           <img
             src={notifications}
             className={style.images_header}
             alt='notifications'
-          />
+          /> */}
           <img
             src={user_photo}
             className={style.user_photo}

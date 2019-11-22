@@ -14,7 +14,11 @@ class NavBar extends React.Component {
           <h1>Mercury</h1>
         </div>
         {routes.map((route) => (
-          <NavbarItem image={route.image} title={route.title} />
+          <NavbarItem
+            image={route.image}
+            showNavbar={this.props.showNavbar}
+            title={route.title}
+          />
         ))}
       </nav>
     );

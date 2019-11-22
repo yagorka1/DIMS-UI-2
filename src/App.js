@@ -20,7 +20,7 @@ class App extends React.Component {
 
     return (
       <div className={style.App}>
-        {showNavbar && <NavBar />}
+        {showNavbar && <NavBar showNavbar={this.showNavbar} />}
         <Content showNavbar={this.showNavbar} />
       </div>
     );

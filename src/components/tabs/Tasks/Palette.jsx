@@ -28,6 +28,9 @@ class Palette extends React.Component {
         onClick={this.chooseBackgroundColor}
         className={style.paletteItem}
         style={this.setBackgroundColor()}
+        role='button'
+        onKeyPress={() => {}}
+        tabIndex='0'
       ></div>
     );
   }

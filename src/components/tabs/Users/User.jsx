@@ -1,9 +1,9 @@
 import React from 'react';
-import style from '../../style/User.module.css';
-import user_photo from '../../assets/images/main/user.png';
-import clock_online from '../../assets/images/main/clock_online.svg';
-import clock_offline from '../../assets/images/main/clock_offline.svg';
-import menu from '../../assets/images/main/menu.svg';
+import style from '../../../style/User.module.css';
+import user_photo from '../../../assets/images/main/user.png';
+import clock_online from '../../../assets/images/main/clock_online.svg';
+import clock_offline from '../../../assets/images/main/clock_offline.svg';
+import menu from '../../../assets/images/main/menu.svg';
 
 class User extends React.Component {
   // constructor(props) {
@@ -55,8 +55,8 @@ class User extends React.Component {
             <span className={style.online_status}>Online now!</span>
           </div>
         )}
-        <div className={style.user_mail}>{user.mail}</div>
-        <div className={style.user_phone}>{user.phone}</div>
+        <div className={style.user_mail}>{user.email}</div>
+        <div className={style.user_phone}>{user.mobilePhone}</div>
         <div className={style.user_btn}>
           <div
             role='button'

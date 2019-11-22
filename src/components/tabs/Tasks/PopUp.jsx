@@ -1,12 +1,9 @@
 import React from 'react';
-import InputText from '../AddUser/InputText';
+import style from '../../../style/PopUp.module.css';
+import InputText from '../../InputText';
 import DatePicker from 'react-date-picker';
 
-class AddTask extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
+class PopUp extends React.Component {
   handleInputChange = (name, event) => {
     this.props.handleInputChange(name, event);
   };
@@ -16,25 +13,29 @@ class AddTask extends React.Component {
     this.props.onChangeDeadlineDate(deadlineDate);
 
   addNewTask = () => {
+    this.props.close();
     this.props.addNewTask();
   };
 
   render() {
-    const state = this.props.state;
-
+    const close = this.props.close;
     return (
-      <div className='addTask'>
+      <div className={style.modal}>
+        <a className={style.close} onClick={close}>
+          &times;
+        </a>
+        <div className={style.header}> Modal Title </div>
         <form className='{style.content}'>
           <InputText
             label={'Name'}
-            value={state.newTask}
+            value={this.props.state.newTask}
             handleInputChange={this.handleInputChange}
             type='text'
             name='newTask'
           />
           <InputText
             label={'Name'}
-            value={state.newDescription}
+            value={this.props.state.newDescription}
             handleInputChange={this.handleInputChange}
             type='text'
             name='newDescription'
@@ -42,12 +43,12 @@ class AddTask extends React.Component {
           Start Date:
           <DatePicker
             onChange={this.onChangeStartDate}
-            value={state.startDate}
+            value={this.props.state.startDate}
           />
           Deadline Date:
           <DatePicker
             onChange={this.onChangeDeadlineDate}
-            value={state.deadlineDate}
+            value={this.props.state.deadlineDate}
           />
           <input type='button' onClick={this.addNewTask} value='Save' />
         </form>
@@ -56,4 +57,4 @@ class AddTask extends React.Component {
   }
 }
 
-export default AddTask;
+export default PopUp;

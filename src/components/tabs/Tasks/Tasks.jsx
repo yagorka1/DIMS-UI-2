@@ -1,5 +1,7 @@
 import React from 'react';
 import style from '../../../style/Tasks.module.css';
+import Popup from 'reactjs-popup';
+import PopUp from './PopUp.jsx';
 // import Task from '../Task';
 import Post from './Post';
 
@@ -31,6 +33,18 @@ class Tasks extends React.Component {
 
     return (
       <div className={style.projects_container}>
+        <Popup modal trigger={<button>Add post</button>}>
+          {(close) => (
+            <PopUp
+              close={close}
+              state={this.props.state}
+              handleInputChange={this.props.handleInputChange}
+              addNewTask={this.props.addNewTask}
+              onChangeStartDate={this.props.onChangeStartDate}
+              onChangeDeadlineDate={this.props.onChangeDeadlineDate}
+            />
+          )}
+        </Popup>
         <section className={style.toDo_container}>
           <h1 className={style.section_title}>
             ToDo <span className={style.count_task}>({toDoTask.length})</span>

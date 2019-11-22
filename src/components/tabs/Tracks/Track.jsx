@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../../../style/Track.module.css';
 
-import getDate from '../../../js/getDate';
+import { getDate } from '../../../js/getDate';
 import Button from './Button';
 
 class Track extends React.Component {

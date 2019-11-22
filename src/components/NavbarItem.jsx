@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import style from '../style/Navbar.module.css';
 
 class NavbarItem extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  handleChange = () => {
+    this.props.showNavbar();
+  };
 
   render() {
     return (
@@ -14,6 +14,7 @@ class NavbarItem extends React.Component {
           className={style.navbarLink}
           to={this.props.title}
           activeClassName={style.activeNavbarLink}
+          onClick={this.handleChange}
         >
           <img
             src={this.props.image}

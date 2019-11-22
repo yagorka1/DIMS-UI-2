@@ -6,14 +6,14 @@ import settings from '../assets/images/navbar/settings.png';
 import home from '../assets/images/navbar/home.png';
 
 const routes = [
-  { title: 'Home', image: home },
+  // { title: 'Home', image: home },
   { title: 'Workflow', image: workflow },
-  { title: 'Statistics', image: statistics },
-  { title: 'Calendar', image: calendar },
+  // { title: 'Progress', image: statistics },
+  // { title: 'Calendar', image: calendar },
   { title: 'Users', image: users },
-  { title: 'Settings', image: settings },
-  { title: 'AddUser', image: settings },
-  { title: 'AddTask', image: settings },
+  // { title: 'Settings', image: settings },
+  // { title: 'AddUser', image: settings },
+  // { title: 'AddTask', image: settings },
   { title: 'Tasks', image: settings },
   { title: 'Tracks', image: settings },
 ];

@@ -10,7 +10,7 @@ import lowArrow from '../../../assets/images/main/main/down.svg';
 import checked from '../../../assets/images/main/main/checked.svg';
 import colors from '../../../js/color';
 
-import getDate from '../../../js/getDate';
+import { getDatePost } from '../../../js/getDate';
 
 class Post extends React.Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class Post extends React.Component {
             ) : (
               <div></div>
             )}
-            {getDate(task.startDate)}
+            {getDatePost(task.startDate)}
             {task.status ? (
               <div className={style.checked}>
                 <img
