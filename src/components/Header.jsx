@@ -1,9 +1,9 @@
 import React from 'react';
 import style from '../style/Header.module.css';
 import menu from '../assets/images/header/menu.png';
-import search from '../assets/images/header/search.png';
-import messages from '../assets/images/header/messages.png';
-import notifications from '../assets/images/header/notifications.png';
+// import search from '../assets/images/header/search.png';
+// import messages from '../assets/images/header/messages.png';
+// import notifications from '../assets/images/header/notifications.png';
 import user_photo from '../assets/images/header/user.png';
 
 class Header extends React.Component {
