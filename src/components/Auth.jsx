@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/Error.module.css';
+import style from '../style/Auth.module.css';
 import InputText from './InputText';
 
 class Auth extends React.Component {
@@ -8,14 +8,14 @@ class Auth extends React.Component {
       <div className={style.content}>
         <InputText
           label={'login'}
-          // value={input}
+          value={this.props.email}
           handleInputChange={this.props.handleInputChange}
           type='email'
           name={'email'}
         />
         <InputText
           label={'password'}
-          // value={input}
+          value={this.props.password}
           handleInputChange={this.props.handleInputChange}
           type='password'
           name={'password'}
@@ -27,7 +27,7 @@ class Auth extends React.Component {
           tabIndex='0'
           className={style.logIn_button}
         >
-          Enter
+          Log In
         </div>
       </div>
     );

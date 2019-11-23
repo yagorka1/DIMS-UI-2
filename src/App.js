@@ -3,6 +3,7 @@ import style from './App.module.css';
 import NavBar from './components/NavBar';
 import Content from './components/Content';
 import Auth from './components/Auth';
+import { checkData } from './js/users';
 
 class App extends React.Component {
   constructor() {
@@ -11,6 +12,8 @@ class App extends React.Component {
       showNavbar: true,
       login: false,
       authField: false,
+      email: '',
+      password: '',
     };
   }
 
@@ -25,7 +28,11 @@ class App extends React.Component {
   };
 
   authUser = () => {
-    this.setState({ login: !this.state.login });
+    const email = this.state.email;
+    const password = this.state.password;
+
+    if (checkData(email, password)) this.setState({ login: !this.state.login });
+    else alert('Wrong login');
   };
 
   render() {
@@ -40,12 +47,15 @@ class App extends React.Component {
               showNavbar={this.showNavbar}
               login={this.state.login}
               authUser={this.authUser}
+              email={this.state.email}
             />
           </div>
         ) : (
           <Auth
             authUser={this.authUser}
             handleInputChange={this.handleInputChange}
+            email={this.state.email}
+            password={this.state.password}
           />
         )}
       </div>

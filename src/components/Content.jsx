@@ -2,19 +2,18 @@ import React from 'react';
 import style from '../style/Content.module.css';
 import Header from './Header';
 import Main from './Main';
-import Auth from './Auth';
-import projects from '../js/projects';
-import getUsers from '../js/users';
-import tracks from '../js/tracks';
+import getProjects from '../js/projects';
+import { getUsers } from '../js/users';
+import { getTracks } from '../js/tracks';
 
 const BLUE_COLOR = 'rgb(123, 152, 247)';
 
 class Content extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      tasks: projects,
-      tracks: tracks,
+      tasks: getProjects(this.props.email),
+      tracks: getTracks(this.props.email),
       users: getUsers(),
 
       newTask: '',
@@ -28,7 +27,6 @@ class Content extends React.Component {
       sex: 'Male',
       direction: 'User',
       date: new Date(),
-      startDate: new Date(),
       name: '',
       lastName: '',
       email: '',
@@ -79,6 +77,7 @@ class Content extends React.Component {
         Math.round(Math.random() * (100000000 + 10000000) - 10000000),
       ),
       title: this.state.newTask,
+      userId: this.props.email,
       description: this.state.newDescription,
       startDate: this.state.startDate,
       deadlineDate: this.state.deadlineDate,
@@ -99,6 +98,11 @@ class Content extends React.Component {
       tasks: [...tasks, newTask],
     });
     this.clearInputFields();
+
+    const numb = localStorage.length;
+    const storageId = 'task_' + numb;
+    localStorage.setItem(storageId, JSON.stringify(newTask));
+    alert('task has been added');
   };
 
   showEditFields(task) {
@@ -253,7 +257,7 @@ class Content extends React.Component {
     const newNote = this.state.newTrack;
     const newTrack = {
       taskId: projectId,
-      // userId: ,
+      userId: this.props.email,
       trackId: String(
         Math.round(Math.random() * (100000000 + 10000000) - 10000000),
       ),
@@ -275,6 +279,11 @@ class Content extends React.Component {
         return task;
       }),
     });
+
+    const numb = localStorage.length;
+    const storageId = 'track_' + numb;
+    localStorage.setItem(storageId, JSON.stringify(newTrack));
+    alert('track has been added');
   };
 
   deleteTrack(id) {
@@ -343,7 +352,8 @@ class Content extends React.Component {
     });
 
     const numb = localStorage.length;
-    localStorage.setItem(numb, JSON.stringify(newUser));
+    const storageId = 'user_' + numb;
+    localStorage.setItem(storageId, JSON.stringify(newUser));
     alert('user has been added');
   };
 
@@ -355,6 +365,7 @@ class Content extends React.Component {
           authUser={this.props.authUser}
         />
         <Main
+          email={this.props.email}
           state={this.state}
           changePost={this.changePost}
           addTrack={this.addNewTrack}

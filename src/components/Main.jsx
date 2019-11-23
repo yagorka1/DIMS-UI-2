@@ -14,7 +14,11 @@ class Main extends React.Component {
   render() {
     return (
       <main className={style.main}>
-        <Route exact path='/' render={() => <Home />} />
+        <Route
+          exact
+          path='/'
+          render={() => <Home email={this.props.email} />}
+        />
         <Route path='/home' render={() => <Home />} />
         <Route
           path='/workflow'
