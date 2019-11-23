@@ -39,6 +39,15 @@ class Header extends React.Component {
             className={style.images_header}
             alt='notifications'
           /> */}
+          <div
+            role='button'
+            onClick={this.props.authUser}
+            onKeyPress={() => {}}
+            tabIndex='0'
+            className={style.logOut_button}
+          >
+            Log Out
+          </div>
           <img
             src={user_photo}
             className={style.user_photo}

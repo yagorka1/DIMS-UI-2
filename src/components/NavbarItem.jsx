@@ -4,7 +4,7 @@ import style from '../style/Navbar.module.css';
 
 class NavbarItem extends React.Component {
   handleChange = () => {
-    this.props.showNavbar();
+    // this.props.showNavbar();
   };
 
   render() {

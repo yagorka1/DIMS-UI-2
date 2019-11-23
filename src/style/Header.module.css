@@ -55,3 +55,20 @@
   background-color: blueviolet;
   cursor: pointer;
 }
+
+.logOut_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  background-color: rgb(14, 26, 53);
+  border: 2px solid rgb(219, 36, 23);
+  color: rgb(255, 255, 255);
+  border-radius: 3px;
+}
+
+.logOut_button:hover {
+  cursor: pointer;
+  background-color: rgb(179, 32, 13);
+}
