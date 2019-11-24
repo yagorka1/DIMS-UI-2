@@ -10,8 +10,8 @@ class App extends React.Component {
     super();
     this.state = {
       showNavbar: true,
-      login: false,
-      authField: false,
+      login: false, // is the user logged in?
+      authField: false, // show field for input email and password
       email: '',
       password: '',
     };

@@ -5,6 +5,11 @@ import Main from './Main';
 import getProjects from '../js/projects';
 import { getUsers } from '../js/users';
 import { getTracks } from '../js/tracks';
+import {
+  setDataInStorage,
+  setChangeDataInStorage,
+  deleteDataFromStorage,
+} from '../js/setDataInStorage';
 
 const BLUE_COLOR = 'rgb(123, 152, 247)';
 
@@ -99,10 +104,7 @@ class Content extends React.Component {
     });
     this.clearInputFields();
 
-    const numb = localStorage.length;
-    const storageId = 'task_' + numb;
-    localStorage.setItem(storageId, JSON.stringify(newTask));
-    alert('task has been added');
+    setDataInStorage(newTask, 'task');
   };
 
   showEditFields(task) {
@@ -245,6 +247,7 @@ class Content extends React.Component {
                 return task;
             }
           }
+          setChangeDataInStorage(task, 'task');
           return task;
         }),
       });
@@ -280,15 +283,13 @@ class Content extends React.Component {
       }),
     });
 
-    const numb = localStorage.length;
-    const storageId = 'track_' + numb;
-    localStorage.setItem(storageId, JSON.stringify(newTrack));
-    alert('track has been added');
+    setDataInStorage(newTrack, 'trac');
   };
 
   deleteTrack(id) {
     const { tracks } = this.state;
     this.setState({ tracks: tracks.filter((track) => track.trackId !== id) });
+    deleteDataFromStorage(id, 'trac');
   }
 
   changeTrack(id, action) {
@@ -351,10 +352,7 @@ class Content extends React.Component {
       users: [...users, newUser],
     });
 
-    const numb = localStorage.length;
-    const storageId = 'user_' + numb;
-    localStorage.setItem(storageId, JSON.stringify(newUser));
-    alert('user has been added');
+    setDataInStorage(newUser, 'user');
   };
 
   render() {

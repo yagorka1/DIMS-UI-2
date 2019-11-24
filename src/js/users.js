@@ -1,9 +1,13 @@
 const getUsers = () => {
   const users = [];
   for (let i = 0; i < localStorage.length; i++) {
-    const storageId = 'user_' + i;
-    if (JSON.parse(localStorage.getItem(storageId)) !== null)
-      users.push(JSON.parse(localStorage.getItem(storageId)));
+    const storageId = localStorage.key(i);
+    if (storageId.includes('user')) {
+      const user = JSON.parse(localStorage.getItem(storageId));
+      user.trackDate = new Date(user.trackDate);
+
+      users.push(user);
+    }
   }
 
   return users;

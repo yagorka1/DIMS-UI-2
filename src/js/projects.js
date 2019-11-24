@@ -1,15 +1,14 @@
 const getProjects = (email) => {
   const userProjects = [];
   for (let i = 0; i < localStorage.length; i++) {
-    const storageId = 'task_' + i;
-
-    if (localStorage.getItem(storageId) !== null) {
+    const storageId = localStorage.key(i);
+    if (storageId.includes('task')) {
       if (email === JSON.parse(localStorage.getItem(storageId)).userId) {
-        const project = JSON.parse(localStorage.getItem(storageId));
-        project.startDate = new Date(project.startDate);
-        project.deadlineDate = new Date(project.deadlineDate);
+        const task = JSON.parse(localStorage.getItem(storageId));
+        task.startDate = new Date(task.startDate);
+        task.deadlineDate = new Date(task.deadlineDate);
 
-        userProjects.push(project);
+        userProjects.push(task);
       }
     }
   }
