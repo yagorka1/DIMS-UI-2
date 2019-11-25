@@ -6,24 +6,30 @@ import PopUp from './PopUp';
 
 class Users extends React.Component {
   render() {
+    console.log('his.props');
+    console.log(this.props);
     const users = this.props.state.users;
     const usersCount = users.length;
     return (
       <div className={style.users_container}>
-        <Popup modal trigger={<button>Add user</button>}>
-          {(close) => (
-            <PopUp
-              close={close}
-              state={this.props.state}
-              handleInputChange={this.props.handleInputChange}
-              addNewUser={this.props.addNewUser}
-              dateOfBirth={this.props.dateOfBirth}
-              onChangeStartDate={this.props.onChangeStartDate}
-              onChangeDirection={this.props.onChangeDirection}
-              getCurrentState={this.props.getCurrentState}
-            />
-          )}
-        </Popup>
+        {this.props.direction === 'Admin' ? (
+          <Popup modal trigger={<button>Add user</button>}>
+            {(close) => (
+              <PopUp
+                close={close}
+                state={this.props.state}
+                handleInputChange={this.props.handleInputChange}
+                addNewUser={this.props.addNewUser}
+                dateOfBirth={this.props.dateOfBirth}
+                onChangeStartDate={this.props.onChangeStartDate}
+                onChangeDirection={this.props.onChangeDirection}
+                getCurrentState={this.props.getCurrentState}
+              />
+            )}
+          </Popup>
+        ) : (
+          <div></div>
+        )}
         <div className={style.inform_about_users}>
           <h2 className={style.users_title}>
             Users <span className={style.users_count}>({usersCount})</span>
@@ -39,7 +45,12 @@ class Users extends React.Component {
         </div>
         <div className={style.users}>
           {users.map((user) => (
-            <User user={user} key={user.id} />
+            <User
+              user={user}
+              key={user.id}
+              changeUser={this.props.changeUser}
+              direction={this.props.direction}
+            />
           ))}
         </div>
         <div className={style.page_numbers}>

@@ -37,9 +37,9 @@ class PopUp extends React.Component {
               onBlur={this.handleOnBlur}
               onChange={this.props.onChangeDirection}
             >
+              <option value='Member'>Member</option>
               <option value='Admin'>Admin</option>
               <option value='Mentor'>Mentor</option>
-              <option value='Member'>Member</option>
             </select>
           </label>
           <label>

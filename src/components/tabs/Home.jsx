@@ -9,7 +9,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className={style.home_content}>
-        Hello, {this.props.email}. It's home page.
+        Hello, {this.props.email}. It's home page. {this.props.direction}
       </div>
     );
   }

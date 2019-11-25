@@ -1,15 +1,18 @@
 import React from 'react';
 import style from '../../../style/User.module.css';
+import style1 from '../../../style/Button.module.css';
+import { Route } from 'react-router-dom';
+
 import user_photo from '../../../assets/images/main/user.png';
 import clock_online from '../../../assets/images/main/clock_online.svg';
 import clock_offline from '../../../assets/images/main/clock_offline.svg';
 import menu from '../../../assets/images/main/menu.svg';
+import { NavLink } from 'react-router-dom';
+import Button from './Button';
+import Home from '../Home';
+import UserProgress from '../UserProgress';
 
 class User extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   getTime(minutes) {
     let str = '';
 
@@ -58,14 +61,40 @@ class User extends React.Component {
         <div className={style.user_mail}>{user.email}</div>
         <div className={style.user_phone}>{user.mobilePhone}</div>
         <div className={style.user_btn}>
-          <div
-            role='button'
+          <NavLink
+            className={style1.button}
+            to={`Users/Track/` + user.email}
+            activeClassName={style.activeNavbarLink}
             onClick={this.handleChange}
-            onKeyPress={() => {}}
-            tabIndex='0'
           >
-            <img src={menu} className={style.menu_image} alt='menu' />
-          </div>
+            <h4>progress</h4>
+          </NavLink>
+          <NavLink
+            className={style1.button}
+            to={`Users/Task/` + user.email}
+            activeClassName={style.activeNavbarLink}
+            onClick={this.handleChange}
+          >
+            <h4>tasks</h4>
+          </NavLink>
+          {this.props.direction === 'Admin' ? (
+            <Button
+              title='edit'
+              changeUser={this.props.changeUser}
+              id={user.email}
+            />
+          ) : (
+            <div></div>
+          )}
+          {this.props.direction === 'Admin' ? (
+            <Button
+              title='delete'
+              changeUser={this.props.changeUser}
+              id={user.email}
+            />
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     );

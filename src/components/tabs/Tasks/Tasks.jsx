@@ -26,7 +26,15 @@ class Tasks extends React.Component {
   }
 
   render() {
-    const tasks = this.props.state.tasks;
+    // const tasks = this.props.state.tasks;
+
+    let tasks;
+
+    if (this.props.state === undefined) tasks = this.props.tasks;
+    else tasks = this.props.state.tasks;
+
+    // const tracksCount = tracks.length;
+
     const toDoTask = this.getToDoTask(tasks);
     const inProgressTask = this.getInProgressTask(tasks);
     const completedTask = this.getCompletedTask(tasks);

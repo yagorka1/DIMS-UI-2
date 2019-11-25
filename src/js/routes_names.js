@@ -18,4 +18,23 @@ const routes = [
   { title: 'Tracks', image: settings },
 ];
 
-export default routes;
+const routesAdmin = [
+  { title: 'Workflow', image: workflow },
+  { title: 'Users', image: users },
+  { title: 'Tasks', image: settings },
+];
+
+const routesMember = [
+  { title: 'Workflow', image: workflow },
+  { title: 'Tasks', image: settings },
+  { title: 'Tracks', image: settings },
+];
+
+const routesMentor = [
+  { title: 'Workflow', image: workflow },
+  { title: 'Users', image: users },
+  { title: 'Tasks', image: settings },
+  // { title: 'Tracks', image: settings },
+];
+
+export { routes, routesAdmin, routesMentor, routesMember };

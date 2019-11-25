@@ -3,12 +3,12 @@ import Track from './Track';
 import style from '../../../style/Tracks.module.css';
 
 class Tracks extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
-    const tracks = this.props.state.tracks;
+    let tracks;
+
+    if (this.props.state === undefined) tracks = this.props.tracks;
+    else tracks = this.props.state.tracks;
+
     const tracksCount = tracks.length;
 
     return (

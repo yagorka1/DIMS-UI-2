@@ -17,7 +17,7 @@ const checkData = (email, password) => {
   const users = getUsers();
   for (let i = 0; i < users.length; i++) {
     if (email === users[i].email) {
-      return email;
+      return users[i].direction;
     }
   }
   return 0;

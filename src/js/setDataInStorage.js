@@ -39,4 +39,20 @@ const deleteDataFromStorage = (id, nameOfData) => {
   }
 };
 
-export { setDataInStorage, setChangeDataInStorage, deleteDataFromStorage };
+const deleteDataFromStorage1 = (id, nameOfData) => {
+  for (let i = 0; i < localStorage.length; i++) {
+    const storageId = localStorage.key(i);
+    if (JSON.parse(localStorage.getItem(storageId)) !== null) {
+      if (id === JSON.parse(localStorage.getItem(storageId)).email) {
+        localStorage.removeItem(storageId);
+      }
+    }
+  }
+};
+
+export {
+  setDataInStorage,
+  setChangeDataInStorage,
+  deleteDataFromStorage,
+  deleteDataFromStorage1,
+};

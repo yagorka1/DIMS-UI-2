@@ -1,10 +1,9 @@
-.user {
+.main {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: 80px;
+  justify-content: center;
+  width: 100%;
   border-top: 1px solid gray;
-  background-color: rgb(255, 255, 255);
   font-size: 13px;
   font-weight: 500;
 }

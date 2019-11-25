@@ -9,6 +9,7 @@ import {
   setDataInStorage,
   setChangeDataInStorage,
   deleteDataFromStorage,
+  deleteDataFromStorage1,
 } from '../js/setDataInStorage';
 
 const BLUE_COLOR = 'rgb(123, 152, 247)';
@@ -30,7 +31,7 @@ class Content extends React.Component {
       deadlineDate: '',
 
       sex: 'Male',
-      direction: 'User',
+      direction: 'Member',
       date: new Date(),
       name: '',
       lastName: '',
@@ -49,6 +50,7 @@ class Content extends React.Component {
 
     this.changePost = this.changePost.bind(this);
     this.changeTrack = this.changeTrack.bind(this);
+    this.changeUser = this.changeUser.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -313,6 +315,7 @@ class Content extends React.Component {
   onChangeStartDate = (startDate) => this.setState({ startDate });
   onChangeDirection = (event) =>
     this.setState({ direction: event.target.value });
+
   onChangeSex = (event) => this.setState({ sex: event.target.value });
   getCurrentState = () => {
     return [
@@ -328,6 +331,27 @@ class Content extends React.Component {
       this.state.skype,
     ];
   };
+
+  deleteUser(id) {
+    const { users } = this.state;
+    this.setState({ users: users.filter((user) => user.email !== id) });
+    deleteDataFromStorage1(id, 'user');
+  }
+
+  changeUser(id, action) {
+    switch (action) {
+      case 'delete': {
+        this.deleteUser(id);
+        break;
+      }
+      case 'edit': {
+        alert('edit');
+        break;
+      }
+      default:
+        console.log(id);
+    }
+  }
 
   addNewUser = () => {
     const newUser = {
@@ -363,6 +387,7 @@ class Content extends React.Component {
           authUser={this.props.authUser}
         />
         <Main
+          direction={this.props.direction}
           email={this.props.email}
           state={this.state}
           changePost={this.changePost}
@@ -370,11 +395,13 @@ class Content extends React.Component {
           onChange={this.onChange}
           handleInputChange={this.handleInputChange}
           addNewTask={this.addNewTask}
+          onChangeDirection={this.onChangeDirection}
           onChangeStartDate={this.onChangeStartDate}
           onChangeDeadlineDate={this.onChangeDeadlineDate}
           getCurrentState={this.getCurrentState}
           addNewUser={this.addNewUser}
           changeTrack={this.changeTrack}
+          changeUser={this.changeUser}
         />
       </div>
     );
