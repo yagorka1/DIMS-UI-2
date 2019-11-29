@@ -1,22 +1,19 @@
 import React from 'react';
 import style from '../../style/Task.module.css';
 import task_photo from '../../assets/images/main/task.png';
-import clock2 from '../../assets/images/main/clock_offline.svg';
-import clock1 from '../../assets/images/main/clock-outline.svg';
+import clock_offline from '../../assets/images/main/clock_offline.svg';
+import clock_outline from '../../assets/images/main/clock-outline.svg';
 import menu from '../../assets/images/main/menu.svg';
 import { getTime, getDeadlineStatus } from '../../js/checkTimeOfTask';
 
 class Task extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   handleChange = (action) => {
+    console.log(this.props);
     this.props.changePost(this.props.task.taskId, action);
   };
 
   render() {
-    const task = this.props.task;
+    const { task } = this.props;
     return (
       <section className={style.task}>
         <img src={task_photo} className={style.task_photo} alt='task_photo' />
@@ -26,13 +23,13 @@ class Task extends React.Component {
             {getDeadlineStatus(task.deadlineDate) ? (
               <img
                 className={style.clock_image}
-                src={clock2}
+                src={clock_offline}
                 alt='image_clock'
               />
             ) : (
               <img
                 className={style.clock_image}
-                src={clock1}
+                src={clock_outline}
                 alt='image_clock'
               />
             )}

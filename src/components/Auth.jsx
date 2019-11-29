@@ -20,15 +20,9 @@ class Auth extends React.Component {
           type='password'
           name={'password'}
         />
-        <div
-          role='button'
-          onClick={this.props.authUser}
-          onKeyPress={() => {}}
-          tabIndex='0'
-          className={style.logIn_button}
-        >
+        <button onClick={this.props.authUser} className={style.logIn_button}>
           Log In
-        </div>
+        </button>
       </div>
     );
   }

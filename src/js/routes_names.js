@@ -4,37 +4,36 @@ import workflow from '../assets/images/navbar/workflow.png';
 import users from '../assets/images/navbar/users.png';
 import settings from '../assets/images/navbar/settings.png';
 // import home from '../assets/images/navbar/home.png';
-
-const routes = [
-  // { title: 'Home', image: home },
-  { title: 'Workflow', image: workflow },
-  // { title: 'Progress', image: statistics },
-  // { title: 'Calendar', image: calendar },
-  { title: 'Users', image: users },
-  // { title: 'Settings', image: settings },
-  // { title: 'AddUser', image: settings },
-  // { title: 'AddTask', image: settings },
-  { title: 'Tasks', image: settings },
-  { title: 'Tracks', image: settings },
-];
+import { ADMIN, MENTOR, USER } from './roles';
 
 const routesAdmin = [
-  { title: 'Workflow', image: workflow },
-  { title: 'Users', image: users },
-  { title: 'Tasks', image: settings },
+  { title: '/workflow', image: workflow },
+  { title: '/users', image: users },
+  { title: '/tasks', image: settings },
+  { title: '/courses', image: settings },
 ];
 
 const routesMember = [
-  { title: 'Workflow', image: workflow },
-  { title: 'Tasks', image: settings },
-  { title: 'Tracks', image: settings },
+  { title: '/workflow', image: workflow },
+  { title: '/tasks', image: settings },
+  { title: '/tracks', image: settings },
 ];
 
 const routesMentor = [
-  { title: 'Workflow', image: workflow },
-  { title: 'Users', image: users },
-  { title: 'Tasks', image: settings },
-  // { title: 'Tracks', image: settings },
+  { title: '/workflow', image: workflow },
+  { title: '/users', image: users },
+  { title: '/tasks', image: settings },
 ];
 
-export { routes, routesAdmin, routesMentor, routesMember };
+const getRotes = (direction) => {
+  if (direction === ADMIN) return routesAdmin;
+  if (direction === MENTOR) return routesMentor;
+  if (direction === USER) return routesMember;
+};
+
+const getTitle = (title) => {
+  title = title.slice(1, title.length);
+  return title[0].toUpperCase() + title.slice(1);
+};
+
+export { getRotes, getTitle };

@@ -1,6 +1,5 @@
 import React from 'react';
-// import style_button from '../../../style/Button.module.css';
-import style_button from '../../../style/Button.module.css';
+import styleButton from '../../../style/Button.module.css';
 
 class Button extends React.Component {
   constructor(props) {
@@ -14,15 +13,9 @@ class Button extends React.Component {
 
   render() {
     return (
-      <div
-        className={style_button.button}
-        role='button'
-        onKeyPress={() => {}}
-        tabIndex='0'
-        onClick={this.changeUser}
-      >
+      <button className={styleButton.button} onClick={this.changeUser}>
         {this.props.title}
-      </div>
+      </button>
     );
   }
 }

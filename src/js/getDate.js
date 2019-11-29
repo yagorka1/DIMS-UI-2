@@ -1,3 +1,6 @@
+const MINUTES_IN_DAY = 1440;
+const MINUTES_IN_HOUR = 60;
+
 const getDate = (date) => {
   const curr_date = date.getDate();
 
@@ -17,4 +20,19 @@ const getDatePost = (date) => {
   return getDate(date).slice(6, date.length); // get date without time
 };
 
-export { getDate, getDatePost };
+const getTime = (minutes) => {
+  let str = '';
+
+  if (minutes >= 1140) {
+    const days = Math.floor(minutes / MINUTES_IN_DAY);
+    str = days + ` days ago`;
+  } else if (minutes >= 60) {
+    const hours = Math.floor(minutes / MINUTES_IN_HOUR);
+    str = hours + ` hours ago`;
+  } else {
+    str = minutes + ` minutes ago`;
+  }
+  return str;
+};
+
+export { getDate, getDatePost, getTime };

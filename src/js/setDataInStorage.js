@@ -14,15 +14,16 @@ const setDataInStorage = (data, nameOfData) => {
   alert(`${nameOfData} has been added`);
 };
 
-const setChangeDataInStorage = (data, nameOfData) => {
+const setChangeDataInStorage = (data, id, nameOfData) => {
   const length = localStorage.length;
   for (let i = 0; i < length; i++) {
-    const storageId = nameOfData + '_' + i;
+    const storageId = localStorage.key(i);
 
     if (JSON.parse(localStorage.getItem(storageId)) !== null) {
-      if (data.taskId === JSON.parse(localStorage.getItem(storageId)).taskId) {
+      if (data[id] === JSON.parse(localStorage.getItem(storageId))[id]) {
         localStorage.removeItem(storageId);
         localStorage.setItem(storageId, JSON.stringify(data));
+        break;
       }
     }
   }

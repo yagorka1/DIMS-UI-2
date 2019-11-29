@@ -2,15 +2,12 @@ import React from 'react';
 
 class InputText extends React.Component {
   onChange = (event) => {
-    const name = this.props.name;
+    const { name } = this.props;
     this.props.handleInputChange(name, event);
   };
 
   render() {
-    const label = this.props.label;
-    const name = this.props.name;
-    const value = this.props.value;
-    const type = this.props.type;
+    const { label, name, value, type } = this.props;
     return (
       <label>
         {label}:

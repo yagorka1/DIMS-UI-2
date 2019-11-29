@@ -2,42 +2,249 @@ import React from 'react';
 import style from '../../../style/Tasks.module.css';
 import Popup from 'reactjs-popup';
 import PopUp from './PopUp.jsx';
-// import Task from '../Task';
 import Post from './Post';
+import {
+  setChangeDataInStorage,
+  setDataInStorage,
+} from '../../../js/setDataInStorage';
+import colors from '../../../js/color';
+import getId from '../../../js/getId';
+import { getUsers } from '../../../js/users';
+import { getTracks } from '../../../js/tracks';
+import getProjects from '../../../js/projects';
 
 class Tasks extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      newTask: '',
+      newDescription: '',
+      newDescriptionEdit: '',
+      newTrack: '',
+      newTrackName: '',
+      startDate: '',
+      deadlineDate: '',
+    };
 
-  getToDoTask(tasks) {
-    const newTasks = tasks.filter((task) => task.state === 'toDo');
-    return newTasks;
+    this.changePost = this.changePost.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+  componentWillMount() {
+    const tasks = getProjects(this.props.email);
+    const tracks = getTracks(this.props.email);
+    const users = getUsers();
+    this.setState({ users, tracks, tasks });
   }
 
-  getInProgressTask(tasks) {
-    const newTasks = tasks.filter((task) => task.state === 'inProgress');
-    return newTasks;
+  clearInputFields = () => {
+    this.setState({
+      newTask: '',
+      newDescription: '',
+      startDate: '',
+      deadlineDate: '',
+      newTrack: '',
+    });
+  };
+
+  handleInputChange = (name, event) => {
+    this.setState({
+      [name]: event.target.value,
+    });
+  };
+
+  onChange(name, value) {
+    this.setState({ [name]: value });
   }
 
-  getCompletedTask(tasks) {
-    const newTasks = tasks.filter((task) => task.state === 'completed');
+  addTrack = (projectId, projectTitle) => {
+    const { newTrack } = this.state;
+    const track = {
+      taskId: projectId,
+      userId: this.props.email,
+      trackId: getId(),
+      taskName: projectTitle,
+      trackNode: newTrack,
+      trackDate: new Date(),
+    };
+
+    const { tracks } = this.state;
+    this.setState({
+      tracks: [...tracks, track],
+    });
+    this.clearInputFields();
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (task.taskId === projectId) {
+          setChangeDataInStorage(task, 'taskId', 'task');
+          return { ...task, showTrackField: false };
+        }
+        return task;
+      }),
+    });
+
+    setDataInStorage(track, 'trac');
+  };
+
+  // tasks
+  onChangeStartDate = (startDate) => this.setState({ startDate });
+  onChangeDeadlineDate = (deadlineDate) => this.setState({ deadlineDate });
+
+  addNewTask = () => {
+    const { startDate, deadlineDate } = this.state;
+    const newTask = {
+      taskId: getId(),
+      title: this.state.newTask,
+      userId: this.props.email,
+      description: this.state.newDescription,
+      startDate,
+      deadlineDate,
+      state: 'toDo',
+      showEditFields: false,
+
+      priority: 'Medium',
+      chooseColorField: false,
+      backgroundColorPost: colors[8],
+      status: false,
+      showEditField: false,
+      showChangeTaskField: false,
+      showTrackField: false,
+    };
+
+    const { tasks } = this.state;
+    this.setState({
+      tasks: [...tasks, newTask],
+    });
+    this.clearInputFields();
+
+    setDataInStorage(newTask, 'task');
+  };
+
+  showChangeTaskField(task, name) {
+    if (task[name]) {
+      return { ...task, [name]: false };
+    }
+    return { ...task, [name]: true };
+  }
+
+  changeStatus(task) {
+    if (!task.status) {
+      return {
+        ...task,
+        status: true,
+        showEditField: false,
+        chooseColorField: false,
+      };
+    }
+    return {
+      ...task,
+      status: false,
+      showEditField: false,
+      chooseColorField: false,
+    };
+  }
+
+  pushEditTask(task) {
+    return {
+      ...task,
+      description: this.state.newTask,
+      showChangeTaskField: false,
+    };
+  }
+
+  showEditField(task) {
+    if (task.showEditField) {
+      return { ...task, showEditField: false };
+    }
+    this.onChange('newTask', task.description);
+    return { ...task, showEditField: true };
+  }
+
+  showPalette(task) {
+    if (!task.chooseColorField) {
+      return { ...task, chooseColorField: true };
+    }
+    return { ...task, chooseColorField: false };
+  }
+
+  deletePost(id) {
+    const { tasks } = this.state;
+    this.setState({ tasks: tasks.filter((task) => task.taskId !== id) });
+  }
+
+  changeBackgroundColor(task, color) {
+    return { ...task, backgroundColorPost: color, chooseColorField: false };
+  }
+
+  switchAction(task, action, id, color) {
+    if (task.taskId === id) {
+      switch (action) {
+        case `showEditField`: {
+          task = this.showEditField(task);
+          break;
+        }
+        case `changeStatus`: {
+          task = this.changeStatus(task);
+          break;
+        }
+        case `edit`: {
+          task = this.showChangeTaskField(task, 'showChangeTaskField');
+          break;
+        }
+        case `track`: {
+          task = this.showChangeTaskField(task, 'showTrackField');
+          break;
+        }
+        case `color`: {
+          task = this.showPalette(task);
+          break;
+        }
+        case `changeBackgroundColor`: {
+          task = this.changeBackgroundColor(task, color);
+          break;
+        }
+        case `push`: {
+          task = this.pushEditTask(task);
+          break;
+        }
+        case `pushTrack`: {
+          task = this.addNewTrack(task.taskId, task.title);
+          break;
+        }
+        default:
+          return task;
+      }
+      setChangeDataInStorage(task, 'taskId', 'task');
+    }
+
+    return task;
+  }
+
+  changePost(id, action, color) {
+    if (action === `delete`) {
+      this.deletePost(id);
+    } else {
+      this.setState({
+        tasks: this.state.tasks.map((task) =>
+          this.switchAction(task, action, id, color),
+        ),
+      });
+    }
+  }
+
+  getTask(tasks, name) {
+    const newTasks = tasks.filter((task) => task.state === name);
     return newTasks;
   }
 
   render() {
-    // const tasks = this.props.state.tasks;
+    let tasks = this.state.tasks;
 
-    let tasks;
+    if (this.props.tasks === undefined) tasks = this.state.tasks;
+    else tasks = this.props.tasks;
 
-    if (this.props.state === undefined) tasks = this.props.tasks;
-    else tasks = this.props.state.tasks;
-
-    // const tracksCount = tracks.length;
-
-    const toDoTask = this.getToDoTask(tasks);
-    const inProgressTask = this.getInProgressTask(tasks);
-    const completedTask = this.getCompletedTask(tasks);
+    const toDoTask = this.getTask(tasks, 'toDo');
+    const inProgressTask = this.getTask(tasks, 'inProgress');
+    const completedTask = this.getTask(tasks, 'completed');
 
     return (
       <div className={style.projects_container}>
@@ -45,11 +252,11 @@ class Tasks extends React.Component {
           {(close) => (
             <PopUp
               close={close}
-              state={this.props.state}
-              handleInputChange={this.props.handleInputChange}
-              addNewTask={this.props.addNewTask}
-              onChangeStartDate={this.props.onChangeStartDate}
-              onChangeDeadlineDate={this.props.onChangeDeadlineDate}
+              state={this.state}
+              handleInputChange={this.handleInputChange}
+              addNewTask={this.addNewTask}
+              onChangeStartDate={this.onChangeStartDate}
+              onChangeDeadlineDate={this.onChangeDeadlineDate}
             />
           )}
         </Popup>
@@ -61,11 +268,11 @@ class Tasks extends React.Component {
             <Post
               task={task}
               key={task.id}
-              changePost={this.props.changePost}
-              newTask={this.props.newTask}
-              newTrack={this.props.newTrack}
-              onChange={this.props.onChange}
-              addTrack={this.props.addTrack}
+              changePost={this.changePost}
+              newTask={this.state.newTask}
+              newTrack={this.state.newTrack}
+              onChange={this.onChange}
+              addTrack={this.addTrack}
             />
           ))}
         </section>
@@ -78,11 +285,11 @@ class Tasks extends React.Component {
             <Post
               task={task}
               key={task.id}
-              changePost={this.props.changePost}
-              newTask={this.props.newTask}
-              newTrack={this.props.newTrack}
-              onChange={this.props.onChange}
-              addTrack={this.props.addTrack}
+              changePost={this.changePost}
+              newTask={this.state.newTask}
+              newTrack={this.state.newTrack}
+              onChange={this.onChange}
+              addTrack={this.addTrack}
             />
           ))}
         </section>
@@ -95,11 +302,11 @@ class Tasks extends React.Component {
             <Post
               task={task}
               key={task.id}
-              changePost={this.props.changePost}
-              newTask={this.props.newTask}
-              newTrack={this.props.newTrack}
-              onChange={this.props.onChange}
-              addTrack={this.props.addTrack}
+              changePost={this.changePost}
+              newTask={this.state.newTask}
+              newTrack={this.state.newTrack}
+              onChange={this.onChange}
+              addTrack={this.addTrack}
             />
           ))}
         </section>

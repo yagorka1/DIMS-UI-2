@@ -6,7 +6,7 @@ import Tracks from './Tracks/Tracks';
 class UserProgress extends React.Component {
   getId() {
     const str = window.location.pathname;
-    return str.slice(13, str.length);
+    return str.slice(12, str.length);
   }
 
   render() {

@@ -26,7 +26,7 @@ class Post extends React.Component {
   };
 
   handleChange(e) {
-    const name = 'newDescriptionEdit';
+    const name = 'newTask';
     this.props.onChange(name, e.target.value);
   }
   handleChange1(e) {
@@ -44,7 +44,7 @@ class Post extends React.Component {
   }
 
   render() {
-    const task = this.props.task;
+    const { task } = this.props;
     return (
       <div className={style.task} style={this.setBackgroundColor(task)}>
         <div className={style.userPhotoBlock}>

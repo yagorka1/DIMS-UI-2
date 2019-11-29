@@ -5,12 +5,8 @@ import { getDate } from '../../../js/getDate';
 import Button from './Button';
 
 class Track extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render() {
-    const track = this.props.track;
+    const { track } = this.props;
     const id = this.props.index + 1;
 
     return (

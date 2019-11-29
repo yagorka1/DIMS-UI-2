@@ -1,4 +1,4 @@
-const namesOfInput = [
+const inputNames = [
   { label: 'Name', name: 'name' },
   { label: 'LastName', name: 'lastName' },
   { label: 'Email', name: 'email' },
@@ -11,4 +11,4 @@ const namesOfInput = [
   { label: 'Skype', name: 'skype' },
 ];
 
-export default namesOfInput;
+export default inputNames;

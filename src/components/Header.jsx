@@ -1,9 +1,6 @@
 import React from 'react';
 import style from '../style/Header.module.css';
 import menu from '../assets/images/header/menu.png';
-// import search from '../assets/images/header/search.png';
-// import messages from '../assets/images/header/messages.png';
-// import notifications from '../assets/images/header/notifications.png';
 import user_photo from '../assets/images/header/user.png';
 
 class Header extends React.Component {
@@ -20,14 +17,11 @@ class Header extends React.Component {
     return (
       <header className={style.header}>
         <div className={style.buttons_header}>
-          <div
-            role='button'
-            onClick={this.handleChange}
-            onKeyPress={() => {}}
-            tabIndex='0'
+          <button
+            onClick={this.handleChange} // button !!!
           >
             <img src={menu} className={style.images_header} alt='Save' />
-          </div>
+          </button>
           {/* <img src={search} className={style.images_header} alt='search' /> */}{' '}
           {/*not yet implemented*/}
         </div>
@@ -39,15 +33,9 @@ class Header extends React.Component {
             className={style.images_header}
             alt='notifications'
           /> */}
-          <div
-            role='button'
-            onClick={this.props.authUser}
-            onKeyPress={() => {}}
-            tabIndex='0'
-            className={style.logOut_button}
-          >
+          <button onClick={this.props.authUser} className={style.logOut_button}>
             Log Out
-          </div>
+          </button>
           <img
             src={user_photo}
             className={style.user_photo}

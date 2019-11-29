@@ -18,7 +18,7 @@ class PopUp extends React.Component {
   };
 
   render() {
-    const close = this.props.close;
+    const { close } = this.props;
     return (
       <div className={style.modal}>
         <a className={style.close} onClick={close}>

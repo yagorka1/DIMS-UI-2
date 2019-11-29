@@ -3,19 +3,11 @@ import style from '../style/Navbar.module.css';
 
 import NavbarItem from './NavbarItem';
 import logo from '../assets/images/navbar/logo.png';
-import {
-  routes,
-  routesAdmin,
-  routesMentor,
-  routesMember,
-} from '../js/routes_names';
+import { getRotes } from '../js/routes_names';
 
 class NavBar extends React.Component {
   render() {
-    let routes = '';
-    if (this.props.direction === 'Admin') routes = routesAdmin;
-    if (this.props.direction === 'Mentor') routes = routesMentor;
-    if (this.props.direction === 'Member') routes = routesMember;
+    let routes = getRotes(this.props.direction);
 
     return (
       <nav className={style.navbar}>

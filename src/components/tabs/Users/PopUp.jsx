@@ -2,7 +2,7 @@ import React from 'react';
 import style from '../../../style/PopUp.module.css';
 import InputText from '../../InputText';
 import DatePicker from 'react-date-picker';
-import namesOfInput from '../../../js/input_text';
+import inputNames from '../../../js/input_text';
 
 class PopUp extends React.Component {
   addNewUser = () => {
@@ -11,7 +11,7 @@ class PopUp extends React.Component {
   };
 
   render() {
-    const close = this.props.close;
+    const { close } = this.props;
     const state = this.props.getCurrentState();
 
     return (
@@ -23,11 +23,11 @@ class PopUp extends React.Component {
         <form className={style.content}>
           {state.map((input, i) => (
             <InputText
-              label={namesOfInput[i].label}
+              label={inputNames[i].label}
               value={input}
               handleInputChange={this.props.handleInputChange}
               type='text'
-              name={namesOfInput[i].name}
+              name={inputNames[i].name}
             />
           ))}
           <label>

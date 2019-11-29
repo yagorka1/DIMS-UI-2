@@ -1,35 +1,18 @@
 import React from 'react';
 import style from '../../../style/User.module.css';
 import style1 from '../../../style/Button.module.css';
-import { Route } from 'react-router-dom';
-
 import user_photo from '../../../assets/images/main/user.png';
 import clock_online from '../../../assets/images/main/clock_online.svg';
 import clock_offline from '../../../assets/images/main/clock_offline.svg';
-import menu from '../../../assets/images/main/menu.svg';
+
 import { NavLink } from 'react-router-dom';
 import Button from './Button';
-import Home from '../Home';
-import UserProgress from '../UserProgress';
+import { getTime } from '../../../js/getDate';
+import { ADMIN } from '../../../js/roles';
 
 class User extends React.Component {
-  getTime(minutes) {
-    let str = '';
-
-    if (minutes >= 1140) {
-      const days = Math.floor(minutes / 1440);
-      str = days + ` days ago`;
-    } else if (minutes >= 60) {
-      const hours = Math.floor(minutes / 60);
-      str = hours + ` hours ago`;
-    } else {
-      str = minutes + ` minutes ago`;
-    }
-    return str;
-  }
-
   render() {
-    const user = this.props.user;
+    const { user } = this.props;
     return (
       <div className={style.user}>
         <div className={style.user_full_name}>
@@ -46,7 +29,7 @@ class User extends React.Component {
               src={clock_offline}
               alt='image_clock'
             />
-            {this.getTime(user.activity)}
+            {getTime(user.activity)}
           </div>
         ) : (
           <div className={style.user_last_activity}>
@@ -63,7 +46,7 @@ class User extends React.Component {
         <div className={style.user_btn}>
           <NavLink
             className={style1.button}
-            to={`Users/Track/` + user.email}
+            to={`users/trac/` + user.email}
             activeClassName={style.activeNavbarLink}
             onClick={this.handleChange}
           >
@@ -71,13 +54,13 @@ class User extends React.Component {
           </NavLink>
           <NavLink
             className={style1.button}
-            to={`Users/Task/` + user.email}
+            to={`users/task/` + user.email}
             activeClassName={style.activeNavbarLink}
             onClick={this.handleChange}
           >
             <h4>tasks</h4>
           </NavLink>
-          {this.props.direction === 'Admin' ? (
+          {this.props.direction === ADMIN ? (
             <Button
               title='edit'
               changeUser={this.props.changeUser}
@@ -86,7 +69,7 @@ class User extends React.Component {
           ) : (
             <div></div>
           )}
-          {this.props.direction === 'Admin' ? (
+          {this.props.direction === ADMIN ? (
             <Button
               title='delete'
               changeUser={this.props.changeUser}
