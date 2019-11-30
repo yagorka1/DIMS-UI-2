@@ -7,20 +7,16 @@ import settings from '../assets/images/navbar/settings.png';
 import { ADMIN, MENTOR, USER } from './roles';
 
 const routesAdmin = [
-  { title: '/workflow', image: workflow },
   { title: '/users', image: users },
   { title: '/tasks', image: settings },
-  { title: '/courses', image: settings },
 ];
 
 const routesMember = [
-  { title: '/workflow', image: workflow },
   { title: '/tasks', image: settings },
   { title: '/tracks', image: settings },
 ];
 
 const routesMentor = [
-  { title: '/workflow', image: workflow },
   { title: '/users', image: users },
   { title: '/tasks', image: settings },
 ];

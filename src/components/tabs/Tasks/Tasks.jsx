@@ -85,38 +85,39 @@ class Tasks extends React.Component {
     setDataInStorage(track, 'trac');
   };
 
-  // tasks
   onChangeStartDate = (startDate) => this.setState({ startDate });
   onChangeDeadlineDate = (deadlineDate) => this.setState({ deadlineDate });
 
-  addNewTask = () => {
+  addNewTask = (emails) => {
     const { startDate, deadlineDate } = this.state;
-    const newTask = {
-      taskId: getId(),
-      title: this.state.newTask,
-      userId: this.props.email,
-      description: this.state.newDescription,
-      startDate,
-      deadlineDate,
-      state: 'toDo',
-      showEditFields: false,
+    for (let i = 0; i < emails.length; i++) {
+      const newTask = {
+        taskId: getId(),
+        title: this.state.newTask,
+        userId: emails[i],
+        description: this.state.newDescription,
+        startDate,
+        deadlineDate,
+        state: 'toDo',
+        showEditFields: false,
 
-      priority: 'Medium',
-      chooseColorField: false,
-      backgroundColorPost: colors[8],
-      status: false,
-      showEditField: false,
-      showChangeTaskField: false,
-      showTrackField: false,
-    };
+        priority: 'Medium',
+        chooseColorField: false,
+        backgroundColorPost: colors[8],
+        status: false,
+        showEditField: false,
+        showChangeTaskField: false,
+        showTrackField: false,
+      };
 
-    const { tasks } = this.state;
-    this.setState({
-      tasks: [...tasks, newTask],
-    });
-    this.clearInputFields();
+      const { tasks } = this.state;
+      this.setState({
+        tasks: [...tasks, newTask],
+      });
+      this.clearInputFields();
 
-    setDataInStorage(newTask, 'task');
+      setDataInStorage(newTask, 'task');
+    }
   };
 
   showChangeTaskField(task, name) {
@@ -207,12 +208,13 @@ class Tasks extends React.Component {
           break;
         }
         case `pushTrack`: {
-          task = this.addNewTrack(task.taskId, task.title);
+          this.addNewTrack(task.taskId, task.title);
           break;
         }
         default:
           return task;
       }
+
       setChangeDataInStorage(task, 'taskId', 'task');
     }
 

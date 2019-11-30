@@ -1,3 +1,4 @@
+import { USER } from './roles';
 const getUsers = () => {
   const users = [];
   for (let i = 0; i < localStorage.length; i++) {
@@ -13,6 +14,12 @@ const getUsers = () => {
   return users;
 };
 
+const getMembers = () => {
+  const users = getUsers();
+  const members = users.filter((user) => user.direction === USER);
+  return members;
+};
+
 const checkData = (email, password) => {
   const users = getUsers();
   for (let i = 0; i < users.length; i++) {
@@ -23,4 +30,4 @@ const checkData = (email, password) => {
   return 0;
 };
 
-export { getUsers, checkData };
+export { getUsers, checkData, getMembers };

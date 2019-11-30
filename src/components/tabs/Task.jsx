@@ -8,7 +8,6 @@ import { getTime, getDeadlineStatus } from '../../js/checkTimeOfTask';
 
 class Task extends React.Component {
   handleChange = (action) => {
-    console.log(this.props);
     this.props.changePost(this.props.task.taskId, action);
   };
 

@@ -10,6 +10,7 @@ const setDataInStorage = (data, nameOfData) => {
   const max = Math.max.apply(null, mas) + 1;
 
   const storageId = nameOfData + '_' + max;
+  alert(storageId);
   localStorage.setItem(storageId, JSON.stringify(data));
   alert(`${nameOfData} has been added`);
 };
@@ -18,12 +19,15 @@ const setChangeDataInStorage = (data, id, nameOfData) => {
   const length = localStorage.length;
   for (let i = 0; i < length; i++) {
     const storageId = localStorage.key(i);
+    const name = storageId.slice(0, 4);
 
-    if (JSON.parse(localStorage.getItem(storageId)) !== null) {
-      if (data[id] === JSON.parse(localStorage.getItem(storageId))[id]) {
-        localStorage.removeItem(storageId);
-        localStorage.setItem(storageId, JSON.stringify(data));
-        break;
+    if (name === nameOfData) {
+      if (JSON.parse(localStorage.getItem(storageId)) !== null) {
+        if (data[id] === JSON.parse(localStorage.getItem(storageId))[id]) {
+          localStorage.removeItem(storageId);
+          localStorage.setItem(storageId, JSON.stringify(data));
+          break;
+        }
       }
     }
   }
