@@ -1,7 +1,9 @@
 const getDeadlineStatus = (deadlineDate) => {
   const currentTime = new Date().getTime();
   let timeToDeadline = (deadlineDate.getTime() - currentTime) / 1000 / 60 / 60; // time to deadline in hours
-  if (timeToDeadline > 0) return 1;
+  if (timeToDeadline > 0) {
+    return 1;
+  }
   return 0;
 };
 

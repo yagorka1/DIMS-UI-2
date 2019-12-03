@@ -5,6 +5,7 @@ import clock_offline from '../../assets/images/main/clock_offline.svg';
 import clock_outline from '../../assets/images/main/clock-outline.svg';
 import menu from '../../assets/images/main/menu.svg';
 import { getTime, getDeadlineStatus } from '../../js/checkTimeOfTask';
+import Button from './Tasks/Button';
 
 class Task extends React.Component {
   handleChange = (action) => {
@@ -35,42 +36,31 @@ class Task extends React.Component {
             {getTime(task.deadlineDate)}
           </div>
         </div>
-        <div
-          role='button'
-          onClick={() => {
-            this.handleChange('showEditFields');
-          }}
-          onKeyPress={() => {}}
-          tabIndex='0'
-        >
-          <img src={menu} className={style.menu_image} alt='menu' />
-        </div>
+        <Button
+          title='showEditFields'
+          changePost={this.props.changePost}
+          id={task.taskId}
+        />
         {task.showEditFields ? (
           <div>
-            <button
-              onClick={() => {
-                this.handleChange('toDo');
-              }}
-            >
-              toDo
-            </button>
-            <button
-              onClick={() => {
-                this.handleChange('inProgress');
-              }}
-            >
-              In Progress
-            </button>
-            <button
-              onClick={() => {
-                this.handleChange('completed');
-              }}
-            >
-              completed
-            </button>
+            <Button
+              title='toDo'
+              changePost={this.props.changePost}
+              id={task.taskId}
+            />
+            <Button
+              title='inProgress'
+              changePost={this.props.changePost}
+              id={task.taskId}
+            />
+            <Button
+              title='completed'
+              changePost={this.props.changePost}
+              id={task.taskId}
+            />
           </div>
         ) : (
-          <div></div>
+          <></>
         )}
       </section>
     );

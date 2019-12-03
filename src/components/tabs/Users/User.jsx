@@ -67,7 +67,7 @@ class User extends React.Component {
               id={user.email}
             />
           ) : (
-            <div></div>
+            <></>
           )}
           {this.props.direction === ADMIN ? (
             <Button
@@ -76,7 +76,7 @@ class User extends React.Component {
               id={user.email}
             />
           ) : (
-            <div></div>
+            <></>
           )}
         </div>
       </div>

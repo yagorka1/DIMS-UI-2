@@ -7,10 +7,10 @@ import Palette from './Palette';
 import titleImg from '../../../assets/images/main/main/L1.png';
 import hightArrow from '../../../assets/images/main/main/up.svg';
 import lowArrow from '../../../assets/images/main/main/down.svg';
-import checked from '../../../assets/images/main/main/checked.svg';
 import colors from '../../../js/color';
 
 import { getDatePost } from '../../../js/getDate';
+import { USER, ADMIN, MENTOR } from '../../../js/roles';
 
 class Post extends React.Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class Post extends React.Component {
     const name = 'newTrack';
     this.props.onChange(name, e.target.value);
   }
-  showEditButtons(id) {
-    this.props.changePost(id, `showEditField`);
-  }
+  showEditButtons = () => {
+    this.props.changePost(this.props.task.taskId, `showEditField`);
+  };
 
   setBackgroundColor(task) {
     return {
@@ -56,26 +56,14 @@ class Post extends React.Component {
             {task.priority === 'Hight' ? (
               <img src={hightArrow} className={style.arrow} alt='up' />
             ) : (
-              <div></div>
+              <></>
             )}
             {task.priority === 'Low' ? (
               <img src={lowArrow} className={style.arrow} alt='up' />
             ) : (
-              <div></div>
+              <></>
             )}
             {getDatePost(task.startDate)}
-            {task.status ? (
-              <div className={style.checked}>
-                <img
-                  src={checked}
-                  className={style.checkedPhoto}
-                  alt='task completed'
-                />
-                completed
-              </div>
-            ) : (
-              <div></div>
-            )}
           </div>
           <div className={style.messageBlock}>
             <div className={style.message}>
@@ -83,53 +71,49 @@ class Post extends React.Component {
               <p>{task.description}</p>
             </div>
             <div className={style.blockFunction}>
-              <div
-                role='button'
-                onKeyPress={() => {}}
-                tabIndex='0'
+              <button
                 className={style_button.buttonFunction}
-                onClick={() => {
-                  this.showEditButtons(task.taskId);
-                }}
-              ></div>
-              {task.showEditField ? (
+                onClick={this.showEditButtons}
+              >
+                {' '}
+                showEdit{' '}
+              </button>
+              {task.showEditField && (
                 <div className={style.postButtons}>
-                  <Button
-                    title='changeStatus'
-                    changePost={this.props.changePost}
-                    id={task.taskId}
-                  />
-                  <Button
-                    title='delete'
-                    changePost={this.props.changePost}
-                    id={task.taskId}
-                  />
-                  <Button
-                    title='edit'
-                    changePost={this.props.changePost}
-                    id={task.taskId}
-                  />
-                  {task.showChangeTaskField ? (
+                  {(this.props.direction === ADMIN ||
+                    this.props.direction === MENTOR) && (
                     <div>
-                      <input
-                        value={this.props.newTask}
-                        onChange={this.handleChange}
-                      />
                       <Button
-                        title='push'
+                        title='delete'
                         changePost={this.props.changePost}
                         id={task.taskId}
                       />
+                      <Button
+                        title='edit'
+                        changePost={this.props.changePost}
+                        id={task.taskId}
+                      />
+                      {task.showChangeTaskField && (
+                        <div>
+                          <input
+                            value={this.props.newTask}
+                            onChange={this.handleChange}
+                          />
+                          <Button
+                            title='push'
+                            changePost={this.props.changePost}
+                            id={task.taskId}
+                          />
+                        </div>
+                      )}
                     </div>
-                  ) : (
-                    <div></div>
                   )}
                   <Button
                     title='color'
                     changePost={this.props.changePost}
                     id={task.taskId}
                   />
-                  {task.chooseColorField ? (
+                  {task.chooseColorField && (
                     <div className={style.palette}>
                       {colors.map((color) => (
                         <Palette
@@ -139,34 +123,34 @@ class Post extends React.Component {
                         />
                       ))}
                     </div>
-                  ) : (
-                    <div></div>
                   )}
-                  <Button
-                    title='track'
-                    changePost={this.props.changePost}
-                    id={task.taskId}
-                  />
-                  {task.showTrackField ? (
+                  {this.props.direction === USER && (
                     <div>
-                      <input
-                        value={this.props.newTrack}
-                        onChange={this.handleChange1}
-                      />
-                      <button
-                        title='pushTrack'
-                        onClick={() => this.pushTrack(task.taskId, task.title)}
+                      <Button
+                        title='track'
+                        changePost={this.props.changePost}
                         id={task.taskId}
-                      >
-                        push
-                      </button>
+                      />
+                      {task.showTrackField && (
+                        <div>
+                          <input
+                            value={this.props.newTrack}
+                            onChange={this.handleChange1}
+                          />
+                          <button
+                            title='pushTrack'
+                            onClick={() =>
+                              this.pushTrack(task.taskId, task.title)
+                            }
+                            id={task.taskId}
+                          >
+                            push
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  ) : (
-                    <div></div>
                   )}
                 </div>
-              ) : (
-                <div></div>
               )}
             </div>
           </div>

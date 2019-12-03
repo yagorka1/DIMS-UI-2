@@ -6,6 +6,17 @@ import logo from '../assets/images/navbar/logo.png';
 import { getRotes } from '../js/routes_names';
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showNavbar: true,
+    };
+  }
+
+  showNavbar = () => {
+    this.setState({ showNavbar: !this.state.showNavbar });
+  };
+
   render() {
     let routes = getRotes(this.props.direction);
 

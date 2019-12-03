@@ -1,5 +1,5 @@
-const getProjects = (email) => {
-  const userProjects = [];
+const getTasks = (email) => {
+  const userTasks = [];
   for (let i = 0; i < localStorage.length; i++) {
     const storageId = localStorage.key(i);
     if (storageId.includes('task')) {
@@ -8,11 +8,11 @@ const getProjects = (email) => {
         task.startDate = new Date(task.startDate);
         task.deadlineDate = new Date(task.deadlineDate);
 
-        userProjects.push(task);
+        userTasks.push(task);
       }
     }
   }
-  return userProjects;
+  return userTasks;
 };
 
-export default getProjects;
+export default getTasks;

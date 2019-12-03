@@ -22,12 +22,11 @@ const getMembers = () => {
 
 const checkData = (email, password) => {
   const users = getUsers();
-  for (let i = 0; i < users.length; i++) {
-    if (email === users[i].email) {
-      return users[i].direction;
-    }
+  const user = users.find((user) => email === user.email);
+  if (!user) {
+    return 0;
   }
-  return 0;
+  return user.direction;
 };
 
 export { getUsers, checkData, getMembers };

@@ -29,21 +29,22 @@ class App extends React.Component {
   };
 
   authUser = () => {
-    const email = this.state.email;
-    const password = this.state.password;
+    const { email, password } = this.state;
     const direction = checkData(email, password);
 
     if (direction) {
       this.setState({ login: !this.state.login });
       this.setState({ direction });
-    } else alert('Wrong login');
+    } else {
+      alert('Wrong login');
+    }
   };
 
   render() {
     const { showNavbar } = this.state;
 
     return (
-      <div className={style.App1}>
+      <div className={style.App_wrapper}>
         {this.state.login ? (
           <div className={style.App}>
             {showNavbar && (

@@ -75,8 +75,11 @@ class Tracks extends React.Component {
   render() {
     let tracks = this.state.tracks;
 
-    if (this.props.tracks === undefined) tracks = this.state.tracks;
-    else tracks = this.props.tracks;
+    if (this.props.tracks === undefined) {
+      tracks = this.state.tracks;
+    } else {
+      tracks = this.props.tracks;
+    }
 
     const tracksCount = tracks.length;
 
@@ -105,7 +108,7 @@ class Tracks extends React.Component {
             />
           ))}
         </div>
-        {/* <div className={style.page_numbers}>
+        {/* <div className={style.page_numbers}> it will be in future versions
           <div className={style.page_number}>1</div>
           <div className={style.page_number}>2</div>
           <div className={style.page_number}>3</div>

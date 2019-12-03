@@ -11,7 +11,7 @@ class PopUp extends React.Component {
       checkedUsers: [],
     };
   }
-  componentWillMount() {
+  componentDidMount() {
     const users = getUsers();
     this.setState({ users });
   }
@@ -53,14 +53,14 @@ class PopUp extends React.Component {
         <div className={style.header}> Add new task </div>
         <form className={style.content}>
           <InputText
-            label={'Name'}
+            label='Name'
             value={this.props.state.newTask}
             handleInputChange={this.handleInputChange}
             type='text'
             name='newTask'
           />
           <InputText
-            label={'Name'}
+            label='Name'
             value={this.props.state.newDescription}
             handleInputChange={this.handleInputChange}
             type='text'

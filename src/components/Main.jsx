@@ -33,12 +33,12 @@ class Main extends React.Component {
         <Route
           exact
           path='/users/trac/:userId?'
-          render={() => <UserProgress userId={':userId?'} />}
+          render={() => <UserProgress userId=':userId?' />}
         />
         <Route
           exact
           path='/users/task/:userId?'
-          render={() => <UserTasks userId={':userId?'} />}
+          render={() => <UserTasks userId=':userId?' />}
         />
 
         {this.props.direction !== 'Member' ? (
@@ -53,11 +53,13 @@ class Main extends React.Component {
             )}
           />
         ) : (
-          <div></div>
+          <></>
         )}
         <Route
           path='/tasks'
-          render={() => <Tasks email={this.props.email} />}
+          render={() => (
+            <Tasks email={this.props.email} direction={this.props.direction} />
+          )}
         />
         {this.props.direction === 'Member' ? (
           <Route
@@ -70,7 +72,7 @@ class Main extends React.Component {
             )}
           />
         ) : (
-          <div></div>
+          <></>
         )}
       </main>
     );

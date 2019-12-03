@@ -11,7 +11,9 @@ import colors from '../../../js/color';
 import getId from '../../../js/getId';
 import { getUsers } from '../../../js/users';
 import { getTracks } from '../../../js/tracks';
-import getProjects from '../../../js/projects';
+import getTasks from '../../../js/tasks';
+import { USER } from '../../../js/roles';
+import { getAllTasks } from '../../../js/allTasks';
 
 class Tasks extends React.Component {
   constructor(props) {
@@ -30,7 +32,10 @@ class Tasks extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
   componentWillMount() {
-    const tasks = getProjects(this.props.email);
+    let tasks;
+    this.props.direction === USER
+      ? (tasks = getTasks(this.props.email))
+      : (tasks = getAllTasks());
     const tracks = getTracks(this.props.email);
     const users = getUsers();
     this.setState({ users, tracks, tasks });
@@ -241,8 +246,11 @@ class Tasks extends React.Component {
   render() {
     let tasks = this.state.tasks;
 
-    if (this.props.tasks === undefined) tasks = this.state.tasks;
-    else tasks = this.props.tasks;
+    if (this.props.tasks === undefined) {
+      tasks = this.state.tasks;
+    } else {
+      tasks = this.props.tasks;
+    }
 
     const toDoTask = this.getTask(tasks, 'toDo');
     const inProgressTask = this.getTask(tasks, 'inProgress');
@@ -250,18 +258,22 @@ class Tasks extends React.Component {
 
     return (
       <div className={style.projects_container}>
-        <Popup modal trigger={<button>Add post</button>}>
-          {(close) => (
-            <PopUp
-              close={close}
-              state={this.state}
-              handleInputChange={this.handleInputChange}
-              addNewTask={this.addNewTask}
-              onChangeStartDate={this.onChangeStartDate}
-              onChangeDeadlineDate={this.onChangeDeadlineDate}
-            />
-          )}
-        </Popup>
+        {this.props.direction !== USER ? (
+          <Popup modal trigger={<button>Add post</button>}>
+            {(close) => (
+              <PopUp
+                close={close}
+                state={this.state}
+                handleInputChange={this.handleInputChange}
+                addNewTask={this.addNewTask}
+                onChangeStartDate={this.onChangeStartDate}
+                onChangeDeadlineDate={this.onChangeDeadlineDate}
+              />
+            )}
+          </Popup>
+        ) : (
+          <div></div>
+        )}
         <section className={style.toDo_container}>
           <h1 className={style.section_title}>
             ToDo <span className={style.count_task}>({toDoTask.length})</span>
@@ -275,6 +287,7 @@ class Tasks extends React.Component {
               newTrack={this.state.newTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
+              direction={this.props.direction}
             />
           ))}
         </section>
@@ -292,6 +305,7 @@ class Tasks extends React.Component {
               newTrack={this.state.newTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
+              direction={this.props.direction}
             />
           ))}
         </section>
@@ -309,6 +323,7 @@ class Tasks extends React.Component {
               newTrack={this.state.newTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
+              direction={this.props.direction}
             />
           ))}
         </section>

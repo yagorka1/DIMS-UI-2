@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../../style/Workflow.module.css';
 import Task from './Task';
-import getProjects from '../../js/projects';
+import getTasks from '../../js/tasks';
 import { setChangeDataInStorage } from '../../js/setDataInStorage';
 
 class Workflow extends React.Component {
@@ -11,7 +11,7 @@ class Workflow extends React.Component {
     this.changePost = this.changePost.bind(this);
   }
   componentWillMount() {
-    const tasks = getProjects(this.props.email);
+    const tasks = getTasks(this.props.email);
     this.setState({ tasks });
   }
 

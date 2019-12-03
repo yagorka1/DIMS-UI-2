@@ -7,18 +7,18 @@ class Auth extends React.Component {
     return (
       <div className={style.content}>
         <InputText
-          label={'login'}
+          label='login'
           value={this.props.email}
           handleInputChange={this.props.handleInputChange}
           type='email'
-          name={'email'}
+          name='email'
         />
         <InputText
-          label={'password'}
+          label='password'
           value={this.props.password}
           handleInputChange={this.props.handleInputChange}
           type='password'
-          name={'password'}
+          name='password'
         />
         <button onClick={this.props.authUser} className={style.logIn_button}>
           Log In

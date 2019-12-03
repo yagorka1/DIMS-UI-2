@@ -1,6 +1,6 @@
 import React from 'react';
 import style from '../../style/UserProgress.module.css';
-import getProjects from '../../js/projects';
+import getTasks from '../../js/tasks';
 import Tasks from './Tasks/Tasks';
 
 class UserTasks extends React.Component {
@@ -11,7 +11,7 @@ class UserTasks extends React.Component {
 
   render() {
     const id = this.getId();
-    const tasks = getProjects(id);
+    const tasks = getTasks(id);
 
     return (
       <div className={style.main}>
