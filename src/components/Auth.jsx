@@ -6,6 +6,7 @@ class Auth extends React.Component {
   render() {
     return (
       <div className={style.content}>
+        <h1>Welcome to Mercury</h1>
         <InputText
           label='login'
           value={this.props.email}

@@ -17,7 +17,7 @@ class PopUp extends React.Component {
   }
 
   handleInputChange = (name, event) => {
-    this.props.handleInputChange(name, event);
+    this.props.onChange(name, event.target.value);
   };
 
   onChangeStartDate = (startDate) => this.props.onChangeStartDate(startDate);
@@ -55,14 +55,14 @@ class PopUp extends React.Component {
           <InputText
             label='Name'
             value={this.props.state.newTask}
-            handleInputChange={this.handleInputChange}
+            handleInputChange={this.props.onChange}
             type='text'
             name='newTask'
           />
           <InputText
             label='Name'
             value={this.props.state.newDescription}
-            handleInputChange={this.handleInputChange}
+            handleInputChange={this.props.onChange}
             type='text'
             name='newDescription'
           />

@@ -3,7 +3,7 @@ import React from 'react';
 class InputText extends React.Component {
   onChange = (event) => {
     const { name } = this.props;
-    this.props.handleInputChange(name, event);
+    this.props.handleInputChange(name, event.target.value);
   };
 
   render() {

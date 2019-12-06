@@ -19,9 +19,9 @@ class Tracks extends React.Component {
     this.changeTrack = this.changeTrack.bind(this);
   }
 
-  componentWillMount() {
-    const tracks = getTracks(this.props.email);
-    this.setState({ tracks });
+  static getDerivedStateFromProps(props, state) {
+    const tracks = getTracks(props.email);
+    return { tracks };
   }
 
   addNewTrack = (projectId, projectTitle) => {

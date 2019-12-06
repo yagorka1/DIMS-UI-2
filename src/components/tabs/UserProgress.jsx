@@ -10,6 +10,7 @@ class UserProgress extends React.Component {
   }
 
   render() {
+    alert('dede');
     const id = this.getId();
     const tracks = getTracks(id);
 

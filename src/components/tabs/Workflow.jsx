@@ -10,9 +10,10 @@ class Workflow extends React.Component {
 
     this.changePost = this.changePost.bind(this);
   }
-  componentWillMount() {
-    const tasks = getTasks(this.props.email);
-    this.setState({ tasks });
+
+  static getDerivedStateFromProps(props, state) {
+    const tasks = getTasks(props.email);
+    return { tasks };
   }
 
   getTask(tasks, name) {

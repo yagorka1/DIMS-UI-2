@@ -31,14 +31,15 @@ class Tasks extends React.Component {
     this.changePost = this.changePost.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-  componentWillMount() {
+
+  static getDerivedStateFromProps(props, state) {
     let tasks;
-    this.props.direction === USER
-      ? (tasks = getTasks(this.props.email))
+    props.direction === USER
+      ? (tasks = getTasks(props.email))
       : (tasks = getAllTasks());
-    const tracks = getTracks(this.props.email);
+    const tracks = getTracks(props.email);
     const users = getUsers();
-    this.setState({ users, tracks, tasks });
+    return { users, tracks, tasks };
   }
 
   clearInputFields = () => {
@@ -48,12 +49,6 @@ class Tasks extends React.Component {
       startDate: '',
       deadlineDate: '',
       newTrack: '',
-    });
-  };
-
-  handleInputChange = (name, event) => {
-    this.setState({
-      [name]: event.target.value,
     });
   };
 
@@ -264,7 +259,7 @@ class Tasks extends React.Component {
               <PopUp
                 close={close}
                 state={this.state}
-                handleInputChange={this.handleInputChange}
+                onChange={this.onChange}
                 addNewTask={this.addNewTask}
                 onChangeStartDate={this.onChangeStartDate}
                 onChangeDeadlineDate={this.onChangeDeadlineDate}

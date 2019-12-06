@@ -10,6 +10,11 @@ import Button from './Button';
 import { getTime } from '../../../js/getDate';
 import { ADMIN } from '../../../js/roles';
 
+import UserProgress from '../../tabs/UserProgress';
+// import UserProgress from './tabs/UserProgress';
+import UserTasks from '../../tabs/UserTasks';
+import { Route } from 'react-router-dom';
+
 class User extends React.Component {
   render() {
     const { user } = this.props;
@@ -60,6 +65,16 @@ class User extends React.Component {
           >
             <h4>tasks</h4>
           </NavLink>
+          <Route
+            exact
+            path='/users/trac/:userId?'
+            render={() => <UserProgress userId=':userId?' />}
+          />
+          <Route
+            exact
+            path='/users/task/:userId?'
+            render={() => <UserTasks userId=':userId?' />}
+          />
           {this.props.direction === ADMIN ? (
             <Button
               title='edit'

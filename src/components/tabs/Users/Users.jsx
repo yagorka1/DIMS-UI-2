@@ -10,6 +10,10 @@ import {
 import { getUsers } from '../../../js/users';
 import { ADMIN } from '../../../js/roles';
 
+import UserTasks from '../UserTasks';
+import UserProgress from '../UserProgress';
+import { Route } from 'react-router-dom';
+
 class Users extends React.Component {
   constructor(props) {
     super(props);
@@ -33,14 +37,14 @@ class Users extends React.Component {
     this.changeUser = this.changeUser.bind(this);
   }
 
-  componentWillMount() {
+  static getDerivedStateFromProps(props, state) {
     const users = getUsers();
-    this.setState({ users });
+    return { users };
   }
 
-  handleInputChange = (name, event) => {
+  handleInputChange = (name, value) => {
     this.setState({
-      [name]: event.target.value,
+      [name]: value,
     });
   };
 
