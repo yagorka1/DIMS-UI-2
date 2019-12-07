@@ -20,7 +20,7 @@ class Main extends React.Component {
           exact
           path='/'
           render={() => (
-            <Home email={this.props.email} direction={this.props.direction} />
+            <Home email={this.props.email} role={this.props.role} />
           )}
         />
         <Route path='/home' render={() => <Home />} />
@@ -33,15 +33,12 @@ class Main extends React.Component {
         <Route path='/users/trac/:userId?' component={UserProgress} />
         <Route path='/users/task/:userId?' component={UserTasks} />
 
-        {this.props.direction !== 'Member' ? (
+        {this.props.role !== 'Member' ? (
           <Route
             exact
             path='/users'
             render={() => (
-              <Users
-                direction={this.props.direction}
-                email={this.props.email}
-              />
+              <Users role={this.props.role} email={this.props.email} />
             )}
           />
         ) : (
@@ -50,17 +47,14 @@ class Main extends React.Component {
         <Route
           path='/tasks'
           render={() => (
-            <Tasks email={this.props.email} direction={this.props.direction} />
+            <Tasks email={this.props.email} role={this.props.role} />
           )}
         />
-        {this.props.direction === 'Member' ? (
+        {this.props.role === 'Member' ? (
           <Route
             path='/tracks'
             render={() => (
-              <Tracks
-                direction={this.props.direction}
-                email={this.props.email}
-              />
+              <Tracks role={this.props.role} email={this.props.email} />
             )}
           />
         ) : (

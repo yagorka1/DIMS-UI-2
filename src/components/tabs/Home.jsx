@@ -5,7 +5,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className={style.home_content}>
-        Hello, {this.props.email}. It's home page. {this.props.direction}
+        Hello, {this.props.email}. It's home page. {this.props.role}
       </div>
     );
   }

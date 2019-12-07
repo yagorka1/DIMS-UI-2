@@ -136,7 +136,7 @@ class Users extends React.Component {
     const usersCount = users.length;
     return (
       <div className={style.users_container}>
-        {this.props.direction === ADMIN ? (
+        {this.props.role === ADMIN ? (
           <Popup modal trigger={<button>Add user</button>}>
             {(close) => (
               <PopUp
@@ -173,7 +173,7 @@ class Users extends React.Component {
               user={user}
               key={user.id}
               changeUser={this.changeUser}
-              direction={this.props.direction}
+              role={this.props.role}
             />
           ))}
         </div>

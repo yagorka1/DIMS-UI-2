@@ -45,7 +45,7 @@ class Tasks extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     let tasks;
-    props.direction === USER
+    props.role === USER
       ? (tasks = getTasks(props.email))
       : (tasks = getAllTasks());
     const tracks = getTracks(props.email);
@@ -265,7 +265,7 @@ class Tasks extends React.Component {
 
     return (
       <div className={style.projects_container}>
-        {this.props.direction !== USER ? (
+        {this.props.role !== USER ? (
           <Popup modal trigger={<button>Add post</button>}>
             {(close) => (
               <PopUp
@@ -294,7 +294,7 @@ class Tasks extends React.Component {
               newTrack={this.state.newTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
-              direction={this.props.direction}
+              role={this.props.role}
             />
           ))}
         </section>
@@ -312,7 +312,7 @@ class Tasks extends React.Component {
               newTrack={this.state.newTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
-              direction={this.props.direction}
+              role={this.props.role}
             />
           ))}
         </section>
@@ -330,7 +330,7 @@ class Tasks extends React.Component {
               newTrack={this.state.newTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
-              direction={this.props.direction}
+              role={this.props.role}
             />
           ))}
         </section>

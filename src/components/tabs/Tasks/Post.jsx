@@ -80,8 +80,8 @@ class Post extends React.Component {
               </button>
               {task.showEditField && (
                 <div className={style.postButtons}>
-                  {(this.props.direction === ADMIN ||
-                    this.props.direction === MENTOR) && (
+                  {(this.props.role === ADMIN ||
+                    this.props.role === MENTOR) && (
                     <div>
                       <Button
                         title='delete'
@@ -124,7 +124,7 @@ class Post extends React.Component {
                       ))}
                     </div>
                   )}
-                  {this.props.direction === USER && (
+                  {this.props.role === USER && (
                     <div>
                       <Button
                         title='track'

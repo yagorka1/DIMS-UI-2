@@ -61,7 +61,7 @@ class User extends React.Component {
             <h4>tasks</h4>
           </NavLink>
 
-          {this.props.direction === ADMIN ? (
+          {this.props.role === ADMIN ? (
             <Button
               title='edit'
               changeUser={this.props.changeUser}
@@ -70,7 +70,7 @@ class User extends React.Component {
           ) : (
             <></>
           )}
-          {this.props.direction === ADMIN ? (
+          {this.props.role === ADMIN ? (
             <Button
               title='delete'
               changeUser={this.props.changeUser}

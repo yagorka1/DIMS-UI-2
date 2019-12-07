@@ -22,7 +22,7 @@ class Content extends React.Component {
           showNavbar={this.props.showNavbar}
           authUser={this.props.authUser}
         />
-        <Main direction={this.props.direction} email={this.props.email} />
+        <Main role={this.props.role} email={this.props.email} />
       </div>
     );
   }

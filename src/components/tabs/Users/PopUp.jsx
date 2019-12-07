@@ -16,7 +16,7 @@ class PopUp extends React.Component {
 
     return (
       <div className={style.modal}>
-        <a className={style.close} onClick={close}>
+        <a href='close' className={style.close} onClick={close}>
           &times;
         </a>
         <div className={style.header}> Modal Title </div>

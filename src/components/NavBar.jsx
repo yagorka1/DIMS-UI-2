@@ -18,7 +18,7 @@ class NavBar extends React.Component {
   };
 
   render() {
-    let routes = getRotes(this.props.direction);
+    let routes = getRotes(this.props.role);
 
     return (
       <nav className={style.navbar}>

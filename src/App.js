@@ -30,11 +30,11 @@ class App extends React.Component {
 
   authUser = () => {
     const { email, password } = this.state;
-    const direction = checkData(email, password);
+    const role = checkData(email, password);
 
-    if (direction) {
+    if (role) {
       this.setState({ login: !this.state.login });
-      this.setState({ direction });
+      this.setState({ role });
     } else {
       alert('Wrong login');
     }
@@ -48,15 +48,12 @@ class App extends React.Component {
         {this.state.login ? (
           <div className={style.App}>
             {showNavbar && (
-              <NavBar
-                showNavbar={this.showNavbar}
-                direction={this.state.direction}
-              />
+              <NavBar showNavbar={this.showNavbar} role={this.state.role} />
             )}
             <Content
               showNavbar={this.showNavbar}
               login={this.state.login}
-              direction={this.state.direction}
+              role={this.state.role}
               authUser={this.authUser}
               email={this.state.email}
             />
