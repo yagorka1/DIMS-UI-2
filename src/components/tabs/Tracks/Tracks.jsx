@@ -55,7 +55,7 @@ class Tracks extends React.Component {
   deleteTrack(id) {
     const { tracks } = this.state;
     this.setState({ tracks: tracks.filter((track) => track.trackId !== id) });
-    deleteDataFromStorage(id, 'trac');
+    deleteDataFromStorage(id, 'trackId');
   }
 
   changeTrack(id, action) {

@@ -37,38 +37,11 @@ const deleteDataFromStorage = (id, nameOfData) => {
   for (let i = 0; i < localStorage.length; i++) {
     const storageId = localStorage.key(i);
     if (JSON.parse(localStorage.getItem(storageId)) !== null) {
-      if (id === JSON.parse(localStorage.getItem(storageId)).trackId) {
-        localStorage.removeItem(storageId);
-      }
-    }
-  }
-};
-const deleteDataFromStorage2 = (id, nameOfData) => {
-  for (let i = 0; i < localStorage.length; i++) {
-    const storageId = localStorage.key(i);
-    if (JSON.parse(localStorage.getItem(storageId)) !== null) {
-      if (id === JSON.parse(localStorage.getItem(storageId)).taskId) {
+      if (id === JSON.parse(localStorage.getItem(storageId))[nameOfData]) {
         localStorage.removeItem(storageId);
       }
     }
   }
 };
 
-const deleteDataFromStorage1 = (id, nameOfData) => {
-  for (let i = 0; i < localStorage.length; i++) {
-    const storageId = localStorage.key(i);
-    if (JSON.parse(localStorage.getItem(storageId)) !== null) {
-      if (id === JSON.parse(localStorage.getItem(storageId)).email) {
-        localStorage.removeItem(storageId);
-      }
-    }
-  }
-};
-
-export {
-  setDataInStorage,
-  setChangeDataInStorage,
-  deleteDataFromStorage,
-  deleteDataFromStorage1,
-  deleteDataFromStorage2,
-};
+export { setDataInStorage, setChangeDataInStorage, deleteDataFromStorage };

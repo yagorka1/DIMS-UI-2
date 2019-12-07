@@ -17,13 +17,19 @@ const getTime = (deadlineDate) => {
     timeToDeadline = timeToDeadline * -1;
   }
 
-  if (timeToDeadline < 24) return `${Math.floor(timeToDeadline)} hours ${str}`;
+  if (timeToDeadline < 24) {
+    return `${Math.floor(timeToDeadline)} hours ${str}`;
+  }
   timeToDeadline = timeToDeadline / 24;
 
-  if (timeToDeadline < 30) return `${Math.floor(timeToDeadline)} days ${str}`;
+  if (timeToDeadline < 30) {
+    return `${Math.floor(timeToDeadline)} days ${str}`;
+  }
   timeToDeadline = timeToDeadline / 30;
 
-  if (timeToDeadline < 12) return `${Math.floor(timeToDeadline)} months ${str}`;
+  if (timeToDeadline < 12) {
+    return `${Math.floor(timeToDeadline)} months ${str}`;
+  }
   timeToDeadline = timeToDeadline / 12;
 
   return `${Math.floor(timeToDeadline)} years ${str}`;

@@ -6,7 +6,7 @@ import Post from './Post';
 import {
   setChangeDataInStorage,
   setDataInStorage,
-  deleteDataFromStorage2,
+  deleteDataFromStorage,
 } from '../../../js/setDataInStorage';
 import colors from '../../../js/color';
 import getId from '../../../js/getId';
@@ -181,7 +181,7 @@ class Tasks extends React.Component {
   deletePost(id) {
     const { tasks } = this.state;
     this.setState({ tasks: tasks.filter((task) => task.taskId !== id) });
-    deleteDataFromStorage2(id, 'task');
+    deleteDataFromStorage(id, 'taskId');
   }
 
   changeBackgroundColor(task, color) {
@@ -265,7 +265,7 @@ class Tasks extends React.Component {
 
     return (
       <div className={style.projects_container}>
-        {this.props.role !== USER ? (
+        {this.props.role !== USER && (
           <Popup modal trigger={<button>Add post</button>}>
             {(close) => (
               <PopUp
@@ -278,8 +278,6 @@ class Tasks extends React.Component {
               />
             )}
           </Popup>
-        ) : (
-          <div></div>
         )}
         <section className={style.toDo_container}>
           <h1 className={style.section_title}>

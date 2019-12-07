@@ -4,7 +4,7 @@ import User from './User';
 import Popup from 'reactjs-popup';
 import PopUp from './PopUp';
 import {
-  deleteDataFromStorage1,
+  deleteDataFromStorage,
   setDataInStorage,
 } from '../../../js/setDataInStorage';
 import { getUsers } from '../../../js/users';
@@ -72,7 +72,7 @@ class Users extends React.Component {
   deleteUser(id) {
     const { users } = this.state;
     this.setState({ users: users.filter((user) => user.email !== id) });
-    deleteDataFromStorage1(id, 'user');
+    deleteDataFromStorage(id, 'email');
   }
 
   changeUser(id, action) {
