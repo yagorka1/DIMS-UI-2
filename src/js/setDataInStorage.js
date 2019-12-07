@@ -43,6 +43,16 @@ const deleteDataFromStorage = (id, nameOfData) => {
     }
   }
 };
+const deleteDataFromStorage2 = (id, nameOfData) => {
+  for (let i = 0; i < localStorage.length; i++) {
+    const storageId = localStorage.key(i);
+    if (JSON.parse(localStorage.getItem(storageId)) !== null) {
+      if (id === JSON.parse(localStorage.getItem(storageId)).taskId) {
+        localStorage.removeItem(storageId);
+      }
+    }
+  }
+};
 
 const deleteDataFromStorage1 = (id, nameOfData) => {
   for (let i = 0; i < localStorage.length; i++) {
@@ -60,4 +70,5 @@ export {
   setChangeDataInStorage,
   deleteDataFromStorage,
   deleteDataFromStorage1,
+  deleteDataFromStorage2,
 };

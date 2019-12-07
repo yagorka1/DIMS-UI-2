@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/Header.module.css';
+import style from '../style/header.module.css';
 import menu from '../assets/images/header/menu.png';
 import user_photo from '../assets/images/header/user.png';
 
@@ -17,9 +17,7 @@ class Header extends React.Component {
     return (
       <header className={style.header}>
         <div className={style.buttons_header}>
-          <button
-            onClick={this.handleChange} // button !!!
-          >
+          <button onClick={this.handleChange}>
             <img src={menu} className={style.images_header} alt='Save' />
           </button>
           {/* <img src={search} className={style.images_header} alt='search' /> */}{' '}

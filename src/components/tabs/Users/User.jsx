@@ -1,6 +1,6 @@
 import React from 'react';
-import style from '../../../style/User.module.css';
-import style1 from '../../../style/Button.module.css';
+import style from '../../../style/user.module.css';
+import style1 from '../../../style/button.module.css';
 import user_photo from '../../../assets/images/main/user.png';
 import clock_online from '../../../assets/images/main/clock_online.svg';
 import clock_offline from '../../../assets/images/main/clock_offline.svg';
@@ -9,11 +9,6 @@ import { NavLink } from 'react-router-dom';
 import Button from './Button';
 import { getTime } from '../../../js/getDate';
 import { ADMIN } from '../../../js/roles';
-
-import UserProgress from '../../tabs/UserProgress';
-// import UserProgress from './tabs/UserProgress';
-import UserTasks from '../../tabs/UserTasks';
-import { Route } from 'react-router-dom';
 
 class User extends React.Component {
   render() {
@@ -65,16 +60,7 @@ class User extends React.Component {
           >
             <h4>tasks</h4>
           </NavLink>
-          <Route
-            exact
-            path='/users/trac/:userId?'
-            render={() => <UserProgress userId=':userId?' />}
-          />
-          <Route
-            exact
-            path='/users/task/:userId?'
-            render={() => <UserTasks userId=':userId?' />}
-          />
+
           {this.props.direction === ADMIN ? (
             <Button
               title='edit'

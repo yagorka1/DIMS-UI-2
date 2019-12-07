@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/Main.module.css';
+import style from '../style/main.module.css';
 import { Route } from 'react-router-dom';
 
 import Home from './tabs/Home';
@@ -30,16 +30,8 @@ class Main extends React.Component {
         />
         <Route path='/statistics' render={() => <Statistics />} />
         <Route path='/calendar' render={() => <Calendar />} />
-        <Route
-          exact
-          path='/users/trac/:userId?'
-          render={() => <UserProgress userId=':userId?' />}
-        />
-        <Route
-          exact
-          path='/users/task/:userId?'
-          render={() => <UserTasks userId=':userId?' />}
-        />
+        <Route path='/users/trac/:userId?' component={UserProgress} />
+        <Route path='/users/task/:userId?' component={UserTasks} />
 
         {this.props.direction !== 'Member' ? (
           <Route

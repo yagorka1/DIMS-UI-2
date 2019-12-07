@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../style/Post.module.css';
+import style from '../../../style/post.module.css';
 
 class Palette extends React.Component {
   constructor(props) {

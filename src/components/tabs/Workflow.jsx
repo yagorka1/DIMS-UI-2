@@ -1,8 +1,15 @@
 import React from 'react';
-import style from '../../style/Workflow.module.css';
+import style from '../../style/workflow.module.css';
 import Task from './Task';
 import getTasks from '../../js/tasks';
 import { setChangeDataInStorage } from '../../js/setDataInStorage';
+import {
+  CHANGE_STATUS,
+  TO_DO,
+  IN_PROGRESS,
+  COMPLETED,
+  SHOW_EDIT_FIELDS,
+} from '../../js/actions_names';
 
 class Workflow extends React.Component {
   constructor(props) {
@@ -43,24 +50,24 @@ class Workflow extends React.Component {
       tasks: this.state.tasks.map((task) => {
         if (task.taskId === id) {
           switch (action) {
-            case `changeStatus`: {
+            case CHANGE_STATUS: {
               task = this.changeStatus(task);
               break;
             }
-            case `toDo`: {
-              task = this.changeState(task, `toDo`);
+            case TO_DO: {
+              task = this.changeState(task, TO_DO);
               break;
             }
-            case `inProgress`: {
-              task = this.changeState(task, `inProgress`);
+            case IN_PROGRESS: {
+              task = this.changeState(task, IN_PROGRESS);
               break;
             }
-            case `completed`: {
-              task = this.changeState(task, `completed`);
+            case COMPLETED: {
+              task = this.changeState(task, COMPLETED);
               break;
             }
-            case `showEditFields`: {
-              task = this.showChangeTaskField(task, 'showEditFields');
+            case SHOW_EDIT_FIELDS: {
+              task = this.showChangeTaskField(task, SHOW_EDIT_FIELDS);
               break;
             }
             default:
@@ -76,9 +83,9 @@ class Workflow extends React.Component {
 
   render() {
     const tasks = this.state.tasks;
-    const toDoTask = this.getTask(tasks, 'toDo');
-    const inProgressTask = this.getTask(tasks, 'inProgress');
-    const completedTask = this.getTask(tasks, 'completed');
+    const toDoTask = this.getTask(tasks, TO_DO);
+    const inProgressTask = this.getTask(tasks, IN_PROGRESS);
+    const completedTask = this.getTask(tasks, COMPLETED);
 
     return (
       <div className={style.workflow_container}>

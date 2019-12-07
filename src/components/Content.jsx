@@ -1,17 +1,18 @@
 import React from 'react';
-import style from '../style/Content.module.css';
+import style from '../style/content.module.css';
 import Header from './Header';
 import Main from './Main';
-import getTasks from '../js/tasks';
-import { getUsers } from '../js/users';
-import { getTracks } from '../js/tracks';
+import axios from 'axios';
 
 class Content extends React.Component {
   componentDidMount() {
-    const tasks = getTasks(this.props.email);
-    const tracks = getTracks(this.props.email);
-    const users = getUsers();
-    this.setState({ users, tracks, tasks });
+    const users = axios
+      .get(`http://localhost:50698/api/profiles`)
+      .then((res) => {
+        console.log(res.data);
+      });
+
+    console.log(users);
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../style/PopUp.module.css';
+import style from '../../../style/pop-up.module.css';
 import InputText from '../../InputText';
 import DatePicker from 'react-date-picker';
 import { getUsers, getMembers } from '../../../js/users';
@@ -47,7 +47,7 @@ class PopUp extends React.Component {
     const members = getMembers();
     return (
       <div className={style.modal}>
-        <a className={style.close} onClick={close}>
+        <a href='close' className={style.close} onClick={close}>
           &times;
         </a>
         <div className={style.header}> Add new task </div>

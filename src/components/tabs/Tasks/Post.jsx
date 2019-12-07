@@ -1,6 +1,6 @@
 import React from 'react';
-import style from '../../../style/Post.module.css';
-import style_button from '../../../style/Button.module.css';
+import style from '../../../style/post.module.css';
+import style_button from '../../../style/button.module.css';
 
 import Button from './Button';
 import Palette from './Palette';

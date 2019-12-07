@@ -1,16 +1,11 @@
 import React from 'react';
-import style from '../../style/UserProgress.module.css';
+import style from '../../style/user-progress.module.css';
 import getTasks from '../../js/tasks';
 import Tasks from './Tasks/Tasks';
 
 class UserTasks extends React.Component {
-  getId() {
-    const str = window.location.pathname;
-    return str.slice(12, str.length);
-  }
-
   render() {
-    const id = this.getId();
+    const id = this.props.match.params.userId;
     const tasks = getTasks(id);
 
     return (

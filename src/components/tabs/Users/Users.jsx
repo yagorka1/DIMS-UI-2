@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../style/Users.module.css';
+import style from '../../../style/users.module.css';
 import User from './User';
 import Popup from 'reactjs-popup';
 import PopUp from './PopUp';
@@ -9,10 +9,7 @@ import {
 } from '../../../js/setDataInStorage';
 import { getUsers } from '../../../js/users';
 import { ADMIN } from '../../../js/roles';
-
-import UserTasks from '../UserTasks';
-import UserProgress from '../UserProgress';
-import { Route } from 'react-router-dom';
+import { DELETE, EDIT } from '../../../js/actions_names';
 
 class Users extends React.Component {
   constructor(props) {
@@ -80,11 +77,11 @@ class Users extends React.Component {
 
   changeUser(id, action) {
     switch (action) {
-      case 'delete': {
+      case DELETE: {
         this.deleteUser(id);
         break;
       }
-      case 'edit': {
+      case EDIT: {
         alert('edit');
         break;
       }

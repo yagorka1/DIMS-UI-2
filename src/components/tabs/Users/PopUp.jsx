@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../style/PopUp.module.css';
+import style from '../../../style/pop-up.module.css';
 import InputText from '../../InputText';
 import DatePicker from 'react-date-picker';
 import inputNames from '../../../js/input_text';

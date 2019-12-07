@@ -1,11 +1,12 @@
 import React from 'react';
-import style from '../../../style/Tasks.module.css';
+import style from '../../../style/tasks.module.css';
 import Popup from 'reactjs-popup';
 import PopUp from './PopUp.jsx';
 import Post from './Post';
 import {
   setChangeDataInStorage,
   setDataInStorage,
+  deleteDataFromStorage2,
 } from '../../../js/setDataInStorage';
 import colors from '../../../js/color';
 import getId from '../../../js/getId';
@@ -14,6 +15,16 @@ import { getTracks } from '../../../js/tracks';
 import getTasks from '../../../js/tasks';
 import { USER } from '../../../js/roles';
 import { getAllTasks } from '../../../js/allTasks';
+import {
+  SHOW_EDIT_FIELD,
+  EDIT,
+  TRACK,
+  COLOR,
+  CHANGE_BACKGROUND_COLOR,
+  PUSH,
+  PUSH_TRACK,
+  CHANGE_STATUS,
+} from '../../../js/actions_names';
 
 class Tasks extends React.Component {
   constructor(props) {
@@ -170,6 +181,7 @@ class Tasks extends React.Component {
   deletePost(id) {
     const { tasks } = this.state;
     this.setState({ tasks: tasks.filter((task) => task.taskId !== id) });
+    deleteDataFromStorage2(id, 'task');
   }
 
   changeBackgroundColor(task, color) {
@@ -179,35 +191,35 @@ class Tasks extends React.Component {
   switchAction(task, action, id, color) {
     if (task.taskId === id) {
       switch (action) {
-        case `showEditField`: {
+        case SHOW_EDIT_FIELD: {
           task = this.showEditField(task);
           break;
         }
-        case `changeStatus`: {
+        case CHANGE_STATUS: {
           task = this.changeStatus(task);
           break;
         }
-        case `edit`: {
+        case EDIT: {
           task = this.showChangeTaskField(task, 'showChangeTaskField');
           break;
         }
-        case `track`: {
+        case TRACK: {
           task = this.showChangeTaskField(task, 'showTrackField');
           break;
         }
-        case `color`: {
+        case COLOR: {
           task = this.showPalette(task);
           break;
         }
-        case `changeBackgroundColor`: {
+        case CHANGE_BACKGROUND_COLOR: {
           task = this.changeBackgroundColor(task, color);
           break;
         }
-        case `push`: {
+        case PUSH: {
           task = this.pushEditTask(task);
           break;
         }
-        case `pushTrack`: {
+        case PUSH_TRACK: {
           this.addNewTrack(task.taskId, task.title);
           break;
         }

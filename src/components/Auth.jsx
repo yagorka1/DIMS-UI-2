@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/Auth.module.css';
+import style from '../style/auth.module.css';
 import InputText from './InputText';
 
 class Auth extends React.Component {
