@@ -23,10 +23,7 @@ const getMembers = () => {
 const checkData = (email, password) => {
   const users = getUsers();
   const user = users.find((user) => email === user.email);
-  if (!user) {
-    return 0;
-  }
-  return user.direction;
+  return !user ? 0 : user.direction;
 };
 
 export { getUsers, checkData, getMembers };
