@@ -36,3 +36,27 @@ const getTitle = (title) => {
 };
 
 export { getRotes, getTitle };
+
+// const routesMentor = [
+//   { title: '/users', image: users },
+//   { title: '/tasks', image: settings },
+// ];
+
+// const getRotes = (direction) => {
+//   if (direction === ADMIN) {
+//     return routesAdmin;
+//   }
+//   if (direction === MENTOR) {
+//     return routesMentor;
+//   }
+//   if (direction === USER) {
+//     return routesMember;
+//   }
+// };
+
+// const getTitle = (title) => {
+//   title = title.slice(1, title.length);
+//   return title[0].toUpperCase() + title.slice(1);
+// };
+
+// export { getRotes, getTitle };

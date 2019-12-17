@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import style from '../../../style/post.module.css';
 import style_button from '../../../style/button.module.css';
 
@@ -71,87 +73,86 @@ class Post extends React.Component {
               <p>{task.description}</p>
             </div>
             <div className={style.blockFunction}>
-              <button
+              {/* <button
                 className={style_button.buttonFunction}
                 onClick={this.showEditButtons}
               >
                 {' '}
                 showEdit{' '}
-              </button>
-              {task.showEditField && (
-                <div className={style.postButtons}>
-                  {(this.props.role === ADMIN ||
-                    this.props.role === MENTOR) && (
-                    <div>
-                      <Button
-                        title='delete'
-                        changePost={this.props.changePost}
-                        id={task.taskId}
-                      />
-                      <Button
-                        title='edit'
-                        changePost={this.props.changePost}
-                        id={task.taskId}
-                      />
-                      {task.showChangeTaskField && (
-                        <div>
-                          <input
-                            value={this.props.newTask}
-                            onChange={this.handleChange}
-                          />
-                          <Button
-                            title='push'
-                            changePost={this.props.changePost}
-                            id={task.taskId}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  <Button
-                    title='color'
-                    changePost={this.props.changePost}
-                    id={task.taskId}
-                  />
-                  {task.chooseColorField && (
-                    <div className={style.palette}>
-                      {colors.map((color) => (
-                        <Palette
-                          color={color}
+              </button> */}
+              {/* {task.showEditField && ( */}
+              <div className={style.postButtons}>
+                {(this.props.role === ADMIN || this.props.role === MENTOR) && (
+                  <div>
+                    <Button
+                      title='delete'
+                      changePost={this.props.changePost}
+                      id={task.taskId}
+                    />
+                    <Button
+                      title='edit'
+                      changePost={this.props.changePost}
+                      id={task.taskId}
+                    />
+                    {task.showChangeTaskField && (
+                      <div>
+                        <input
+                          value={this.props.newTask}
+                          onChange={this.handleChange}
+                        />
+                        <Button
+                          title='push'
                           changePost={this.props.changePost}
                           id={task.taskId}
                         />
-                      ))}
-                    </div>
-                  )}
-                  {this.props.role === USER && (
-                    <div>
-                      <Button
-                        title='track'
+                      </div>
+                    )}
+                  </div>
+                )}
+                <Button
+                  title='color'
+                  changePost={this.props.changePost}
+                  id={task.taskId}
+                />
+                {task.chooseColorField && (
+                  <div className={style.palette}>
+                    {colors.map((color) => (
+                      <Palette
+                        color={color}
                         changePost={this.props.changePost}
                         id={task.taskId}
                       />
-                      {task.showTrackField && (
-                        <div>
-                          <input
-                            value={this.props.newTrack}
-                            onChange={this.handleChange1}
-                          />
-                          <button
-                            title='pushTrack'
-                            onClick={() =>
-                              this.pushTrack(task.taskId, task.title)
-                            }
-                            id={task.taskId}
-                          >
-                            push
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
+                    ))}
+                  </div>
+                )}
+                {this.props.role === USER && (
+                  <div>
+                    <Button
+                      title='track'
+                      changePost={this.props.changePost}
+                      id={task.taskId}
+                    />
+                    {task.showTrackField && (
+                      <div>
+                        <input
+                          value={this.props.newTrack}
+                          onChange={this.handleChange1}
+                        />
+                        <button
+                          title='pushTrack'
+                          onClick={() =>
+                            this.pushTrack(task.taskId, task.title)
+                          }
+                          id={task.taskId}
+                        >
+                          push
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+              {/* )} */}
             </div>
           </div>
         </div>
@@ -159,5 +160,23 @@ class Post extends React.Component {
     );
   }
 }
+
+Post.propTypes = {
+  role: PropTypes.string,
+  newTask: PropTypes.string,
+  newTrack: PropTypes.string,
+  changePost: PropTypes.func,
+  task: PropTypes.shape({
+    taskId: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    startDate: PropTypes.instanceOf(Date),
+    deadlineDate: PropTypes.instanceOf(Date),
+    backgroundColorPost: PropTypes.string,
+  }),
+  addTrack: PropTypes.func,
+  onChange: PropTypes.func,
+  changePost: PropTypes.func,
+};
 
 export default Post;

@@ -1,5 +1,6 @@
 import React from 'react';
 import style from '../../../style/pop-up.module.css';
+import button_style from '../../../style/button.module.css';
 import InputText from '../../InputText';
 import DatePicker from 'react-date-picker';
 import { getUsers, getMembers } from '../../../js/users';
@@ -60,22 +61,26 @@ class PopUp extends React.Component {
             name='newTask'
           />
           <InputText
-            label='Name'
+            label='Description'
             value={this.props.state.newDescription}
             handleInputChange={this.props.onChange}
             type='text'
             name='newDescription'
           />
-          Start Date:
-          <DatePicker
-            onChange={this.onChangeStartDate}
-            value={this.props.state.startDate}
-          />
-          Deadline Date:
-          <DatePicker
-            onChange={this.onChangeDeadlineDate}
-            value={this.props.state.deadlineDate}
-          />
+          <div className={style.date_wrapper}>
+            <span>Start Date:</span>
+            <DatePicker
+              onChange={this.onChangeStartDate}
+              value={this.props.state.startDate}
+            />
+          </div>
+          <div className={style.date_wrapper}>
+            <span>Deadline Date:</span>
+            <DatePicker
+              onChange={this.onChangeDeadlineDate}
+              value={this.props.state.deadlineDate}
+            />
+          </div>
           Users:
           {members.map((user) => (
             <div>
@@ -89,7 +94,12 @@ class PopUp extends React.Component {
               {user.name} ({user.email})
             </div>
           ))}
-          <input type='button' onClick={this.addNewTask} value='Save' />
+          <input
+            type='button'
+            className={button_style.button}
+            onClick={this.addNewTask}
+            value='Save'
+          />
         </form>
       </div>
     );

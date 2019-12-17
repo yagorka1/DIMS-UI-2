@@ -1,4 +1,5 @@
 import React from 'react';
+import style from '../style/input-text.module.css';
 
 class InputText extends React.Component {
   onChange = (event) => {
@@ -9,8 +10,8 @@ class InputText extends React.Component {
   render() {
     const { label, name, value, type } = this.props;
     return (
-      <label>
-        {label}:
+      <label className={style.input_text}>
+        <div>{label}:</div>
         <input
           value={value}
           onChange={this.onChange}

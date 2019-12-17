@@ -266,7 +266,7 @@ class Tasks extends React.Component {
     return (
       <div className={style.projects_container}>
         {this.props.role !== USER && (
-          <Popup modal trigger={<button>Add post</button>}>
+          <Popup modal trigger={<button>Add task</button>}>
             {(close) => (
               <PopUp
                 close={close}

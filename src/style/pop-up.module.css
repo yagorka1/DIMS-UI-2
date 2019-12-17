@@ -5,7 +5,6 @@
 
 .modal {
   font-size: 12px;
-  color: red;
 }
 .modal > .header {
   width: 100%;
@@ -43,4 +42,11 @@
 .content {
   display: flex;
   flex-direction: column;
+}
+
+.date_wrapper {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
