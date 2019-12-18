@@ -1,8 +1,9 @@
 import React from 'react';
 import style from '../../../style/users.module.css';
-import User from './User';
+import User from './UserBootstrap';
 import Popup from 'reactjs-popup';
-import PopUp from './PopUp';
+// import PopUp from './PopUp';
+import PopUpBootstrap from './PopUpBootstrap';
 import {
   deleteDataFromStorage,
   setDataInStorage,
@@ -139,7 +140,7 @@ class Users extends React.Component {
         {this.props.role === ADMIN ? (
           <Popup modal trigger={<button>Add user</button>}>
             {(close) => (
-              <PopUp
+              <PopUpBootstrap
                 close={close}
                 state={this.state}
                 handleInputChange={this.handleInputChange}

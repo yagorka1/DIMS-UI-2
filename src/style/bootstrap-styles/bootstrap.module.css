@@ -1,0 +1,32 @@
+.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.image_navbar_item {
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  height: 30px;
+  margin: 5px;
+}
+
+.buttonLink {
+  color: white;
+}
+
+.buttonLink:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.buttonName {
+  font-size: 1rem;
+}
