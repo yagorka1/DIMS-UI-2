@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from '../../../style/track.module.css';
 
 import { getDate } from '../../../js/getDate';
@@ -37,5 +38,15 @@ class Track extends React.Component {
     );
   }
 }
+
+Track.propTypes = {
+  changeTrack: PropTypes.func,
+  id: PropTypes.number,
+  track: PropTypes.shape({
+    trackName: PropTypes.string,
+    trackNode: PropTypes.string,
+    trackDate: PropTypes.instanceOf(Date),
+  }),
+};
 
 export default Track;

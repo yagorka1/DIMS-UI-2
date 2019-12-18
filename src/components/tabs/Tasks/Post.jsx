@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import style from '../../../style/post.module.css';
-import style_button from '../../../style/button.module.css';
 
 import Button from './Button';
 import Palette from './Palette';
@@ -165,7 +164,6 @@ Post.propTypes = {
   role: PropTypes.string,
   newTask: PropTypes.string,
   newTrack: PropTypes.string,
-  changePost: PropTypes.func,
   task: PropTypes.shape({
     taskId: PropTypes.string,
     title: PropTypes.string,

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from '../../../style/post.module.css';
 
 class Palette extends React.Component {
@@ -32,5 +33,10 @@ class Palette extends React.Component {
     );
   }
 }
+
+Palette.propTypes = {
+  color: PropTypes.string,
+  id: PropTypes.string,
+};
 
 export default Palette;

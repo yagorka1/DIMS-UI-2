@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from '../../../style/user.module.css';
 import style1 from '../../../style/button.module.css';
 import user_photo from '../../../assets/images/main/user.png';
@@ -84,5 +85,17 @@ class User extends React.Component {
     );
   }
 }
+
+User.propTypes = {
+  changeUser: PropTypes.func,
+  role: PropTypes.string,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    direction: PropTypes.string,
+    activity: PropTypes.number,
+    email: PropTypes.string,
+    mobilePhone: PropTypes.string,
+  }),
+};
 
 export default User;

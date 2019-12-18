@@ -2,7 +2,7 @@ import React from 'react';
 import style from '../style/content.module.css';
 import Header from './Header';
 import Main from './Main';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Content extends React.Component {
   componentDidMount() {

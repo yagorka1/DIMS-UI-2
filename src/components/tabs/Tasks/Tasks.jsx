@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from '../../../style/tasks.module.css';
 import Popup from 'reactjs-popup';
 import PopUp from './PopUp.jsx';
@@ -336,5 +337,9 @@ class Tasks extends React.Component {
     );
   }
 }
+
+Tasks.propTypes = {
+  role: PropTypes.string,
+};
 
 export default Tasks;

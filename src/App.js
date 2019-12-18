@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './App.module.css';
-import NavBar from './components/NavBar';
+// import NavBar from './components/NavBar';
+import NavBar from './components/NavBarBootstrap';
 import Content from './components/Content';
 import Auth from './components/Auth';
 import { checkData } from './js/users';
