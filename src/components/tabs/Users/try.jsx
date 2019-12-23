@@ -1,106 +1,231 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form, InputGroup, Col } from 'react-bootstrap';
+import { isEmpty } from '../../../js/checkAddUserForm';
+import * as yup from 'yup';
 
-class Try extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      validated: false,
-    };
-  }
+import { Formik } from 'formik';
+import { schema } from '../../../js/user-schema';
 
-  handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+function Try(props) {
+  const submit = (errors, values) => {
+    if (isEmpty(errors) && !isEmpty(values)) {
+      props.close();
+      // props.addNewUser();
+      alert('eeee');
     }
-
-    this.setState({
-      validated: true,
-    });
   };
 
-  render() {
-    return (
-      <Form
-        noValidate
-        validated={this.state.validated}
-        onSubmit={this.handleSubmit}
-      >
-        <Form.Row>
-          <Form.Group as={Col} md='4' controlId='validationCustom01'>
-            <Form.Label>First name</Form.Label>
-            <Form.Control
-              required
-              type='text'
-              placeholder='First name'
-              defaultValue='Mark'
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md='4' controlId='validationCustom02'>
-            <Form.Label>Last name</Form.Label>
-            <Form.Control
-              required
-              type='text'
-              placeholder='Last name'
-              defaultValue='Otto'
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md='4' controlId='validationCustomUsername'>
-            <Form.Label>Username</Form.Label>
-            <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Text id='inputGroupPrepend'>@</InputGroup.Text>
-              </InputGroup.Prepend>
+  return (
+    <Formik validationSchema={schema} onSubmit={console.log} initialValues={{}}>
+      {({
+        handleSubmit,
+        handleChange,
+        handleBlur,
+        values,
+        touched,
+        isValid,
+        errors,
+      }) => (
+        <Form noValidate>
+          <Form.Row>
+            <Form.Group as={Col} md='4' controlId='validationFormik01'>
+              <Form.Label>First name</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Username'
-                aria-describedby='inputGroupPrepend'
-                required
+                name='firstName'
+                placeholder='First Name'
+                value={values.firstName}
+                onChange={handleChange}
+                isInvalid={!!errors.firstName}
               />
               <Form.Control.Feedback type='invalid'>
-                Please choose a username.
+                {errors.firstName}
               </Form.Control.Feedback>
-            </InputGroup>
-          </Form.Group>
-        </Form.Row>
-        <Form.Row>
-          <Form.Group as={Col} md='6' controlId='validationCustom03'>
-            <Form.Label>City</Form.Label>
-            <Form.Control type='text' placeholder='City' required />
-            <Form.Control.Feedback type='invalid'>
-              Please provide a valid city.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md='3' controlId='validationCustom04'>
-            <Form.Label>State</Form.Label>
-            <Form.Control type='text' placeholder='State' required />
-            <Form.Control.Feedback type='invalid'>
-              Please provide a valid state.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md='3' controlId='validationCustom05'>
-            <Form.Label>Zip</Form.Label>
-            <Form.Control type='text' placeholder='Zip' required />
-            <Form.Control.Feedback type='invalid'>
-              Please provide a valid zip.
-            </Form.Control.Feedback>
-          </Form.Group>
-        </Form.Row>
-        <Form.Group>
-          <Form.Check
-            required
-            label='Agree to terms and conditions'
-            feedback='You must agree before submitting.'
-          />
-        </Form.Group>
-        <Button type='submit'>Submit form</Button>
-      </Form>
-    );
-  }
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormik02'>
+              <Form.Label>Last name</Form.Label>
+              <Form.Control
+                type='text'
+                name='lastName'
+                placeholder='Last Name'
+                value={values.lastName}
+                onChange={handleChange}
+                isInvalid={!!errors.lastName}
+              />
+
+              <Form.Control.Feedback type='invalid'>
+                {errors.lastName}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormikEmail'>
+              <Form.Label>Email</Form.Label>
+              <InputGroup>
+                <Form.Control
+                  type='text'
+                  placeholder='Email'
+                  aria-describedby='inputGroupPrepend'
+                  name='email'
+                  value={values.email}
+                  onChange={handleChange}
+                  isInvalid={!!errors.email}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.email}
+                </Form.Control.Feedback>
+              </InputGroup>
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} md='4' controlId='validationFormikEducation'>
+              <Form.Label>Education</Form.Label>
+              <Form.Control
+                type='text'
+                name='education'
+                placeholder='Education'
+                value={values.education}
+                onChange={handleChange}
+                isInvalid={!!errors.education}
+              />
+              <Form.Control.Feedback type='invalid'>
+                {errors.education}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormikUniversity'>
+              <Form.Label>University</Form.Label>
+              <Form.Control
+                type='text'
+                name='university'
+                placeholder='University'
+                value={values.university}
+                onChange={handleChange}
+                isInvalid={!!errors.university}
+              />
+              <Form.Control.Feedback type='invalid'>
+                {errors.university}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormikMath'>
+              <Form.Label>Math Score</Form.Label>
+              <InputGroup>
+                <Form.Control
+                  type='text'
+                  placeholder='Math Score'
+                  aria-describedby='inputGroupPrepend'
+                  name='mathScore'
+                  value={values.mathScore}
+                  onChange={handleChange}
+                  isInvalid={!!errors.mathScore}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.mathScore}
+                </Form.Control.Feedback>
+              </InputGroup>
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} md='4' controlId='validationFormikAddress'>
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Address'
+                name='address'
+                value={values.address}
+                onChange={handleChange}
+                isInvalid={!!errors.address}
+              />
+              <Form.Control.Feedback type='invalid'>
+                {errors.address}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormikPhone'>
+              <Form.Label>Mobile Phone</Form.Label>
+              <Form.Control
+                type='tel'
+                placeholder='Mobile Phone'
+                name='mobilePhone'
+                value={values.mobilePhone}
+                onChange={handleChange}
+                isInvalid={!!errors.mobilePhone}
+              />
+              <Form.Control.Feedback type='invalid'>
+                {errors.mobilePhone}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormikSkype'>
+              <Form.Label>Skype</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Skype'
+                name='skype'
+                value={values.skype}
+                onChange={handleChange}
+                isInvalid={!!errors.skype}
+              />
+
+              <Form.Control.Feedback type='invalid'>
+                {errors.skype}
+              </Form.Control.Feedback>
+            </Form.Group>
+          </Form.Row>
+          <Form.Row>
+            <Form.Group as={Col} md='4' controlId='validationFormikDataStart'>
+              <Form.Label>Start data</Form.Label>
+              <Form.Control
+                type='data'
+                name='startData'
+                placeholder='Start data'
+                value={values.startData}
+                onChange={handleChange}
+                isInvalid={!!errors.startData}
+              />
+              <Form.Control.Feedback type='invalid'>
+                {errors.startData}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormik02'>
+              <Form.Label>Last name</Form.Label>
+              <Form.Control
+                type='text'
+                name='lastName'
+                placeholder='Last Name'
+                value={values.lastName}
+                onChange={handleChange}
+                isInvalid={!!errors.lastName}
+              />
+
+              <Form.Control.Feedback type='invalid'>
+                {errors.lastName}
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group as={Col} md='4' controlId='validationFormikEmail'>
+              <Form.Label>Email</Form.Label>
+              <InputGroup>
+                <Form.Control
+                  type='text'
+                  placeholder='Email'
+                  aria-describedby='inputGroupPrepend'
+                  name='email'
+                  value={values.email}
+                  onChange={handleChange}
+                  isInvalid={!!errors.email}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.email}
+                </Form.Control.Feedback>
+              </InputGroup>
+            </Form.Group>
+          </Form.Row>
+          <Button
+            onClick={() => {
+              submit(errors, values);
+            }}
+          >
+            Submit form
+          </Button>
+        </Form>
+      )}
+    </Formik>
+  );
 }
 
 export default Try;

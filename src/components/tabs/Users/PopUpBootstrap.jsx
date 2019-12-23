@@ -21,7 +21,11 @@ class PopUp extends React.Component {
           &times;
         </a>
         <div className={style.header}> Modal Title </div>
-        <Try />
+        <Try
+          handleInputChange={this.props.handleInputChange}
+          addNewUser={this.props.addNewUser}
+          close={this.props.close}
+        />
       </div>
     );
   }
