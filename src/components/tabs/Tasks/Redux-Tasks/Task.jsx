@@ -1,42 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import style from '../../../style/post.module.css';
-
 import Button from './Button';
-import Palette from './Redux-Tasks/Palette';
-import titleImg from '../../../assets/images/main/main/L1.png';
-import hightArrow from '../../../assets/images/main/main/up.svg';
-import lowArrow from '../../../assets/images/main/main/down.svg';
-import colors from '../../../js/color';
+import Palette from './Palette';
+import colors from '../../../../js/color';
 
-import { getDatePost } from '../../../js/getDate';
-import { USER, ADMIN, MENTOR } from '../../../js/roles';
+import style from '../../../../style/post.module.css';
+import titleImg from '../../../../assets/images/main/main/L1.png';
+import hightArrow from '../../../../assets/images/main/main/up.svg';
+import lowArrow from '../../../../assets/images/main/main/down.svg';
 
-class Post extends React.Component {
+import { getDatePost } from '../../../../js/getDate';
+import { USER, ADMIN, MENTOR } from '../../../../js/roles';
+
+class Task extends React.Component {
   constructor(props) {
     super(props);
-    this.setBackgroundColor = this.setBackgroundColor.bind(this);
-    this.setBackgroundColor = this.setBackgroundColor.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleChange1 = this.handleChange1.bind(this);
   }
-
-  pushTrack = (projectId, projectTitle) => {
-    this.props.addTrack(projectId, projectTitle);
-  };
-
-  handleChange(e) {
-    const name = 'newTask';
-    this.props.onChange(name, e.target.value);
-  }
-  handleChange1(e) {
-    const name = 'newTrack';
-    this.props.onChange(name, e.target.value);
-  }
-  showEditButtons = () => {
-    this.props.changePost(this.props.task.taskId, `showEditField`);
-  };
 
   setBackgroundColor(task) {
     return {
@@ -44,8 +22,13 @@ class Post extends React.Component {
     };
   }
 
+  handleChange = (e) => {
+    this.props.changeTask(e.target.value);
+  };
+
   render() {
     const { task } = this.props;
+
     return (
       <div className={style.task} style={this.setBackgroundColor(task)}>
         <div className={style.userPhotoBlock}>
@@ -85,12 +68,12 @@ class Post extends React.Component {
                   <div>
                     <Button
                       title='delete'
-                      changePost={this.props.changePost}
+                      changePost={this.props.deleteTask}
                       id={task.taskId}
                     />
                     <Button
                       title='edit'
-                      changePost={this.props.changePost}
+                      changePost={this.props.showEditField}
                       id={task.taskId}
                     />
                     {task.showChangeTaskField && (
@@ -101,7 +84,17 @@ class Post extends React.Component {
                         />
                         <Button
                           title='push'
-                          changePost={this.props.changePost}
+                          changePost={this.props.pushEditTask}
+                          id={task.taskId}
+                        />
+                        <input
+                          type='button'
+                          title='push'
+                          value='push'
+                          // changePost={this.props.pushEditTask}
+                          onClick={() => {
+                            this.props.pushEditTask(task.taskId);
+                          }}
                           id={task.taskId}
                         />
                       </div>
@@ -110,7 +103,7 @@ class Post extends React.Component {
                 )}
                 <Button
                   title='color'
-                  changePost={this.props.changePost}
+                  changePost={this.props.showEditField}
                   id={task.taskId}
                 />
                 {task.chooseColorField && (
@@ -118,7 +111,7 @@ class Post extends React.Component {
                     {colors.map((color) => (
                       <Palette
                         color={color}
-                        changePost={this.props.changePost}
+                        changePost={this.props.chooseColor}
                         id={task.taskId}
                       />
                     ))}
@@ -160,21 +153,4 @@ class Post extends React.Component {
   }
 }
 
-Post.propTypes = {
-  role: PropTypes.string,
-  newTask: PropTypes.string,
-  newTrack: PropTypes.string,
-  task: PropTypes.shape({
-    taskId: PropTypes.string,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    startDate: PropTypes.instanceOf(Date),
-    deadlineDate: PropTypes.instanceOf(Date),
-    backgroundColorPost: PropTypes.string,
-  }),
-  addTrack: PropTypes.func,
-  onChange: PropTypes.func,
-  changePost: PropTypes.func,
-};
-
-export default Post;
+export default Task;

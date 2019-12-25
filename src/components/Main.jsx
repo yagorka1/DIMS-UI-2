@@ -11,6 +11,7 @@ import Tracks from './tabs/Tracks/Tracks';
 import Tasks from './tabs/Tasks/Tasks';
 import UserProgress from './tabs/UserProgress';
 import UserTasks from './tabs/UserTasks';
+import TasksContainer from './tabs/Tasks/Redux-Tasks/TasksContainer';
 
 class Main extends React.Component {
   render() {
@@ -47,7 +48,8 @@ class Main extends React.Component {
         <Route
           path='/tasks'
           render={() => (
-            <Tasks email={this.props.email} role={this.props.role} />
+            // <Tasks email={this.props.email} role={this.props.role} />
+            <TasksContainer email={this.props.email} role={this.props.role} />
           )}
         />
         {this.props.role === 'Member' ? (
