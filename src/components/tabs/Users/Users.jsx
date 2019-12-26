@@ -91,6 +91,50 @@ class Users extends React.Component {
     }
   }
 
+  addNewUserForm = (data) => {
+    console.log(data);
+    const {
+      sex,
+      direction,
+      birthDay: date,
+      startDate,
+      firstName: name,
+      lastName,
+      email,
+      education,
+      age,
+      university,
+      mathScore,
+      address,
+      mobilePhone,
+      skype,
+    } = data;
+
+    const newUser = {
+      sex,
+      direction,
+      date,
+      startDate,
+      name,
+      lastName,
+      email,
+      education,
+      age,
+      university,
+      mathScore,
+      address,
+      mobilePhone,
+      skype,
+    };
+
+    const { users } = this.state;
+    this.setState({
+      users: [...users, newUser],
+    });
+
+    setDataInStorage(newUser, 'user');
+  };
+
   addNewUser = () => {
     const {
       sex,
@@ -145,6 +189,7 @@ class Users extends React.Component {
                 state={this.state}
                 handleInputChange={this.handleInputChange}
                 addNewUser={this.addNewUser}
+                addNewUserForm={this.addNewUserForm}
                 dateOfBirth={this.dateOfBirth}
                 onChangeStartDate={this.onChangeStartDate}
                 onChangeDirection={this.onChangeDirection}

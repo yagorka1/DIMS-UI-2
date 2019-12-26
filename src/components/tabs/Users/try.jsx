@@ -10,8 +10,7 @@ function Try(props) {
   const submit = (errors, values) => {
     if (isEmpty(errors) && !isEmpty(values)) {
       props.close();
-      // props.addNewUser();
-      alert('eeee');
+      props.addNewUser(values);
     }
   };
 
@@ -168,10 +167,10 @@ function Try(props) {
             </Form.Group>
           </Form.Row>
           <Form.Row>
-            <Form.Group as={Col} md='4' controlId='validationFormikDataStart'>
+            <Form.Group as={Col} md='3' controlId='validationFormikDataStart'>
               <Form.Label>Start data</Form.Label>
               <Form.Control
-                type='data'
+                type='date'
                 name='startData'
                 placeholder='Start data'
                 value={values.startData}
@@ -182,39 +181,53 @@ function Try(props) {
                 {errors.startData}
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md='4' controlId='validationFormik02'>
-              <Form.Label>Last name</Form.Label>
+            <Form.Group as={Col} md='3' controlId='validationFormikDateBirthDa'>
+              <Form.Label>Date of birth day</Form.Label>
               <Form.Control
-                type='text'
-                name='lastName'
-                placeholder='Last Name'
-                value={values.lastName}
+                type='date'
+                name='birthDay'
+                placeholder='Birth Day'
+                value={values.birthDay}
                 onChange={handleChange}
-                isInvalid={!!errors.lastName}
+                isInvalid={!!errors.birthDay}
               />
-
               <Form.Control.Feedback type='invalid'>
-                {errors.lastName}
+                {errors.birthDay}
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md='4' controlId='validationFormikEmail'>
-              <Form.Label>Email</Form.Label>
+            <Form.Group as={Col} md='3' controlId='validationFormikAge'>
+              <Form.Label>Age</Form.Label>
               <InputGroup>
                 <Form.Control
                   type='text'
-                  placeholder='Email'
+                  placeholder='age'
                   aria-describedby='inputGroupPrepend'
-                  name='email'
-                  value={values.email}
+                  name='age'
+                  value={values.age}
                   onChange={handleChange}
-                  isInvalid={!!errors.email}
+                  isInvalid={!!errors.age}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.email}
+                  {errors.age}
                 </Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
+            <Form.Group as={Col} md='3' controlId='validationFormikDirection'>
+              <Form.Label>Direction</Form.Label>
+              <Form.Control
+                type='text'
+                name='direction'
+                placeholder='Direction'
+                value={values.direction}
+                onChange={handleChange}
+                isInvalid={!!errors.direction}
+              />
+              <Form.Control.Feedback type='invalid'>
+                {errors.direction}
+              </Form.Control.Feedback>
+            </Form.Group>
           </Form.Row>
+
           <Button
             onClick={() => {
               submit(errors, values);
@@ -229,3 +242,18 @@ function Try(props) {
 }
 
 export default Try;
+
+// 'Name'..
+// 'LastName'..
+//  'Email'..
+//  'Education'..
+//  'Age'
+//  'University'..
+//  'MathScore'..
+//  'Address'..
+//  'MobilePhone'..
+// 'Skype'..
+// Direction:
+// Sex:
+// Date of Birth:
+// Start Date:

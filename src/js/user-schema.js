@@ -36,9 +36,19 @@ const schema = yup.object({
     .required(),
   mobilePhone: yup
     .number()
-    .min(7, 'Minimum length 7')
+    .min(1000000, 'Minimum length 7')
     .required(),
   skype: yup
+    .string()
+    .min(3, 'Minimum length 3')
+    .required(),
+  birthDay: yup.string().required(),
+  startData: yup.string().required(),
+  age: yup
+    .number()
+    .min(18)
+    .required(),
+  direction: yup
     .string()
     .min(3, 'Minimum length 3')
     .required(),

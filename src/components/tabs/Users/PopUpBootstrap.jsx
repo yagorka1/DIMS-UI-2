@@ -23,7 +23,7 @@ class PopUp extends React.Component {
         <div className={style.header}> Modal Title </div>
         <Try
           handleInputChange={this.props.handleInputChange}
-          addNewUser={this.props.addNewUser}
+          addNewUser={this.props.addNewUserForm}
           close={this.props.close}
         />
       </div>
