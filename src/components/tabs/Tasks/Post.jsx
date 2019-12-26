@@ -53,17 +53,6 @@ class Post extends React.Component {
         </div>
         <div className={style.postBody}>
           <div className={style.informAboutPost}>
-            {task.priority}
-            {task.priority === 'Hight' ? (
-              <img src={hightArrow} className={style.arrow} alt='up' />
-            ) : (
-              <></>
-            )}
-            {task.priority === 'Low' ? (
-              <img src={lowArrow} className={style.arrow} alt='up' />
-            ) : (
-              <></>
-            )}
             {getDatePost(task.startDate)}
           </div>
           <div className={style.messageBlock}>
@@ -72,14 +61,6 @@ class Post extends React.Component {
               <p>{task.description}</p>
             </div>
             <div className={style.blockFunction}>
-              {/* <button
-                className={style_button.buttonFunction}
-                onClick={this.showEditButtons}
-              >
-                {' '}
-                showEdit{' '}
-              </button> */}
-              {/* {task.showEditField && ( */}
               <div className={style.postButtons}>
                 {(this.props.role === ADMIN || this.props.role === MENTOR) && (
                   <div>
@@ -151,7 +132,6 @@ class Post extends React.Component {
                   </div>
                 )}
               </div>
-              {/* )} */}
             </div>
           </div>
         </div>

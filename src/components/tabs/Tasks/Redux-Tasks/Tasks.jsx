@@ -1,6 +1,9 @@
 import React from 'react';
 import style from '../../../../style/tasks.module.css';
 import TaskContainer from './TaskContainer';
+import PopUp from '../PopUp';
+import Popup from 'reactjs-popup';
+import { USER } from '../../../../js/roles';
 
 class Tasks extends React.Component {
   constructor(props) {
@@ -19,6 +22,20 @@ class Tasks extends React.Component {
 
     return (
       <div className={style.projects_container}>
+        {/* {this.props.role !== USER && (
+          <Popup modal trigger={<button>Add task</button>}>
+            {(close) => (
+              <PopUp
+                close={close}
+                state={this.state}
+                onChange={this.onChange}
+                addNewTask={this.addNewTask}
+                onChangeStartDate={this.onChangeStartDate}
+                onChangeDeadlineDate={this.onChangeDeadlineDate}
+              />
+            )}
+          </Popup>
+        )} */}
         <section className={style.toDo_container}>
           <h1 className={style.section_title}>
             ToDo <span className={style.count_task}>({toDoTask.length})</span>

@@ -15,6 +15,9 @@ class Button extends React.Component {
       case 'color':
         newTitle = 'chooseColorField';
         break;
+      case 'track':
+        newTitle = 'showTrackField';
+        break;
       default:
         newTitle = 'title';
     }

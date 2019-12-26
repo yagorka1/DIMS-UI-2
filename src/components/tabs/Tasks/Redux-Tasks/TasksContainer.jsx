@@ -5,10 +5,12 @@ import style from '../../../../style/preloader.module.css';
 
 import Tasks from './Tasks';
 import { Spinner } from 'react-bootstrap';
+import { getAllTracks } from '../../../../redux/track-reducer';
 
 class TasksContainer extends React.Component {
   componentDidMount() {
     this.props.getAllTasks();
+    this.props.getAllTracks();
   }
 
   render() {
@@ -33,11 +35,12 @@ class TasksContainer extends React.Component {
 let mapStateToProps = (state) => {
   return {
     tasks: state.tasks.tasks,
+    tracks: state.tracks.tracks,
     loadingInProgress: state.tasks.loadingInProgress,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getAllTasks },
+  { getAllTasks, getAllTracks },
 )(TasksContainer);

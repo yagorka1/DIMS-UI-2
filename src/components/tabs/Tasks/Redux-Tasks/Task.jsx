@@ -5,8 +5,6 @@ import colors from '../../../../js/color';
 
 import style from '../../../../style/post.module.css';
 import titleImg from '../../../../assets/images/main/main/L1.png';
-import hightArrow from '../../../../assets/images/main/main/up.svg';
-import lowArrow from '../../../../assets/images/main/main/down.svg';
 
 import { getDatePost } from '../../../../js/getDate';
 import { USER, ADMIN, MENTOR } from '../../../../js/roles';
@@ -25,6 +23,9 @@ class Task extends React.Component {
   handleChange = (e) => {
     this.props.changeTask(e.target.value);
   };
+  handleChange1 = (e) => {
+    this.props.changeTrack(e.target.value);
+  };
 
   render() {
     const { task } = this.props;
@@ -37,16 +38,6 @@ class Task extends React.Component {
         <div className={style.postBody}>
           <div className={style.informAboutPost}>
             {task.priority}
-            {task.priority === 'Hight' ? (
-              <img src={hightArrow} className={style.arrow} alt='up' />
-            ) : (
-              <></>
-            )}
-            {task.priority === 'Low' ? (
-              <img src={lowArrow} className={style.arrow} alt='up' />
-            ) : (
-              <></>
-            )}
             {getDatePost(task.startDate)}
           </div>
           <div className={style.messageBlock}>
@@ -55,14 +46,6 @@ class Task extends React.Component {
               <p>{task.description}</p>
             </div>
             <div className={style.blockFunction}>
-              {/* <button
-                className={style_button.buttonFunction}
-                onClick={this.showEditButtons}
-              >
-                {' '}
-                showEdit{' '}
-              </button> */}
-              {/* {task.showEditField && ( */}
               <div className={style.postButtons}>
                 {(this.props.role === ADMIN || this.props.role === MENTOR) && (
                   <div>
@@ -85,16 +68,6 @@ class Task extends React.Component {
                         <Button
                           title='push'
                           changePost={this.props.pushEditTask}
-                          id={task.taskId}
-                        />
-                        <input
-                          type='button'
-                          title='push'
-                          value='push'
-                          // changePost={this.props.pushEditTask}
-                          onClick={() => {
-                            this.props.pushEditTask(task.taskId);
-                          }}
                           id={task.taskId}
                         />
                       </div>
@@ -121,7 +94,7 @@ class Task extends React.Component {
                   <div>
                     <Button
                       title='track'
-                      changePost={this.props.changePost}
+                      changePost={this.props.showEditField}
                       id={task.taskId}
                     />
                     {task.showTrackField && (
@@ -133,7 +106,7 @@ class Task extends React.Component {
                         <button
                           title='pushTrack'
                           onClick={() =>
-                            this.pushTrack(task.taskId, task.title)
+                            this.props.pushTrack(task.taskId, task.title)
                           }
                           id={task.taskId}
                         >
@@ -144,7 +117,6 @@ class Task extends React.Component {
                   </div>
                 )}
               </div>
-              {/* )} */}
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import {
   chooseColor,
 } from '../../../../redux/task-reducer';
 import Task from './Task';
+import { changeTrack, pushTrack } from '../../../../redux/track-reducer';
 
 class TaskContainer extends React.Component {
   render() {
@@ -19,8 +20,11 @@ class TaskContainer extends React.Component {
           deleteTask={this.props.deleteTask}
           showEditField={this.props.showEditField}
           newTask={this.props.newTask}
+          newTrack={this.props.newTrack}
           changeTask={this.props.changeTask}
+          changeTrack={this.props.changeTrack}
           pushEditTask={this.props.pushEditTask}
+          pushTrack={this.props.pushTrack}
           chooseColor={this.props.chooseColor}
         />
       </>
@@ -31,10 +35,19 @@ class TaskContainer extends React.Component {
 let mapStateToProps = (state) => {
   return {
     newTask: state.tasks.newTask,
+    newTrack: state.tracks.newTrack,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { deleteTask, showEditField, changeTask, pushEditTask, chooseColor },
+  {
+    deleteTask,
+    showEditField,
+    changeTask,
+    pushEditTask,
+    chooseColor,
+    changeTrack,
+    pushTrack,
+  },
 )(TaskContainer);

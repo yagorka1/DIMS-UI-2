@@ -10,6 +10,7 @@ const PUSH_STATUS_LOADING = 'PUSH_STATUS_LOADING';
 let initialState = {
   tasks: [{ taskId: 1 }],
   newTask: '',
+  newTrack: '',
   loadingInProgress: false,
 };
 

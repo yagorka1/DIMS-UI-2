@@ -178,13 +178,6 @@ class Users extends React.Component {
             />
           ))}
         </div>
-        {/* <div className={style.page_numbers}>
-          <div className={style.page_number}>1</div> it will be in future versions
-          <div className={style.page_number}>2</div>
-          <div className={style.page_number}>3</div>
-          <div className={style.page_number}>4</div>
-          <div className={style.page_number}>5</div>
-        </div> */}
       </div>
     );
   }

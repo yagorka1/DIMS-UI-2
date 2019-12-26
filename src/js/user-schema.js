@@ -45,5 +45,3 @@ const schema = yup.object({
 });
 
 export { schema };
-
-// { label: 'Age', name: 'age' },
