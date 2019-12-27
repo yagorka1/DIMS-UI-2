@@ -11,10 +11,6 @@ import { USER, ADMIN, MENTOR } from '../../../../js/roles';
 import InputText from './InputText';
 
 class Task extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   setBackgroundColor(task) {
     return {
       backgroundColor: task.backgroundColorPost,
