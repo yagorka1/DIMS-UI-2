@@ -8,6 +8,7 @@ import titleImg from '../../../../assets/images/main/main/L1.png';
 
 import { getDatePost } from '../../../../js/getDate';
 import { USER, ADMIN, MENTOR } from '../../../../js/roles';
+import InputText from './InputText';
 
 class Task extends React.Component {
   constructor(props) {
@@ -21,9 +22,6 @@ class Task extends React.Component {
   }
 
   handleChange = (e) => {
-    this.props.changeTask(e.target.value);
-  };
-  handleChange1 = (e) => {
     this.props.changeTrack(e.target.value);
   };
 
@@ -61,9 +59,11 @@ class Task extends React.Component {
                     />
                     {task.showChangeTaskField && (
                       <div>
-                        <input
+                        <InputText
                           value={this.props.newTask}
-                          onChange={this.handleChange}
+                          handleInputChange={this.props.changeTask}
+                          type='text'
+                          name='newTask'
                         />
                         <Button
                           title='push'
@@ -101,12 +101,16 @@ class Task extends React.Component {
                       <div>
                         <input
                           value={this.props.newTrack}
-                          onChange={this.handleChange1}
+                          onChange={this.handleChange}
                         />
                         <button
                           title='pushTrack'
                           onClick={() =>
-                            this.props.pushTrack(task.taskId, task.title)
+                            this.props.pushTrack(
+                              task.taskId,
+                              task.title,
+                              task.userId,
+                            )
                           }
                           id={task.taskId}
                         >

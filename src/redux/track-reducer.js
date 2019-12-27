@@ -22,62 +22,32 @@ const tracksReducer = (state = initialState, action) => {
       };
     }
     case PUSH_TRACK: {
-      // const { newTrack } = this.state;
       const track = {
         taskId: action.taskId,
-        userId: 'edede',
+        userId: action.userId,
         trackId: getId(),
         taskName: action.taskTitle,
         trackNode: state.newTrack,
         trackDate: new Date(),
       };
 
-      // console.log('state')
-      // console.log(state)
       const { tracks } = state;
-      console.log('state');
-      console.log(state);
       return { ...state, tracks: [...tracks, track] };
     }
-    // case CHOOSE_COLOR: {
-    //   return {
-    //     ...state,
-    //     tasks: state.tasks.map((task) => {
-    //       if (task.taskId === action.id) {
-    //         return {
-    //           ...task,
-    //           backgroundColorPost: action.color,
-    //           chooseColorField: false,
-    //         };
-    //       }
-    //       return task;
-    //     }),
-    //   };
-    // }
-    // case PUSH_STATUS_LOADING: {
-    //   return {
-    //     ...state,
-    //     loadingInProgress: action.status,
-    //   };
-    // }
     default:
       return state;
   }
 };
 
 export const setTracks = (tracks) => ({ type: SET_TRACK, tracks });
-// export const deleteTask = (id) => ({ type: DELETE_TASK, id });
+
 export const changeTrack = (newTrack) => ({ type: CHANGE_TRACK, newTrack });
-export const pushTrack = (taskId, taskTitle) => ({
+export const pushTrack = (taskId, taskTitle, userId) => ({
   type: PUSH_TRACK,
   taskId,
   taskTitle,
+  userId,
 });
-// export const chooseColor = (id, color) => ({ type: CHOOSE_COLOR, id, color });
-// export const isDataFetching = (status) => ({
-//   type: PUSH_STATUS_LOADING,
-//   status,
-// });
 
 export const showEditField = (id, name) => ({
   type: SHOW_EDIT_FIELD,

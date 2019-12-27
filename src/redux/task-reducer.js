@@ -2,7 +2,7 @@ import { tasksAPI } from '../api/tasks-api';
 const SET_TASKS = 'SET_TASKS';
 const DELETE_TASK = 'DELETE_TASK';
 const SHOW_EDIT_FIELD = 'SHOW_EDIT_FIELD';
-const CHANGE_TASK = 'CHANGE_TASK';
+const ON_CHANGE = 'ON_CHANGE';
 const PUSH_EDIT_TASK = 'PUSH_EDIT_TASK';
 const CHOOSE_COLOR = 'CHOOSE_COLOR';
 const PUSH_STATUS_LOADING = 'PUSH_STATUS_LOADING';
@@ -40,10 +40,10 @@ const tasksReducer = (state = initialState, action) => {
         }),
       };
     }
-    case CHANGE_TASK: {
+    case ON_CHANGE: {
       return {
         ...state,
-        newTask: action.newTask,
+        [action.name]: action.value,
       };
     }
     case PUSH_EDIT_TASK: {
@@ -89,7 +89,7 @@ const tasksReducer = (state = initialState, action) => {
 
 export const setTasks = (tasks) => ({ type: SET_TASKS, tasks });
 export const deleteTask = (id) => ({ type: DELETE_TASK, id });
-export const changeTask = (newTask) => ({ type: CHANGE_TASK, newTask });
+export const changeTask = (name, value) => ({ type: ON_CHANGE, name, value });
 export const pushEditTask = (id) => ({ type: PUSH_EDIT_TASK, id });
 export const chooseColor = (id, color) => ({ type: CHOOSE_COLOR, id, color });
 export const isDataFetching = (status) => ({

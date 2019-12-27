@@ -92,7 +92,6 @@ class Users extends React.Component {
   }
 
   addNewUserForm = (data) => {
-    console.log(data);
     const {
       sex,
       direction,
