@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Form, InputGroup, Col } from 'react-bootstrap';
 import { isEmpty } from '../../../js/checkAddUserForm';
-import * as yup from 'yup';
 
 import { Formik } from 'formik';
 import { schema } from '../../../js/user-schema';
 
-function Try(props) {
+function AddUserForm(props) {
   const submit = (errors, values) => {
     if (isEmpty(errors) && !isEmpty(values)) {
       props.close();
@@ -241,19 +240,4 @@ function Try(props) {
   );
 }
 
-export default Try;
-
-// 'Name'..
-// 'LastName'..
-//  'Email'..
-//  'Education'..
-//  'Age'
-//  'University'..
-//  'MathScore'..
-//  'Address'..
-//  'MobilePhone'..
-// 'Skype'..
-// Direction:
-// Sex:
-// Date of Birth:
-// Start Date:
+export default AddUserForm;

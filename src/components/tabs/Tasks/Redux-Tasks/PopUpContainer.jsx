@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {} from '../../../../redux/task-reducer';
 
-import PopUp from './PopUp';
-
 class PopUpContainer extends React.Component {
   render() {
     return (

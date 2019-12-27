@@ -5,15 +5,6 @@ import Main from './Main';
 // import axios from 'axios';
 
 class Content extends React.Component {
-  componentDidMount() {
-    // const users = axios
-    //   .get(`http://localhost:50698/api/profiles`)
-    //   .then((res) => {
-    //     console.log(res.data);
-    //   });
-    // console.log(users);
-  }
-
   render() {
     return (
       <div className={style.content}>

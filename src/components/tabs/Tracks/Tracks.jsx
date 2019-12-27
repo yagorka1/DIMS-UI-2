@@ -7,7 +7,6 @@ import {
 } from '../../../js/setDataInStorage';
 import getId from '../../../js/getId';
 import { getTracks } from '../../../js/tracks';
-import { saveTrackInDB } from '../../../db/tracks';
 
 class Tracks extends React.Component {
   constructor(props) {
@@ -50,7 +49,6 @@ class Tracks extends React.Component {
       }),
     });
 
-    saveTrackInDB(track, track.trackId);
     setDataInStorage(track, 'trac');
   };
 
