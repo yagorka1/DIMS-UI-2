@@ -88,9 +88,9 @@ const tasksReducer = (state = initialState, action) => {
 };
 
 export const setTasks = (tasks) => ({ type: SET_TASKS, tasks });
-export const deleteTask = (id) => ({ type: DELETE_TASK, id });
+export const deleteTaskAction = (id) => ({ type: DELETE_TASK, id });
 export const changeTask = (name, value) => ({ type: ON_CHANGE, name, value });
-export const pushEditTask = (id) => ({ type: PUSH_EDIT_TASK, id });
+export const pushEditTaskAction = (id) => ({ type: PUSH_EDIT_TASK, id });
 export const chooseColor = (id, color) => ({ type: CHOOSE_COLOR, id, color });
 export const isDataFetching = (status) => ({
   type: PUSH_STATUS_LOADING,
@@ -110,6 +110,21 @@ export const getAllTasks = () => {
       dispatch(isDataFetching(false));
       dispatch(setTasks(response));
     });
+  };
+};
+
+export const deleteTask = (id) => {
+  return (dispatch) => {
+    dispatch(deleteTaskAction(id));
+    //tasksAPI.deleteDataFromStorage(id, 'taskId');
+  };
+};
+
+export const pushEditTask = (id) => {
+  return (dispatch) => {
+    dispatch(pushEditTaskAction(id));
+    // alert(state.newTask);
+    tasksAPI.deleteDataFromStorage(id, 'taskId');
   };
 };
 
