@@ -13,7 +13,7 @@ import colors from '../../../js/color';
 import getId from '../../../js/getId';
 import { getUsers } from '../../../js/users';
 import { getTracks } from '../../../js/tracks';
-import getTasks from '../../../js/tasks';
+import { getTasks } from '../../../js/tasks';
 import { USER } from '../../../js/roles';
 import { getAllTasks } from '../../../js/allTasks';
 import {

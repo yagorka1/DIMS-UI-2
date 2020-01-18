@@ -4,34 +4,21 @@ import TaskContainer from './TaskContainer';
 import PopUpContainer from './PopUpContainer';
 import Popup from 'reactjs-popup';
 import { USER } from '../../../../js/roles';
+import { getUserTask } from '../../../../js/tasks';
 
 class Tasks extends React.Component {
-  getTask(tasks, name) {
-    const newTasks = tasks.filter((task) => task.state === name);
-    return newTasks;
-  }
   render() {
-    const { tasks } = this.props;
+    const { tasks, email, role } = this.props;
 
-    const toDoTask = this.getTask(tasks, 'toDo');
-    const inProgressTask = this.getTask(tasks, 'inProgress');
-    const completedTask = this.getTask(tasks, 'completed');
+    const toDoTask = getUserTask(tasks, 'toDo', email, role);
+    const inProgressTask = getUserTask(tasks, 'inProgress', email, role);
+    const completedTask = getUserTask(tasks, 'completed', email, role);
 
     return (
       <div className={style.projects_container}>
         {this.props.role !== USER && (
           <Popup modal trigger={<button>Add task</button>}>
-            {(close) => (
-              <PopUpContainer close={close} />
-              // <PopUp
-              //   close={close}
-              //   state={this.state}
-              //   onChange={this.onChange}
-              //   addNewTask={this.addNewTask}
-              //   onChangeStartDate={this.onChangeStartDate}
-              //   onChangeDeadlineDate={this.onChangeDeadlineDate}
-              // />
-            )}
+            {(close) => <PopUpContainer close={close} />}
           </Popup>
         )}
         <section className={style.toDo_container}>

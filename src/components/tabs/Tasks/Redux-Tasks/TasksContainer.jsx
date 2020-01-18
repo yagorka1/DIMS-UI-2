@@ -25,7 +25,11 @@ class TasksContainer extends React.Component {
             />
           </div>
         ) : (
-          <Tasks tasks={this.props.tasks} role={this.props.role} />
+          <Tasks
+            tasks={this.props.tasks}
+            role={this.props.role}
+            email={this.props.email}
+          />
         )}
       </>
     );

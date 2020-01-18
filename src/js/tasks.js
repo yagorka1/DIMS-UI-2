@@ -15,4 +15,15 @@ const getTasks = (email) => {
   return userTasks;
 };
 
-export default getTasks;
+const getUserTask = (tasks, name, email, role) => {
+  const newTasks = tasks.filter((task) => {
+    if (role === 'Member' && task.state === name && email === task.userId) {
+      return task;
+    } else if (task.state === name && role !== 'Member') {
+      return task;
+    }
+  });
+  return newTasks;
+};
+
+export { getTasks, getUserTask };
