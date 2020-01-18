@@ -17,13 +17,27 @@ class PopUp extends React.Component {
     this.setState({ users });
   }
 
+  addUser = (email, event) => {
+    const { checkedUsers } = this.state;
+    if (event.target.checked) {
+      this.setState({
+        checkedUsers: [...checkedUsers, email],
+      });
+    } else {
+      this.setState({
+        checkedUsers: checkedUsers.filter((user) => user !== email),
+      });
+    }
+  };
+
   handleInputChange = (name, event) => {
     this.props.onChange(name, event.target.value);
   };
 
-  onChangeStartDate = (startDate) => this.props.onChangeStartDate(startDate);
+  onChangeStartDate = (startDate) =>
+    this.props.onChange('startDate', startDate);
   onChangeDeadlineDate = (deadlineDate) =>
-    this.props.onChangeDeadlineDate(deadlineDate);
+    this.props.onChange('deadlineDate', deadlineDate);
 
   addNewTask = () => {
     this.props.close();
