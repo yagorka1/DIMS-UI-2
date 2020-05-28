@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/content.module.css';
+import style from '../style/Content.module.css';
 import Header from './Header';
 import Main from './Main';
 import axios from 'axios';

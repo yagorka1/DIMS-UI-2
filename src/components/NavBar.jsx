@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/navbar.module.css';
+import style from '../style/Navbar.module.css';
 
 import NavbarItem from './NavbarItem';
 import logo from '../assets/images/navbar/logo.png';
@@ -19,6 +19,7 @@ class NavBar extends React.Component {
 
   render() {
     let routes = getRotes(this.props.role);
+    debugger;
 
     return (
       <nav className={style.navbar}>

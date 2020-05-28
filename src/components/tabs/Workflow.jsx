@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../style/workflow.module.css';
+import style from '../../style/Workflow.module.css';
 import Task from './Task';
 import getTasks from '../../js/tasks';
 import { setChangeDataInStorage } from '../../js/setDataInStorage';

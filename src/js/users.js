@@ -1,5 +1,8 @@
 import { USER } from './roles';
 const getUsers = () => {
+  // const a = { email: 'aaa', password: '123', direction: 'Admin' };
+  // const b = JSON.stringify(a);
+  // localStorage.setItem('user_1', b)
   const users = [];
   for (let i = 0; i < localStorage.length; i++) {
     const storageId = localStorage.key(i);

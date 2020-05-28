@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0abcc10b-1717-4294-8f30-e4821155ef66" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavbarItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavbarItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Task.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Palette.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Palette.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Post.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Tasks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Tasks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tracks/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tracks/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tracks/Track.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tracks/Track.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tracks/Tracks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tracks/Tracks.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Users/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Users/Button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Users/User.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Users/User.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Users/Users.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Workflow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Workflow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/routes_names.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/routes_names.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/users.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1cUic7eeGsU0RmVxaGBrmI8432L" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/work/projects/parfin/parfin-frontend" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0abcc10b-1717-4294-8f30-e4821155ef66" name="Default Changelist" comment="" />
+      <created>1590589648981</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590589648981</updated>
+      <workItem from="1590589651075" duration="1406000" />
+      <workItem from="1590603815621" duration="1741000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590609106139">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590609106139" />
+  </component>
+</project>

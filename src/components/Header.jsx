@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/header.module.css';
+import style from '../style/Header.module.css';
 import menu from '../assets/images/header/menu.png';
 import user_photo from '../assets/images/header/user.png';
 

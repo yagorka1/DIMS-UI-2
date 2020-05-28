@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../style/tasks.module.css';
+import style from '../../../style/Tasks.module.css';
 import Popup from 'reactjs-popup';
 import PopUp from './PopUp.jsx';
 import Post from './Post';
@@ -265,7 +265,7 @@ class Tasks extends React.Component {
 
     return (
       <div className={style.projects_container}>
-        {this.props.role !== USER && (
+        {this.props.role !== 'dd' && ( // TODO set role
           <Popup modal trigger={<button>Add post</button>}>
             {(close) => (
               <PopUp

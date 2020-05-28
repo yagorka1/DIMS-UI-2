@@ -1,6 +1,6 @@
 import React from 'react';
 import Track from './Track';
-import style from '../../../style/tracks.module.css';
+import style from '../../../style/Tracks.module.css';
 import {
   setDataInStorage,
   deleteDataFromStorage,

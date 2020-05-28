@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import style from '../style/navbar.module.css';
+import style from '../style/Navbar.module.css';
 import { getTitle } from '../js/routes_names';
 
 class NavbarItem extends React.Component {

@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../style/main.module.css';
+import style from '../style/Main.module.css';
 import { Route } from 'react-router-dom';
 
 import Home from './tabs/Home';

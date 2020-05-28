@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../../style/users.module.css';
+import style from '../../../style/Users.module.css';
 import User from './User';
 import Popup from 'reactjs-popup';
 import PopUp from './PopUp';

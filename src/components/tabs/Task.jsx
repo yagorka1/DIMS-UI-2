@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../../style/task.module.css';
+import style from '../../style/Task.module.css';
 import task_photo from '../../assets/images/main/task.png';
 import clock_offline from '../../assets/images/main/clock_offline.svg';
 import clock_outline from '../../assets/images/main/clock-outline.svg';
