@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../../../style/Track.module.css';
 
-import { getDate } from '../../../js/getDate';
+import { getDate, getTimeTask } from '../../../js/getDate';
 import Button from './Button';
 
 class Track extends React.Component {
@@ -22,7 +22,9 @@ class Track extends React.Component {
           <span className={style.user_name}>{getDate(track.trackDate)}</span>
         </div>
         <div className={style.time_container}>
-          <span className={style.user_name}>{track.timeOnTrack}</span>
+          <span className={style.user_name}>
+            {getTimeTask(track.timeOnTrack)}
+          </span>
         </div>
         <div className={style.buttons_container}>
           <Button

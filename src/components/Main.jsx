@@ -4,13 +4,13 @@ import { Route } from 'react-router-dom';
 
 import Home from './tabs/Home';
 import Workflow from './tabs/Workflow';
-import Statistics from './tabs/Statistics';
 import Calendar from './tabs/Calendar';
 import Users from './tabs/Users/Users';
 import Tracks from './tabs/Tracks/Tracks';
 import Tasks from './tabs/Tasks/Tasks';
 import UserProgress from './tabs/UserProgress';
 import UserTasks from './tabs/UserTasks';
+import Statistics from './tabs/Statistics/Statistics';
 
 class Main extends React.Component {
   render() {

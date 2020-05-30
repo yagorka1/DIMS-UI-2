@@ -1,8 +1,8 @@
 import React from 'react';
 import style from '../../../style/pop-up.module.css';
 import InputText from '../../InputText';
-import DatePicker from 'react-date-picker';
 import { getUsers, getMembers } from '../../../js/users';
+import TimeField from 'react-simple-timefield';
 
 class PopUpTrack extends React.Component {
   constructor(props) {
@@ -47,12 +47,19 @@ class PopUpTrack extends React.Component {
               type='text'
               name='newTrack'
             />
-            <InputText
-              label='Spent time'
+            {/*<InputText*/}
+            {/*  label='Spent time'*/}
+            {/*  value={this.props.newTimeTrack}*/}
+            {/*  handleInputChange={this.handleInputChange}*/}
+            {/*  type='text'*/}
+            {/*  name='newTimeTrack'*/}
+            {/*/>*/}
+            <label htmlFor='time'>Время: </label>
+            <TimeField
               value={this.props.newTimeTrack}
-              handleInputChange={this.handleInputChange}
-              type='text'
-              name='newTimeTrack'
+              onChange={(event, value) =>
+                this.handleInputChange('newTimeTrack', value)
+              }
             />
             <button
               title='pushTrack'

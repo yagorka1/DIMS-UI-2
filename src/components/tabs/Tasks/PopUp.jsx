@@ -3,6 +3,7 @@ import style from '../../../style/pop-up.module.css';
 import InputText from '../../InputText';
 import DatePicker from 'react-date-picker';
 import { getUsers, getMembers } from '../../../js/users';
+import TimeField from 'react-simple-timefield';
 
 class PopUp extends React.Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class PopUp extends React.Component {
 
   handleInputChange = (name, event) => {
     this.props.onChange(name, event.target.value);
+  };
+
+  handleInputChangeTime = (name, event) => {
+    this.props.onChange(name, event);
   };
 
   onChangeStartDate = (startDate) => this.props.onChangeStartDate(startDate);
@@ -71,12 +76,19 @@ class PopUp extends React.Component {
             type='text'
             name='newDescription'
           />
-          <InputText
-            label='Time on task'
+          {/*<InputText*/}
+          {/*  label='Time on task'*/}
+          {/*  value={this.props.state.newTime}*/}
+          {/*  handleInputChange={this.props.onChange}*/}
+          {/*  type='text'*/}
+          {/*  name='newTime'*/}
+          {/*/>*/}
+          <label htmlFor='time'>Время: </label>
+          <TimeField
             value={this.props.state.newTime}
-            handleInputChange={this.props.onChange}
-            type='text'
-            name='newTime'
+            onChange={(event, value) =>
+              this.handleInputChangeTime('newTime', value)
+            }
           />
           {/*<TimeField value={this.props.state.newTime} onChange={this.onTimeChange} />*/}
           Start Date:

@@ -9,7 +9,7 @@ import hightArrow from '../../../assets/images/main/main/up.svg';
 import lowArrow from '../../../assets/images/main/main/down.svg';
 import colors from '../../../js/color';
 
-import { getDatePost } from '../../../js/getDate';
+import { getDatePost, getTimeTask } from '../../../js/getDate';
 import { USER, ADMIN, MENTOR } from '../../../js/roles';
 import PopUpTrack from './PopUpTrack';
 import Popup from 'reactjs-popup';
@@ -86,15 +86,15 @@ class Post extends React.Component {
               <div className={style.timeWrapper}>
                 <div className={style.timeBlock}>
                   <p>Total time on task</p>
-                  <p>{task.timeOnTask}</p>
+                  <p>{getTimeTask(task.timeOnTask)}</p>
                 </div>
                 <div className={style.timeBlock}>
                   <p>Time left</p>
-                  <p>{timeLeft}</p>
+                  <p>{getTimeTask(timeLeft)}</p>
                 </div>
                 <div className={style.timeBlock}>
                   <p>Spent time</p>
-                  <p>{task.spentTime}</p>
+                  <p>{getTimeTask(task.spentTime)}</p>
                 </div>
               </div>
             </div>

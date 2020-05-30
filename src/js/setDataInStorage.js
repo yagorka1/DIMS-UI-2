@@ -10,7 +10,6 @@ const setDataInStorage = (data, nameOfData) => {
   const max = Math.max.apply(null, mas) + 1;
 
   const storageId = nameOfData + '_' + max;
-  alert(storageId);
   localStorage.setItem(storageId, JSON.stringify(data));
   alert(`${nameOfData} has been added`);
 };
