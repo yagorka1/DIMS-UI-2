@@ -21,12 +21,17 @@ class PopUp extends React.Component {
   };
 
   onChangeStartDate = (startDate) => this.props.onChangeStartDate(startDate);
+  onTimeChange = (time) => this.props.onChangeTaskTime(time);
   onChangeDeadlineDate = (deadlineDate) =>
     this.props.onChangeDeadlineDate(deadlineDate);
 
   addNewTask = () => {
     this.props.close();
-    this.props.addNewTask(this.state.checkedUsers);
+    if (this.state.checkedUsers.length === 0) {
+      this.props.addNewTask([this.props.email]);
+    } else {
+      this.props.addNewTask(this.state.checkedUsers);
+    }
   };
 
   addUser = (email, event) => {
@@ -66,6 +71,14 @@ class PopUp extends React.Component {
             type='text'
             name='newDescription'
           />
+          <InputText
+            label='Time on task'
+            value={this.props.state.newTime}
+            handleInputChange={this.props.onChange}
+            type='text'
+            name='newTime'
+          />
+          {/*<TimeField value={this.props.state.newTime} onChange={this.onTimeChange} />*/}
           Start Date:
           <DatePicker
             onChange={this.onChangeStartDate}
@@ -76,19 +89,23 @@ class PopUp extends React.Component {
             onChange={this.onChangeDeadlineDate}
             value={this.props.state.deadlineDate}
           />
-          Users:
-          {members.map((user) => (
+          {this.props.role !== 'Member' && (
             <div>
-              <input
-                type='checkbox'
-                name='users'
-                onClick={(event) => {
-                  this.addUser(user.email, event);
-                }}
-              />
-              {user.name} ({user.email})
+              Users:
+              {members.map((user) => (
+                <div>
+                  <input
+                    type='checkbox'
+                    name='users'
+                    onClick={(event) => {
+                      this.addUser(user.email, event);
+                    }}
+                  />
+                  {user.name} ({user.email})
+                </div>
+              ))}
             </div>
-          ))}
+          )}
           <input type='button' onClick={this.addNewTask} value='Save' />
         </form>
       </div>

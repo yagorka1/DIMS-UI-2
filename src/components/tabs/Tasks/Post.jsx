@@ -11,6 +11,8 @@ import colors from '../../../js/color';
 
 import { getDatePost } from '../../../js/getDate';
 import { USER, ADMIN, MENTOR } from '../../../js/roles';
+import PopUpTrack from './PopUpTrack';
+import Popup from 'reactjs-popup';
 
 class Post extends React.Component {
   constructor(props) {
@@ -43,8 +45,18 @@ class Post extends React.Component {
     };
   }
 
+  getLeftTime(task) {
+    let leftTime = task.timeOnTask - task.spentTime;
+    if (leftTime > 0) {
+      return leftTime;
+    } else {
+      return 0;
+    }
+  }
+
   render() {
     const { task } = this.props;
+    const timeLeft = this.getLeftTime(task);
     return (
       <div className={style.task} style={this.setBackgroundColor(task)}>
         <div className={style.userPhotoBlock}>
@@ -67,8 +79,24 @@ class Post extends React.Component {
           </div>
           <div className={style.messageBlock}>
             <div className={style.message}>
-              <h4 className={style.postTitle}>{task.title}</h4>
-              <p>{task.description}</p>
+              <div className={style.messageTitle}>
+                <h4 className={style.postTitle}>{task.title}</h4>
+                <p>{task.description}</p>
+              </div>
+              <div className={style.timeWrapper}>
+                <div className={style.timeBlock}>
+                  <p>Total time on task</p>
+                  <p>{task.timeOnTask}</p>
+                </div>
+                <div className={style.timeBlock}>
+                  <p>Time left</p>
+                  <p>{timeLeft}</p>
+                </div>
+                <div className={style.timeBlock}>
+                  <p>Spent time</p>
+                  <p>{task.spentTime}</p>
+                </div>
+              </div>
             </div>
             <div className={style.blockFunction}>
               <button
@@ -80,34 +108,31 @@ class Post extends React.Component {
               </button>
               {task.showEditField && (
                 <div className={style.postButtons}>
-                  {(this.props.role === ADMIN ||
-                    this.props.role === MENTOR) && (
-                    <div>
-                      <Button
-                        title='delete'
-                        changePost={this.props.changePost}
-                        id={task.taskId}
-                      />
-                      <Button
-                        title='edit'
-                        changePost={this.props.changePost}
-                        id={task.taskId}
-                      />
-                      {task.showChangeTaskField && (
-                        <div>
-                          <input
-                            value={this.props.newTask}
-                            onChange={this.handleChange}
-                          />
-                          <Button
-                            title='push'
-                            changePost={this.props.changePost}
-                            id={task.taskId}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  )}
+                  <div>
+                    <Button
+                      title='delete'
+                      changePost={this.props.changePost}
+                      id={task.taskId}
+                    />
+                    <Button
+                      title='edit'
+                      changePost={this.props.changePost}
+                      id={task.taskId}
+                    />
+                    {task.showChangeTaskField && (
+                      <div>
+                        <input
+                          value={this.props.newTask}
+                          onChange={this.handleChange}
+                        />
+                        <Button
+                          title='push'
+                          changePost={this.props.changePost}
+                          id={task.taskId}
+                        />
+                      </div>
+                    )}
+                  </div>
                   <Button
                     title='color'
                     changePost={this.props.changePost}
@@ -131,6 +156,18 @@ class Post extends React.Component {
                         changePost={this.props.changePost}
                         id={task.taskId}
                       />
+                      <Popup modal trigger={<button>Add Track</button>}>
+                        {(close) => (
+                          <PopUpTrack
+                            close={close}
+                            onChange={this.props.onChange}
+                            addTrack={this.props.addTrack}
+                            task={task}
+                            newTrack={this.props.newTrack}
+                            newTimeTrack={this.props.newTimeTrack}
+                          />
+                        )}
+                      </Popup>
                       {task.showTrackField && (
                         <div>
                           <input

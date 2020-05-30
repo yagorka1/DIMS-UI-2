@@ -53,8 +53,21 @@
 
 .message {
   display: flex;
-  flex-direction: column;
   width: 80%;
+}
+
+.timeWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+
+.timeBlock {
+  width: 33%;
+}
+
+.messageTitle {
+  width: 50%;
 }
 
 .postTitle {

@@ -1,8 +1,10 @@
 import React from 'react';
+import style from '../style/Input.module.css';
 
 class InputText extends React.Component {
   onChange = (event) => {
     const { name } = this.props;
+
     this.props.handleInputChange(name, event.target.value);
   };
 
@@ -14,9 +16,12 @@ class InputText extends React.Component {
         <input
           value={value}
           onChange={this.onChange}
+          // onInput={this.onChange}
           type={type}
           name={name}
           placeholder={this.props.name}
+          // className={style.inputTime}
+          // max={12}
         />
       </label>
     );

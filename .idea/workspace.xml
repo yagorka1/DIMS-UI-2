@@ -2,28 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0abcc10b-1717-4294-8f30-e4821155ef66" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/PopUpTrack.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/style/Input.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Content.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InputText.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InputText.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavbarItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavbarItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Task.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Palette.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Palette.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/PopUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/PopUp.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Post.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Post.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tabs/Tasks/Tasks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tasks/Tasks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Tracks/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tracks/Button.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tabs/Tracks/Track.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tracks/Track.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tabs/Tracks/Tracks.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Tracks/Tracks.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Users/Button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Users/Button.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Users/User.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Users/User.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Users/Users.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tabs/Workflow.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tabs/Workflow.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/actions_names.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/actions_names.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/js/routes_names.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/routes_names.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/setDataInStorage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/setDataInStorage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/Post.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Post.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/Track.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Track.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/Tracks.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Tracks.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/pop-up.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/pop-up.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +41,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/work/projects/parfin/parfin-frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/tabs/Tasks" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -59,6 +62,14 @@
       <updated>1590589648981</updated>
       <workItem from="1590589651075" duration="1406000" />
       <workItem from="1590603815621" duration="1741000" />
+      <workItem from="1590671307087" duration="11509000" />
+      <workItem from="1590730284002" duration="64000" />
+      <workItem from="1590730380722" duration="5884000" />
+      <workItem from="1590736668711" duration="599000" />
+      <workItem from="1590741513402" duration="2224000" />
+      <workItem from="1590744343925" duration="2006000" />
+      <workItem from="1590825963582" duration="13000" />
+      <workItem from="1590843629567" duration="3916000" />
     </task>
     <servers />
   </component>
@@ -66,9 +77,17 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590609106139">
+    <state x="532" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1590671323778">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590609106139" />
+    <state x="532" y="100" width="912" height="904" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1590671323778" />
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1590825974785">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1590825974785" />
+    <state x="684" y="291" width="618" height="522" key="find.popup" timestamp="1590845480249">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="684" y="291" width="618" height="522" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1590845480249" />
   </component>
 </project>
