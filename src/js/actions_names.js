@@ -10,6 +10,7 @@ const TRACK = `track`;
 const COLOR = `color`;
 const CHANGE_BACKGROUND_COLOR = `changeBackgroundColor`;
 const PUSH = `push`;
+const CHANGE_SPENT_TIME = `changeSpentTime`;
 const PUSH_TRACK = `pushTrack`;
 
 export {
@@ -26,4 +27,5 @@ export {
   CHANGE_BACKGROUND_COLOR,
   PUSH,
   PUSH_TRACK,
+  CHANGE_SPENT_TIME,
 };

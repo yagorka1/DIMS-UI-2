@@ -20,7 +20,6 @@ const routesMentor = [
 
 const getRotes = (direction) => {
   if (direction === ADMIN) {
-    debugger;
     return routesAdmin;
   }
   if (direction === MENTOR) {

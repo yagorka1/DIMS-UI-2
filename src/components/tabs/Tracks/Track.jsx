@@ -21,6 +21,9 @@ class Track extends React.Component {
         <div className={style.date_container}>
           <span className={style.user_name}>{getDate(track.trackDate)}</span>
         </div>
+        <div className={style.time_container}>
+          <span className={style.user_name}>{track.timeOnTrack}</span>
+        </div>
         <div className={style.buttons_container}>
           <Button
             title='edit'

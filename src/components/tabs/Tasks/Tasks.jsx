@@ -24,6 +24,7 @@ import {
   PUSH,
   PUSH_TRACK,
   CHANGE_STATUS,
+  CHANGE_SPENT_TIME,
 } from '../../../js/actions_names';
 
 class Tasks extends React.Component {
@@ -37,6 +38,8 @@ class Tasks extends React.Component {
       newTrackName: '',
       startDate: '',
       deadlineDate: '',
+      newTime: '',
+      newTimeTrack: '',
     };
 
     this.changePost = this.changePost.bind(this);
@@ -60,6 +63,8 @@ class Tasks extends React.Component {
       startDate: '',
       deadlineDate: '',
       newTrack: '',
+      newTime: '',
+      newTimeTrack: '',
     });
   };
 
@@ -68,7 +73,7 @@ class Tasks extends React.Component {
   }
 
   addTrack = (projectId, projectTitle) => {
-    const { newTrack } = this.state;
+    const { newTrack, newTimeTrack } = this.state;
     const track = {
       taskId: projectId,
       userId: this.props.email,
@@ -76,6 +81,7 @@ class Tasks extends React.Component {
       taskName: projectTitle,
       trackNode: newTrack,
       trackDate: new Date(),
+      timeOnTrack: newTimeTrack,
     };
 
     const { tracks } = this.state;
@@ -86,7 +92,7 @@ class Tasks extends React.Component {
     this.setState({
       tasks: this.state.tasks.map((task) => {
         if (task.taskId === projectId) {
-          setChangeDataInStorage(task, 'taskId', 'task');
+          this.changeSpentTimeTask(task);
           return { ...task, showTrackField: false };
         }
         return task;
@@ -97,9 +103,12 @@ class Tasks extends React.Component {
   };
 
   onChangeStartDate = (startDate) => this.setState({ startDate });
+  onChangeTaskTime = (newTime) => this.setState({ newTime });
   onChangeDeadlineDate = (deadlineDate) => this.setState({ deadlineDate });
 
   addNewTask = (emails) => {
+    console.log(this.state.newTime);
+
     const { startDate, deadlineDate } = this.state;
     for (let i = 0; i < emails.length; i++) {
       const newTask = {
@@ -109,6 +118,8 @@ class Tasks extends React.Component {
         description: this.state.newDescription,
         startDate,
         deadlineDate,
+        timeOnTask: this.state.newTime,
+        spentTime: 0,
         state: 'toDo',
         showEditFields: false,
 
@@ -161,6 +172,16 @@ class Tasks extends React.Component {
       description: this.state.newTask,
       showChangeTaskField: false,
     };
+  }
+
+  changeSpentTimeTask(task) {
+    let newTime = task.spentTime + Number(this.state.newTimeTrack);
+    const newTask = {
+      ...task,
+      spentTime: Number(newTime),
+      showChangeTaskField: false,
+    };
+    setChangeDataInStorage(newTask, 'taskId', 'task');
   }
 
   showEditField(task) {
@@ -216,6 +237,10 @@ class Tasks extends React.Component {
           break;
         }
         case PUSH: {
+          task = this.pushEditTask(task);
+          break;
+        }
+        case CHANGE_SPENT_TIME: {
           task = this.pushEditTask(task);
           break;
         }
@@ -275,6 +300,9 @@ class Tasks extends React.Component {
                 addNewTask={this.addNewTask}
                 onChangeStartDate={this.onChangeStartDate}
                 onChangeDeadlineDate={this.onChangeDeadlineDate}
+                onChangeTaskTime={this.onChangeTaskTime}
+                role={this.props.role}
+                email={this.props.email}
               />
             )}
           </Popup>
@@ -290,6 +318,7 @@ class Tasks extends React.Component {
               changePost={this.changePost}
               newTask={this.state.newTask}
               newTrack={this.state.newTrack}
+              newTimeTrack={this.state.newTimeTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
               role={this.props.role}

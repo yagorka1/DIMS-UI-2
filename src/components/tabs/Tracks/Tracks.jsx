@@ -14,6 +14,7 @@ class Tracks extends React.Component {
     this.state = {
       newTrack: '',
       newTrackName: '',
+      timeOnTrack: '',
     };
 
     this.changeTrack = this.changeTrack.bind(this);
@@ -25,13 +26,14 @@ class Tracks extends React.Component {
   }
 
   addNewTrack = (projectId, projectTitle) => {
-    const { newTrack } = this.state;
+    const { newTrack, timeOnTrack } = this.state;
     const track = {
       taskId: projectId,
       userId: this.props.email,
       trackId: getId(),
       taskName: projectTitle,
       trackNode: newTrack,
+      timeOnTrack: timeOnTrack,
       trackDate: new Date(),
     };
 
@@ -96,6 +98,7 @@ class Tracks extends React.Component {
           <div className={style.table_item}>Task</div>
           <div className={style.table_item}>Note</div>
           <div className={style.table_item}>Date</div>
+          <div className={style.table_item}>Spent Time</div>
           <div className={style.table_item}></div>
         </div>
         <div className={style.tracks}>

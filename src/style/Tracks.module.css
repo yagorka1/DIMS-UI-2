@@ -48,7 +48,11 @@
 }
 
 .table_item:nth-child(4) {
-  width: 45%;
+  width: 15%;
+}
+
+.table_item:nth-child(5) {
+  width: 29%;
 }
 
 .users {
