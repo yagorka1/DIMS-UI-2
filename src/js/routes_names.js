@@ -11,11 +11,13 @@ const routesMember = [
   { title: '/workflow', image: settings },
   { title: '/tasks', image: settings },
   { title: '/tracks', image: settings },
+  { title: '/statistics', image: settings },
 ];
 
 const routesMentor = [
   { title: '/users', image: users },
   { title: '/tasks', image: settings },
+  { title: '/statistics', image: settings },
 ];
 
 const getRotes = (direction) => {

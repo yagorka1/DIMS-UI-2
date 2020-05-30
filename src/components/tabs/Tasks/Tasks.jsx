@@ -72,6 +72,15 @@ class Tasks extends React.Component {
     this.setState({ [name]: value });
   }
 
+  getTimeOnTrack(value) {
+    let hours = 0;
+    let minutes = 0;
+    hours = Number(value.slice(0, 2));
+    minutes = Number(value.slice(3, 5));
+    value = minutes + hours * 60;
+    return value;
+  }
+
   addTrack = (projectId, projectTitle) => {
     const { newTrack, newTimeTrack } = this.state;
     const track = {
@@ -81,7 +90,7 @@ class Tasks extends React.Component {
       taskName: projectTitle,
       trackNode: newTrack,
       trackDate: new Date(),
-      timeOnTrack: newTimeTrack,
+      timeOnTrack: this.getTimeOnTrack(newTimeTrack),
     };
 
     const { tracks } = this.state;
@@ -118,7 +127,7 @@ class Tasks extends React.Component {
         description: this.state.newDescription,
         startDate,
         deadlineDate,
-        timeOnTask: this.state.newTime,
+        timeOnTask: this.getTimeOnTrack(this.state.newTime),
         spentTime: 0,
         state: 'toDo',
         showEditFields: false,
@@ -175,7 +184,7 @@ class Tasks extends React.Component {
   }
 
   changeSpentTimeTask(task) {
-    let newTime = task.spentTime + Number(this.state.newTimeTrack);
+    let newTime = task.spentTime + this.getTimeOnTrack(this.state.newTimeTrack);
     const newTask = {
       ...task,
       spentTime: Number(newTime),
@@ -291,7 +300,10 @@ class Tasks extends React.Component {
     return (
       <div className={style.projects_container}>
         {this.props.role !== 'dd' && ( // TODO set role
-          <Popup modal trigger={<button>Add post</button>}>
+          <Popup
+            modal
+            trigger={<button className={style.batton}>Add post</button>}
+          >
             {(close) => (
               <PopUp
                 close={close}

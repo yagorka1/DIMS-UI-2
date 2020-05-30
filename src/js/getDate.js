@@ -43,4 +43,10 @@ const getTime = (minutes) => {
   return str;
 };
 
-export { getDate, getDatePost, getTime };
+const getTimeTask = (minutes) => {
+  const hours = Math.floor(minutes / MINUTES_IN_HOUR);
+  const minutesN = minutes - hours * 60 + 'm';
+  return hours + 'ч' + ' ' + minutesN;
+};
+
+export { getDate, getDatePost, getTime, getTimeTask };
