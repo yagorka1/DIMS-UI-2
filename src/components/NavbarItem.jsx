@@ -18,7 +18,7 @@ class NavbarItem extends React.Component {
             className={style.image_navbar_item}
             alt={this.props.title}
           />
-          <h4>{getTitle(this.props.title)}</h4>
+          <h4>{this.props.name}</h4>
         </NavLink>
       </div>
     );

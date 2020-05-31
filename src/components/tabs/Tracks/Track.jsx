@@ -29,11 +29,14 @@ class Track extends React.Component {
         <div className={style.buttons_container}>
           <Button
             title='edit'
+            title='Редактировать'
             changeTrack={this.props.changeTrack}
             id={track.trackId}
+            className={style.bbb}
           />
           <Button
             title='delete'
+            title='Удалить'
             changeTrack={this.props.changeTrack}
             id={track.trackId}
           />

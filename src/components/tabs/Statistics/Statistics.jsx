@@ -30,9 +30,7 @@ class Statistics extends React.Component {
     props.role === USER
       ? (tasks = getTasks(props.email))
       : (tasks = getAllTasks());
-    const tracks = getTracks(props.email);
-    const users = getUsers();
-    return { users, tracks, tasks };
+    return { tasks };
   }
 
   getChartData() {
@@ -165,7 +163,7 @@ class Statistics extends React.Component {
             value='email'
             onClick={() => this.changeTaskState(toDoTask)}
           />
-          <label htmlFor='contactChoice1'>TODO</label>
+          <label htmlFor='contactChoice1'>ToDo</label>
 
           <input
             type='radio'
@@ -187,8 +185,8 @@ class Statistics extends React.Component {
         </div>
         <div className={style.taskss}>
           <div className={style.task}>
-            <div className={style.task_title}>Title</div>
-            <div className={style.task_title}>Time on task</div>
+            <div className={style.task_title}>Задача</div>
+            <div className={style.task_title}>Планируемое время</div>
             <div className={style.task_title}>Потраченое время</div>
             <div className={style.task_title}>Осталось времени</div>
             <div className={style.task_title}>Дата дедлайна</div>

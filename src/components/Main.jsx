@@ -28,7 +28,12 @@ class Main extends React.Component {
           path='/workflow'
           render={() => <Workflow email={this.props.email} />}
         />
-        <Route path='/statistics' render={() => <Statistics />} />
+        <Route
+          path='/statistics'
+          render={() => (
+            <Statistics role={this.props.role} email={this.props.email} />
+          )}
+        />
         <Route path='/calendar' render={() => <Calendar />} />
         <Route path='/users/trac/:userId?' component={UserProgress} />
         <Route path='/users/task/:userId?' component={UserTasks} />

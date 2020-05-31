@@ -31,6 +31,7 @@ class NavBar extends React.Component {
             image={route.image}
             showNavbar={this.props.showNavbar}
             title={route.title}
+            name={route.name}
           />
         ))}
       </nav>

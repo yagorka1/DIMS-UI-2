@@ -4,9 +4,7 @@ import style_button from '../../../style/Button.module.css';
 
 import Button from './Button';
 import Palette from './Palette';
-import titleImg from '../../../assets/images/main/main/L1.png';
-import hightArrow from '../../../assets/images/main/main/up.svg';
-import lowArrow from '../../../assets/images/main/main/down.svg';
+import titleImg from '../../../assets/images/header/user.png';
 import colors from '../../../js/color';
 
 import { getDatePost, getTimeTask } from '../../../js/getDate';
@@ -63,20 +61,6 @@ class Post extends React.Component {
           <img src={titleImg} className={style.titleImg} alt='user' />
         </div>
         <div className={style.postBody}>
-          <div className={style.informAboutPost}>
-            {task.priority}
-            {task.priority === 'Hight' ? (
-              <img src={hightArrow} className={style.arrow} alt='up' />
-            ) : (
-              <></>
-            )}
-            {task.priority === 'Low' ? (
-              <img src={lowArrow} className={style.arrow} alt='up' />
-            ) : (
-              <></>
-            )}
-            {getDatePost(task.startDate)}
-          </div>
           <div className={style.messageBlock}>
             <div className={style.message}>
               <div className={style.messageTitle}>
@@ -85,15 +69,15 @@ class Post extends React.Component {
               </div>
               <div className={style.timeWrapper}>
                 <div className={style.timeBlock}>
-                  <p>Total time on task</p>
+                  <p>Время на задачу</p>
                   <p>{getTimeTask(task.timeOnTask)}</p>
                 </div>
                 <div className={style.timeBlock}>
-                  <p>Time left</p>
+                  <p>Осталось времени</p>
                   <p>{getTimeTask(timeLeft)}</p>
                 </div>
                 <div className={style.timeBlock}>
-                  <p>Spent time</p>
+                  <p>Потрачено на задачу</p>
                   <p>{getTimeTask(task.spentTime)}</p>
                 </div>
               </div>
@@ -102,20 +86,23 @@ class Post extends React.Component {
               <button
                 className={style_button.buttonFunction}
                 onClick={this.showEditButtons}
+                className={style.bbb2}
               >
                 {' '}
-                showEdit{' '}
+                Действия{' '}
               </button>
               {task.showEditField && (
                 <div className={style.postButtons}>
                   <div>
                     <Button
                       title='delete'
+                      name='Удалить'
                       changePost={this.props.changePost}
                       id={task.taskId}
                     />
                     <Button
                       title='edit'
+                      name='Описание'
                       changePost={this.props.changePost}
                       id={task.taskId}
                     />
@@ -127,6 +114,7 @@ class Post extends React.Component {
                         />
                         <Button
                           title='push'
+                          name='Сохранить'
                           changePost={this.props.changePost}
                           id={task.taskId}
                         />
@@ -135,6 +123,7 @@ class Post extends React.Component {
                   </div>
                   <Button
                     title='color'
+                    name='Цвет'
                     changePost={this.props.changePost}
                     id={task.taskId}
                   />
@@ -151,12 +140,17 @@ class Post extends React.Component {
                   )}
                   {this.props.role === USER && (
                     <div>
-                      <Button
-                        title='track'
-                        changePost={this.props.changePost}
-                        id={task.taskId}
-                      />
-                      <Popup modal trigger={<button>Add Track</button>}>
+                      {/*<Button*/}
+                      {/*  title='track'*/}
+                      {/*  changePost={this.props.changePost}*/}
+                      {/*  id={task.taskId}*/}
+                      {/*/>*/}
+                      <Popup
+                        modal
+                        trigger={
+                          <button className={style.bbb}>Добавить трек</button>
+                        }
+                      >
                         {(close) => (
                           <PopUpTrack
                             close={close}

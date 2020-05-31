@@ -302,7 +302,7 @@ class Tasks extends React.Component {
         {this.props.role !== 'dd' && ( // TODO set role
           <Popup
             modal
-            trigger={<button className={style.batton}>Add post</button>}
+            trigger={<button className={style.batton}>Добавить задачу</button>}
           >
             {(close) => (
               <PopUp
@@ -315,6 +315,7 @@ class Tasks extends React.Component {
                 onChangeTaskTime={this.onChangeTaskTime}
                 role={this.props.role}
                 email={this.props.email}
+                className={style.popupContent}
               />
             )}
           </Popup>

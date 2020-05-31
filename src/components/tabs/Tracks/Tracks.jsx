@@ -91,14 +91,13 @@ class Tracks extends React.Component {
           <h2 className={style.users_title}>
             Tracks <span className={style.tracks_count}>({tracksCount})</span>
           </h2>
-          <span>Sort</span>
         </div>
         <div className={style.table_colum}>
           <div className={style.table_item}>#</div>
-          <div className={style.table_item}>Task</div>
-          <div className={style.table_item}>Note</div>
-          <div className={style.table_item}>Date</div>
-          <div className={style.table_item}>Spent Time</div>
+          <div className={style.table_item}>Задача</div>
+          <div className={style.table_item}>Пометка</div>
+          <div className={style.table_item}>Дата</div>
+          <div className={style.table_item}>Потраченное время</div>
           <div className={style.table_item}></div>
         </div>
         <div className={style.tracks}>

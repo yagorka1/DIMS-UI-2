@@ -71,8 +71,7 @@
 }
 
 .postTitle {
-  margin-top: -5px;
-  margin-bottom: -10px;
+  margin-top: 15px;
 }
 
 .blockFunction {
@@ -163,4 +162,34 @@
 #color9,
 .color9 {
   background-color: rgb(221, 160, 221);
+}
+
+.bbb,
+.bbb2 {
+  height: 30px;
+  width: 90px;
+  background-color: #5584ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  border-radius: 35px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 8pt;
+  letter-spacing: 0.3pt;
+  margin-bottom: 10px;
+}
+
+.bbb2 {
+  height: 35px;
+  width: 90px;
+  margin-top: 1rem;
+}
+
+.bbb:hover {
+  background-color: blueviolet;
+  cursor: pointer;
 }
