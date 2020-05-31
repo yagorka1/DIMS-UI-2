@@ -17,18 +17,27 @@
   flex-direction: column;
 }
 
+label {
+  margin-right: 1rem;
+}
+
 .task {
   display: flex;
   flex-direction: row;
   margin-top: 2rem;
+  border-bottom: 1px solid gray;
+}
+
+.task:first-child {
+  border-bottom: 0px solid gray;
 }
 
 .task2 {
   display: flex;
   flex-direction: row;
-  margin-top: 3rem;
-  border-top: 2px solid black;
+  margin-top: 1rem;
   padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .task_title {

@@ -5,20 +5,39 @@
 
 .modal {
   font-size: 12px;
-  color: red;
-  max-width: 36rem;
+  color: black;
 }
-.modal > .header {
-  width: 100%;
+
+.input {
+  margin-bottom: 1rem;
+}
+
+.header {
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
-  width: 100%;
+.content {
   padding: 10px 5px;
 }
+
+.conten1t {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.xxx {
+  width: 100%;
+}
+
+.popup-content {
+  width: 40%;
+}
+
 .modal > .actions {
   margin: auto;
 }

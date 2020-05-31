@@ -137,7 +137,12 @@ class Users extends React.Component {
     return (
       <div className={style.users_container}>
         {this.props.role === ADMIN ? (
-          <Popup modal trigger={<button>Add user</button>}>
+          <Popup
+            modal
+            trigger={
+              <button className={style.batton}>Добавить пользователя</button>
+            }
+          >
             {(close) => (
               <PopUp
                 close={close}
@@ -156,15 +161,14 @@ class Users extends React.Component {
         )}
         <div className={style.inform_about_users}>
           <h2 className={style.users_title}>
-            Users <span className={style.users_count}>({usersCount})</span>
+            Пользователи{' '}
+            <span className={style.users_count}>({usersCount})</span>
           </h2>
-          <span>Sort</span>
         </div>
         <div className={style.table_colum}>
-          <div className={style.table_item}>Name</div>
-          <div className={style.table_item}>Last activity</div>
-          <div className={style.table_item}>Mail</div>
-          <div className={style.table_item}>Phone</div>
+          <div className={style.table_item}>Имя</div>
+          <div className={style.table_item}>Почта</div>
+          <div className={style.table_item}>Телефон</div>
           <div className={style.table_item}></div>
         </div>
         <div className={style.users}>

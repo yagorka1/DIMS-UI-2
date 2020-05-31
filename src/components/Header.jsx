@@ -17,9 +17,9 @@ class Header extends React.Component {
     return (
       <header className={style.header}>
         <div className={style.buttons_header}>
-          <button onClick={this.handleChange}>
+          <div className={style.headerButton} onClick={this.handleChange}>
             <img src={menu} className={style.images_header} alt='Save' />
-          </button>
+          </div>
           {/* <img src={search} className={style.images_header} alt='search' /> */}{' '}
           {/*not yet implemented*/}
         </div>
@@ -32,7 +32,7 @@ class Header extends React.Component {
             alt='notifications'
           /> */}
           <button onClick={this.props.authUser} className={style.logOut_button}>
-            Log Out
+            Выйти
           </button>
           <img
             src={user_photo}

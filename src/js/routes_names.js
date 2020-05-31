@@ -3,21 +3,21 @@ import settings from '../assets/images/navbar/settings.png';
 import { ADMIN, MENTOR, USER } from './roles';
 
 const routesAdmin = [
-  { title: '/users', image: users },
-  { title: '/tasks', image: settings },
+  { title: '/users', name: 'Пользователи', image: users },
+  { title: '/tasks', name: 'Задачи', image: settings },
 ];
 
 const routesMember = [
-  { title: '/workflow', image: settings },
-  { title: '/tasks', image: settings },
-  { title: '/tracks', image: settings },
-  { title: '/statistics', image: settings },
+  { title: '/workflow', name: 'Статус задач', image: settings },
+  { title: '/tasks', name: 'Задачи', image: settings },
+  { title: '/tracks', name: 'Треки', image: settings },
+  { title: '/statistics', name: 'Статистика', image: settings },
 ];
 
 const routesMentor = [
-  { title: '/users', image: users },
-  { title: '/tasks', image: settings },
-  { title: '/statistics', image: settings },
+  { title: '/users', name: 'Пользователи', image: users },
+  { title: '/tasks', name: 'Задачи', image: settings },
+  { title: '/statistics', name: 'Статистика', image: settings },
 ];
 
 const getRotes = (direction) => {

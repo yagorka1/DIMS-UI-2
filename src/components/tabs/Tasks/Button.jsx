@@ -14,7 +14,7 @@ class Button extends React.Component {
   render() {
     return (
       <button className={styleButton.button} onClick={this.changePost}>
-        {this.props.title}
+        {this.props.name}
       </button>
     );
   }

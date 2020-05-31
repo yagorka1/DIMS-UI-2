@@ -22,25 +22,6 @@ class User extends React.Component {
             <span className={style.user_direction}>{user.direction}</span>
           </div>
         </div>
-        {user.activity ? (
-          <div className={style.user_last_activity}>
-            <img
-              className={style.clock_image}
-              src={clock_offline}
-              alt='image_clock'
-            />
-            {getTime(user.activity)}
-          </div>
-        ) : (
-          <div className={style.user_last_activity}>
-            <img
-              className={style.clock_image}
-              src={clock_online}
-              alt='image_clock'
-            />
-            <span className={style.online_status}>Online now!</span>
-          </div>
-        )}
         <div className={style.user_mail}>{user.email}</div>
         <div className={style.user_phone}>{user.mobilePhone}</div>
         <div className={style.user_btn}>

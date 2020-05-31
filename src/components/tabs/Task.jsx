@@ -37,6 +37,7 @@ class Task extends React.Component {
         </div>
         <Button
           title='showEditFields'
+          name='Статус'
           changePost={this.props.changePost}
           id={task.taskId}
         />
@@ -44,16 +45,19 @@ class Task extends React.Component {
           <div>
             <Button
               title='toDo'
+              name='ToDo'
               changePost={this.props.changePost}
               id={task.taskId}
             />
             <Button
               title='inProgress'
+              name='InProgress'
               changePost={this.props.changePost}
               id={task.taskId}
             />
             <Button
               title='completed'
+              name='Completed'
               changePost={this.props.changePost}
               id={task.taskId}
             />

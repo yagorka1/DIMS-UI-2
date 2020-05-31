@@ -16,9 +16,14 @@
 }
 
 .images_header {
+}
+
+.headerButton {
+  cursor: pointer;
   height: 15px;
   margin-left: 20px;
 }
+
 .images_header1 {
   height: 15px;
   margin-left: 20px;
@@ -31,9 +36,6 @@
   margin-right: 20px;
 }
 
-.images_header:hover {
-  cursor: pointer;
-}
 .button {
   height: 30px;
   width: 90px;
