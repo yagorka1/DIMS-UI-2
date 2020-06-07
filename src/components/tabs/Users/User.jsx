@@ -8,7 +8,7 @@ import clock_offline from '../../../assets/images/main/clock_offline.svg';
 import { NavLink } from 'react-router-dom';
 import Button from './Button';
 import { getTime } from '../../../js/getDate';
-import { ADMIN } from '../../../js/roles';
+import { ADMIN, MENTOR } from '../../../js/roles';
 
 class User extends React.Component {
   render() {
@@ -25,23 +25,48 @@ class User extends React.Component {
         <div className={style.user_mail}>{user.email}</div>
         <div className={style.user_phone}>{user.mobilePhone}</div>
         <div className={style.user_btn}>
-          <NavLink
-            className={style1.button}
-            to={`users/trac/` + user.email}
-            activeClassName={style.activeNavbarLink}
-            onClick={this.handleChange}
-          >
-            <h4>progress</h4>
-          </NavLink>
-          <NavLink
-            className={style1.button}
-            to={`users/task/` + user.email}
-            activeClassName={style.activeNavbarLink}
-            onClick={this.handleChange}
-          >
-            <h4>tasks</h4>
-          </NavLink>
-
+          {this.props.role === MENTOR ? (
+            <div className={style.fdd}>
+              <div>
+                <NavLink
+                  className={style1.button}
+                  to={`users/trac/` + user.email}
+                  activeClassName={style.activeNavbarLink}
+                  onClick={this.handleChange}
+                >
+                  <h4>Треки</h4>
+                </NavLink>
+                <NavLink
+                  className={style1.button}
+                  to={`users/task/` + user.email}
+                  activeClassName={style.activeNavbarLink}
+                  onClick={this.handleChange}
+                >
+                  <h4>Задания</h4>
+                </NavLink>
+              </div>
+              <div>
+                <NavLink
+                  className={style1.button}
+                  to={`users/statistics/` + user.email}
+                  activeClassName={style.activeNavbarLink}
+                  onClick={this.handleChange}
+                >
+                  <h4>Статистика</h4>
+                </NavLink>
+                <NavLink
+                  className={style1.button}
+                  to={`users/time/` + user.email}
+                  activeClassName={style.activeNavbarLink}
+                  onClick={this.handleChange}
+                >
+                  <h4>Отработанное время</h4>
+                </NavLink>
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
           {this.props.role === ADMIN ? (
             <Button
               title='edit'

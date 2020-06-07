@@ -40,6 +40,7 @@ class Tasks extends React.Component {
       deadlineDate: '',
       newTime: '',
       newTimeTrack: '',
+      trackDate: '',
     };
 
     this.changePost = this.changePost.bind(this);
@@ -65,6 +66,7 @@ class Tasks extends React.Component {
       newTrack: '',
       newTime: '',
       newTimeTrack: '',
+      trackDate: '',
     });
   };
 
@@ -89,7 +91,7 @@ class Tasks extends React.Component {
       trackId: getId(),
       taskName: projectTitle,
       trackNode: newTrack,
-      trackDate: new Date(),
+      trackDate: this.state.trackDate,
       timeOnTrack: this.getTimeOnTrack(newTimeTrack),
     };
 
@@ -112,12 +114,11 @@ class Tasks extends React.Component {
   };
 
   onChangeStartDate = (startDate) => this.setState({ startDate });
+  onChangeTrackDate = (trackDate) => this.setState({ trackDate });
   onChangeTaskTime = (newTime) => this.setState({ newTime });
   onChangeDeadlineDate = (deadlineDate) => this.setState({ deadlineDate });
 
   addNewTask = (emails) => {
-    console.log(this.state.newTime);
-
     const { startDate, deadlineDate } = this.state;
     for (let i = 0; i < emails.length; i++) {
       const newTask = {
@@ -331,9 +332,11 @@ class Tasks extends React.Component {
               changePost={this.changePost}
               newTask={this.state.newTask}
               newTrack={this.state.newTrack}
+              trackDate={this.state.trackDate}
               newTimeTrack={this.state.newTimeTrack}
               onChange={this.onChange}
               addTrack={this.addTrack}
+              onChangeTrackDate={this.onChangeTrackDate}
               role={this.props.role}
             />
           ))}

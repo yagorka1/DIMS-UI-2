@@ -3,6 +3,7 @@ import style from '../../../style/pop-up.module.css';
 import InputText from '../../InputText';
 import { getUsers, getMembers } from '../../../js/users';
 import TimeField from 'react-simple-timefield';
+import DatePicker from 'react-date-picker';
 
 class PopUpTrack extends React.Component {
   constructor(props) {
@@ -19,6 +20,8 @@ class PopUpTrack extends React.Component {
   handleInputChange = (name, value) => {
     this.props.onChange(name, value);
   };
+
+  onChangeTrackDate = (trackDate) => this.props.onChangeTrackDate(trackDate);
 
   pushTrack = (projectId, projectTitle) => {
     this.props.addTrack(projectId, projectTitle);
@@ -63,8 +66,16 @@ class PopUpTrack extends React.Component {
             />
           </div>
 
+          <div>
+            Дата
+            <DatePicker
+              onChange={this.props.onChangeTrackDate}
+              value={this.props.trackDate}
+            />
+          </div>
+
           <button
-            title='pushTrack'
+            // title='pushTrack'
             onClick={() =>
               this.pushTrack(this.props.task.taskId, this.props.task.title)
             }

@@ -26,10 +26,16 @@ class Statistics extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    let tasks;
-    props.role === USER
-      ? (tasks = getTasks(props.email))
-      : (tasks = getAllTasks());
+    let tasks = [];
+
+    if (!props?.tasks) {
+      props.role === USER
+        ? (tasks = getTasks(props.email))
+        : (tasks = getAllTasks());
+    } else {
+      tasks = props.tasks;
+    }
+
     return { tasks };
   }
 
@@ -111,6 +117,7 @@ class Statistics extends React.Component {
 
   render() {
     const tasks = this.state.tasks;
+
     const toDoTask = this.getTask(tasks, 'toDo');
     const inProgressTask = this.getTask(tasks, 'inProgress');
     const completedTask = this.getTask(tasks, 'completed');

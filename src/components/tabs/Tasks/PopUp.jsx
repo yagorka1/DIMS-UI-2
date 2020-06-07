@@ -97,14 +97,14 @@ class PopUp extends React.Component {
             </div>
             {/*<TimeField value={this.props.state.newTime} onChange={this.onTimeChange} />*/}
             <div className={style.input}>
-              Start Date:
+              Дата начала:
               <DatePicker
                 onChange={this.onChangeStartDate}
                 value={this.props.state.startDate}
               />
             </div>
             <div className={style.input}>
-              Deadline Date:
+              Дата завершения
               <DatePicker
                 onChange={this.onChangeDeadlineDate}
                 value={this.props.state.deadlineDate}
@@ -112,7 +112,7 @@ class PopUp extends React.Component {
             </div>
             {this.props.role !== 'Member' && (
               <div className={style.input}>
-                Users:
+                Пользователи
                 {members.map((user) => (
                   <div>
                     <input

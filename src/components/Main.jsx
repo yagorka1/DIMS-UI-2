@@ -11,6 +11,9 @@ import Tasks from './tabs/Tasks/Tasks';
 import UserProgress from './tabs/UserProgress';
 import UserTasks from './tabs/UserTasks';
 import Statistics from './tabs/Statistics/Statistics';
+import Time from './tabs/Time/Time';
+import UserStatistics from './tabs/Statistics/UserStatistics';
+import UserTime from './tabs/Time/UserTime';
 
 class Main extends React.Component {
   render() {
@@ -29,14 +32,16 @@ class Main extends React.Component {
           render={() => <Workflow email={this.props.email} />}
         />
         <Route
-          path='/statistics'
+          path='/time'
           render={() => (
-            <Statistics role={this.props.role} email={this.props.email} />
+            <Time role={this.props.role} email={this.props.email} />
           )}
         />
         <Route path='/calendar' render={() => <Calendar />} />
         <Route path='/users/trac/:userId?' component={UserProgress} />
         <Route path='/users/task/:userId?' component={UserTasks} />
+        <Route path='/users/statistics/:userId?' component={UserStatistics} />
+        <Route path='/users/time/:userId?' component={UserTime} />
 
         {this.props.role !== 'Member' ? (
           <Route
@@ -53,6 +58,13 @@ class Main extends React.Component {
           path='/tasks'
           render={() => (
             <Tasks email={this.props.email} role={this.props.role} />
+          )}
+        />
+
+        <Route
+          path='/statistics'
+          render={() => (
+            <Statistics role={this.props.role} email={this.props.email} />
           )}
         />
         {this.props.role === 'Member' ? (
