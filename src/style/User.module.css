@@ -38,6 +38,10 @@
   width: 21%;
 }
 
+.fdd {
+  display: flex;
+}
+
 .user_btn {
   width: 20%;
   border-right: 1px solid gray;

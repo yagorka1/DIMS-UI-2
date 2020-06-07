@@ -12,12 +12,14 @@ const routesMember = [
   { title: '/tasks', name: 'Задачи', image: settings },
   { title: '/tracks', name: 'Треки', image: settings },
   { title: '/statistics', name: 'Статистика', image: settings },
+  { title: '/time', name: 'Отработанное время', image: settings },
 ];
 
 const routesMentor = [
   { title: '/users', name: 'Пользователи', image: users },
   { title: '/tasks', name: 'Задачи', image: settings },
   { title: '/statistics', name: 'Статистика', image: settings },
+  { title: '/time', name: 'Отработанное время', image: settings },
 ];
 
 const getRotes = (direction) => {

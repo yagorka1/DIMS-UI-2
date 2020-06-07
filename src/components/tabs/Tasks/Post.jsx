@@ -155,10 +155,12 @@ class Post extends React.Component {
                           <PopUpTrack
                             close={close}
                             onChange={this.props.onChange}
+                            onChangeTrackDate={this.props.onChangeTrackDate}
                             addTrack={this.props.addTrack}
                             task={task}
                             newTrack={this.props.newTrack}
                             newTimeTrack={this.props.newTimeTrack}
+                            trackDate={this.props.trackDate}
                           />
                         )}
                       </Popup>

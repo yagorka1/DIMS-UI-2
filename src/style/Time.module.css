@@ -1,0 +1,97 @@
+.timeWrapper {
+  width: 90%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeWrapper2 {
+  width: 50%;
+}
+
+.xxx {
+  display: flex;
+}
+
+.img {
+  width: 10px;
+}
+
+.dayInfo {
+  height: 1.8rem;
+  border-top: 1px solid gray;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.data {
+  width: 5rem;
+}
+
+.result {
+  padding-left: 16rem;
+}
+
+.showB {
+  float: right;
+  position: absolute;
+  right: 0;
+  margin-right: 18rem;
+}
+
+.showB:hover {
+  text-decoration: underline;
+}
+
+.workTime {
+  float: right;
+  position: absolute;
+  right: 0;
+  margin-right: 1rem;
+}
+
+.statistics {
+  margin-left: 4rem;
+}
+
+.button {
+  height: 30px;
+  width: 90px;
+  background-color: #5584ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff;
+  border-radius: 35px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 8pt;
+  letter-spacing: 0.3pt;
+}
+
+.button:hover {
+  background-color: blueviolet;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  width: 20rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.userName {
+  margin-left: 10rem;
+}
+
+.buttonws {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}

@@ -17,6 +17,20 @@ const getUsers = () => {
   return users;
 };
 
+const getUser = (email) => {
+  for (let i = 0; i < localStorage.length; i++) {
+    const storageId = localStorage.key(i);
+    if (storageId.includes('user')) {
+      const user = JSON.parse(localStorage.getItem(storageId));
+      user.trackDate = new Date(user.trackDate);
+
+      if (user.email === email) {
+        return user;
+      }
+    }
+  }
+};
+
 const getMembers = () => {
   const users = getUsers();
   const members = users.filter((user) => user.direction === USER);
@@ -29,4 +43,4 @@ const checkData = (email, password) => {
   return !user ? 0 : user.direction;
 };
 
-export { getUsers, checkData, getMembers };
+export { getUsers, checkData, getMembers, getUser };
